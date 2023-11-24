@@ -2,12 +2,11 @@
 import {useState} from 'react'
 import * as Yup from 'yup'
 import clsx from 'clsx'
-import {Link, useNavigate} from 'react-router-dom'
 import {useFormik} from 'formik'
 import {getUserByToken, login} from '../../modules/auth/core/_requests'
-import {toAbsoluteUrl} from '../../../_metronic/helpers'
 import {useAuth} from '../../modules/auth'
 import { ListsWidget2 } from '../../../_metronic/partials/widgets'
+import Alert from './Alert'
 
 
 
@@ -36,8 +35,9 @@ const initialValues = {
 
 export function Login({closeModal}) {
   const [loading, setLoading] = useState(false)
+  const [incorrectLogin, setIncorrectLogin] = useState(false); 
+
   const {saveAuth, setCurrentUser} = useAuth()
-  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues,
@@ -57,13 +57,14 @@ export function Login({closeModal}) {
         setStatus('The login details are incorrect')
         setSubmitting(false)
         setLoading(false)
+        setIncorrectLogin(true);
       }
     },
   })
 
   return (
     <form
-      className='form w-100'
+      className=''
       onSubmit={formik.handleSubmit}
       noValidate
       id='kt_login_signin_form'

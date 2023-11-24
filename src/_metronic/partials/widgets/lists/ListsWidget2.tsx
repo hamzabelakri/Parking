@@ -31,7 +31,7 @@ const ListsWidget2: React.FC<Props> = ({className}) => {
       {/* end::Header */}
       {/* begin::Body */}
       <div className='card-body pt-2'>
-        <div className='scroll-container' style={{maxHeight: '200px', overflowX: 'auto'}}>
+        <div className='scroll-container' style={{maxHeight: '150px', overflowX: 'auto'}}>
           <div className='d-flex align-items-center mb-7'>
             {/* begin::Avatar */}
             <div className='symbol symbol-50px me-5'>
