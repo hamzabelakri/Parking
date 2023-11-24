@@ -7,6 +7,7 @@ import {useFormik} from 'formik'
 import {getUserByToken, login} from '../../modules/auth/core/_requests'
 import {toAbsoluteUrl} from '../../../_metronic/helpers'
 import {useAuth} from '../../modules/auth'
+import { ListsWidget2 } from '../../../_metronic/partials/widgets'
 
 
 
@@ -133,6 +134,9 @@ export function Login({closeModal}) {
             </span>
           )}
         </button>
+        <div className='mt-3'>
+          <ListsWidget2 className='card-xl-stretch mb-xl-8' />
+        </div>
       </div>
     </form>
   )
