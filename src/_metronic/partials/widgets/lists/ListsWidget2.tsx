@@ -11,26 +11,10 @@ const ListsWidget2: React.FC<Props> = ({className}) => {
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
-      <div className='card-header border-0'>
-        <h3 className='card-title fw-bold text-dark'>Managers</h3>
-        <div className='card-toolbar'>
-          {/* begin::Menu */}
-          <button
-            type='button'
-            className='btn btn-sm btn-icon btn-color-primary btn-active-light-primary'
-            data-kt-menu-trigger='click'
-            data-kt-menu-placement='bottom-end'
-            data-kt-menu-flip='top-end'
-          >
-            <KTIcon iconName='category' className='fs-2' />
-          </button>
-          <Dropdown1 />
-          {/* end::Menu */}
-        </div>
-      </div>
+    
       {/* end::Header */}
       {/* begin::Body */}
-      <div className='card-body pt-2'>
+      <div className='card-body '>
         <div className='scroll-container' style={{maxHeight: '150px', overflowX: 'auto'}}>
           <div className='d-flex align-items-center mb-7'>
             {/* begin::Avatar */}
