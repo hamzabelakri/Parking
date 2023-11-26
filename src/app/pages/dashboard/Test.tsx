@@ -1,6 +1,7 @@
 import React from 'react'
 import {Mixed} from '../../modules/widgets/components/Mixed'
 import Payment from './Payment'
+import {KTIcon, toAbsoluteUrl} from '../../../_metronic/helpers'
 
 const Test = () => {
   return (
@@ -24,7 +25,57 @@ const Test = () => {
                           <div className='nav-icon mb-3'>
                             {/*begin::Food icon*/}
                             <img
-                              src='_metronic/assets/fonction/fonction.svg'
+                            src={toAbsoluteUrl('/media/svg/food-icons/cheeseburger.svg')}
+                              className='w-50px'
+                              alt=''
+                            />
+                          </div>
+
+                          <div className=''>
+                            <span className='text-gray-800 fw-bold fs-2 d-block'>Lunch</span>
+                            <span className='text-gray-400 fw-semibold fs-7'>8 Options</span>
+                          </div>
+                          {/*end::Info*/}
+                        </a>
+                        {/*end::Nav link*/}
+                      </li>
+                      <li className='nav-item mb-3 me-0'>
+                        <a
+                          className='nav-link nav-link-border-solid btn btn-outline btn-flex btn-active-color-primary flex-column flex-stack pt-9 pb-7 page-bg show active'
+                          data-bs-toggle='pill'
+                          href='#kt_pos_food_content_1'
+                          style={{width: 138, height: 180}}
+                        >
+               
+                          <div className='nav-icon mb-3'>
+                            {/*begin::Food icon*/}
+                            <img
+                            src={toAbsoluteUrl('/media/svg/food-icons/coffee.svg')}
+                              className='w-50px'
+                              alt=''
+                            />
+                          </div>
+
+                          <div className=''>
+                            <span className='text-gray-800 fw-bold fs-2 d-block'>Lunch</span>
+                            <span className='text-gray-400 fw-semibold fs-7'>8 Options</span>
+                          </div>
+                          {/*end::Info*/}
+                        </a>
+                        {/*end::Nav link*/}
+                      </li>
+                      <li className='nav-item mb-3 me-0'>
+                        <a
+                          className='nav-link nav-link-border-solid btn btn-outline btn-flex btn-active-color-primary flex-column flex-stack pt-9 pb-7 page-bg show active'
+                          data-bs-toggle='pill'
+                          href='#kt_pos_food_content_1'
+                          style={{width: 138, height: 180}}
+                        >
+               
+                          <div className='nav-icon mb-3'>
+                            {/*begin::Food icon*/}
+                            <img
+                            src={toAbsoluteUrl('/media/svg/food-icons/cheesecake.svg')}
                               className='w-50px'
                               alt=''
                             />
@@ -51,7 +102,7 @@ const Test = () => {
                             {/*begin::Body*/}
                             <div className='card-body text-center'>
                               <img
-                                src='assets/media/stock/food/img-2.jpg'
+                                src='media/stock/food/img-1.jpg'
                                 className='rounded-3 mb-4 w-150px h-150px w-xxl-200px h-xxl-200px'
                                 alt=''
                               />
@@ -79,7 +130,7 @@ const Test = () => {
                             <div className='card-body text-center'>
                               {/*begin::Food img*/}
                               <img
-                                src='assets/media/stock/food/img-5.jpg'
+                                src='media/stock/food/img-2.jpg'
                                 className='rounded-3 mb-4 w-150px h-150px w-xxl-200px h-xxl-200px'
                                 alt=''
                               />
@@ -111,7 +162,7 @@ const Test = () => {
                             <div className='card-body text-center'>
                               {/*begin::Food img*/}
                               <img
-                                src='assets/media/stock/food/img-11.jpg'
+                                src='media/stock/food/img-3.jpg'
                                 className='rounded-3 mb-4 w-150px h-150px w-xxl-200px h-xxl-200px'
                                 alt=''
                               />
@@ -151,7 +202,7 @@ const Test = () => {
                             <div className='card-body text-center'>
                               {/*begin::Food img*/}
                               <img
-                                src='assets/media/stock/food/img-11.jpg'
+                                src='media/stock/food/img-2.jpg'
                                 className='rounded-3 mb-4 w-150px h-150px w-xxl-200px h-xxl-200px'
                                 alt=''
                               />
@@ -343,7 +394,7 @@ const Test = () => {
                             <div className='card-body text-center'>
                               {/*begin::Food img*/}
                               <img
-                                src='assets/media/stock/food/img-3.jpg'
+                                src='media/stock/food/img-3.jpg'
                                 className='rounded-3 mb-4 w-150px h-150px w-xxl-200px h-xxl-200px'
                                 alt=''
                               />
@@ -703,7 +754,7 @@ const Test = () => {
                             <div className='card-body text-center'>
                               {/*begin::Food img*/}
                               <img
-                                src='assets/media/stock/food/img-3.jpg'
+                                src='media/stock/food/img-2.jpg'
                                 className='rounded-3 mb-4 w-150px h-150px w-xxl-200px h-xxl-200px'
                                 alt=''
                               />
@@ -743,7 +794,7 @@ const Test = () => {
                             <div className='card-body text-center'>
                               {/*begin::Food img*/}
                               <img
-                                src='assets/media/stock/food/img-3.jpg'
+                                src='media/stock/food/img-2.jpg'
                                 className='rounded-3 mb-4 w-150px h-150px w-xxl-200px h-xxl-200px'
                                 alt=''
                               />

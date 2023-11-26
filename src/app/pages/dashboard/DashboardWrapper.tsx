@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {FC} from 'react'
 import {useIntl} from 'react-intl'
-import {PageTitle} from '../../../_metronic/layout/core'
-import CustomModal from './Modal'
+import { PageTitle } from '../../../_metronic/layout/core'
 import Test from './Test'
+import LoginModal from '../Auth/LoginModal'
 
 const DashboardPage: FC = () => (
   <>
-    <CustomModal />
+    <LoginModal />
   </>
 )
 

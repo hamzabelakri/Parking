@@ -5,10 +5,11 @@ import clsx from 'clsx'
 import {useFormik} from 'formik'
 import {getUserByToken, login} from '../../modules/auth/core/_requests'
 import {useAuth} from '../../modules/auth'
-import { ListsWidget2 } from '../../../_metronic/partials/widgets'
-import Alert from './Alert'
+import {ListsWidget2} from '../../../_metronic/partials/widgets'
+import Alert from '../dashboard/Alert'
 
-
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -35,7 +36,7 @@ const initialValues = {
 
 export function Login({closeModal}) {
   const [loading, setLoading] = useState(false)
-  const [incorrectLogin, setIncorrectLogin] = useState(false); 
+  const [incorrectLogin, setIncorrectLogin] = useState(false)
 
   const {saveAuth, setCurrentUser} = useAuth()
 
@@ -50,25 +51,32 @@ export function Login({closeModal}) {
         const {data: user} = await getUserByToken(auth.api_token)
         setCurrentUser(user)
         closeModal(false)
-
       } catch (error) {
         console.error(error)
         saveAuth(undefined)
         setStatus('The login details are incorrect')
         setSubmitting(false)
         setLoading(false)
-        setIncorrectLogin(true);
+        setIncorrectLogin(true)
+        toast.error('wrong email or password')
       }
     },
   })
 
   return (
-    <form
-      className=''
-      onSubmit={formik.handleSubmit}
-      noValidate
-      id='kt_login_signin_form'
-    >
+    <form className='' onSubmit={formik.handleSubmit} noValidate id='kt_login_signin_form'>
+      <ToastContainer
+        position='top-center'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='dark'
+      />
       {/* begin::Heading */}
       <div className='text-center'>
         <h1 className='text-dark fw-bolder mb-3'>Sign In</h1>

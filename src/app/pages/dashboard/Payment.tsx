@@ -35,7 +35,7 @@ const Payment = () => {
                 <td className='pe-0'>
                   <div className='d-flex align-items-center'>
                     <img
-                      src='assets/media/stock/food/img-2.jpg'
+                      src='media/stock/food/img-7.jpg'
                       className='w-50px h-50px rounded-3 me-3'
                       alt=''
                     />
@@ -95,7 +95,7 @@ const Payment = () => {
                 <td className='pe-0'>
                   <div className='d-flex align-items-center'>
                     <img
-                      src='assets/media/stock/food/img-9.jpg'
+                      src='media/stock/food/img-9.jpg'
                       className='w-50px h-50px rounded-3 me-3'
                       alt=''
                     />
@@ -154,7 +154,7 @@ const Payment = () => {
                 <td className='pe-0'>
                   <div className='d-flex align-items-center'>
                     <img
-                      src='assets/media/stock/food/img-3.jpg'
+                      src='media/stock/food/img-3.jpg'
                       className='w-50px h-50px rounded-3 me-3'
                       alt=''
                     />

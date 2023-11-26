@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import {KTSVG} from '../../../_metronic/helpers'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
-import { Login } from './Login'
-const CustomModal = () => {
+import { Login } from './LoginForm'
+const LoginModal = () => {
   const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
@@ -15,12 +15,12 @@ const CustomModal = () => {
   return (
     <div>
       <Modal centered show={show} backdrop="static" onHide={handleClose} >
-        <Modal.Body>
-          <Login closeModal={setShow}/>
+        <Modal.Body >
+          <Login closeModal={setShow} />
         </Modal.Body>
       </Modal>
     </div>
   )
 }
 
-export default CustomModal
+export default LoginModal
