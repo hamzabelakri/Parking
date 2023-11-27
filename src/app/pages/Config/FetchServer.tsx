@@ -21,15 +21,11 @@ const FetchServer = () => {
           'Content-Type': 'application/json',
         },
       })
-
-      console.log('Response status:', response.status)
-
       if (response.ok) {
         const data = await response.json()
         setData(data)
         console.log('Data received:', data)
       } else {
-        console.error('Request failed')
         CustomToast('Failed to fetch data!', 'error')
       }
     } catch (error) {
@@ -40,29 +36,46 @@ const FetchServer = () => {
     }
   }
   return (
-    <div className='row mb-6'>
-      <Toast />
-      <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server POS</label>
+    <div>
+      <div className='row mb-6'>
+        <Toast />
+        <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server POS</label>
 
-      <div className='col-lg-4 fv-row'>
-        <select
-          className='form-select form-select-solid form-select-lg'
-          name='option'
-          value={option}
-          onChange={(e) => setOption(e.target.value)}
-        >
-          <option value=''>Select a server..</option>
-          {data.map((elt) => (
-            <option key={elt.ID} value={elt.ID}>
-              {elt.name} : {elt.port}
-            </option>
-          ))}
-        </select>
+        <div className='col-lg-4 fv-row'>
+          <select
+            className='form-select form-select-solid form-select-lg'
+            name='option'
+            value={option}
+            onChange={(e) => setOption(e.target.value)}
+          >
+            <option value=''>Select a server..</option>
+            {data.map((elt) => (
+              <option key={elt.ID} value={elt.ID}>
+                {elt.name} : {elt.port}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className='col-lg-4 fv-row'>
+          <button className='btn btn-primary' onClick={fetchData}>
+            Fetch
+          </button>
+        </div>
       </div>
-      <div className='col-lg-4 fv-row'>
-        <button className='btn btn-primary' onClick={fetchData}>
-          Fetch
-        </button>
+      <div className='row mb-6'>
+        <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server POS</label>
+        <div className='col-lg-4 fv-row'>
+          <select
+            className='form-select form-select-solid form-select-lg'
+            name='option'
+            value={option}
+          >
+            <option value=''>Select a server..</option>
+          </select>
+        </div>
+        <div className='col-lg-4 fv-row'>
+          <button className='btn btn-primary'>Select</button>
+        </div>
       </div>
     </div>
   )

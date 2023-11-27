@@ -11,6 +11,15 @@ def test_connectifity():
     return jsonify({"start":"ok"})
 
 
+@app.route('/server', methods=['POST'])
+def server():
+    request_data = request.get_json()
+    print(f'--- ALL parameters:{request.args}')
+    print(f'--- Request BODY  :{request_data}')
+    return jsonify({"start":"ok"})
+
+
+
 @app.route('/config', methods=['GET'])
 def save_config():
     return jsonify([
@@ -18,10 +27,10 @@ def save_config():
             {"id":801,"name":"pos801"},{"id":802,"name":"pos802"},{"id":803,"name":"pos803"}
             ]},
              {"name":"ZR2","ID":7002,"ip":"12.112.12.12","port":"8085","pos":[
-            {"id":801,"name":"pos801"},{"id":802,"name":"pos802"},{"id":803,"name":"pos803"}
+            {"id":804,"name":"pos801"},{"id":805,"name":"pos802"},{"id":806,"name":"pos803"}
             ]},
              {"name":"ZR3","ID":7003,"ip":"12.112.12.12","port":"8086","pos":[
-            {"id":801,"name":"pos801"},{"id":802,"name":"pos802"},{"id":803,"name":"pos803"}
+            {"id":807,"name":"pos801"},{"id":808,"name":"pos802"},{"id":809,"name":"pos803"}
             ]},
        
     ])

@@ -29,21 +29,7 @@ const Config = () => {
           <div className='card-body border-top p-9'>
             <ConnectServer />
             <FetchServer />
-            <div className='row mb-6'>
-              <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server POS</label>
-              <div className='col-lg-4 fv-row'>
-                <select
-                  className='form-select form-select-solid form-select-lg'
-                  name='option'
-                  value={option}
-                >
-                  <option value=''>Select a server..</option>
-                </select>
-              </div>
-              <div className='col-lg-4 fv-row'>
-                <button className='btn btn-primary'>Select</button>
-              </div>
-            </div>
+            
           </div>
           <div className='card-footer d-flex justify-content-end py-6 px-9'>
             <button className='btn btn-light btn-active-light-primary me-2'>Discard</button>

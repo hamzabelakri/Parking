@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import { CustomToast, Toast } from './CustomToast'; // Adjust the path accordingly
-
+import {CustomToast, Toast} from './CustomToast'
 
 const ConnectServer = () => {
   const [loading, setLoading] = useState(false)
@@ -25,10 +24,10 @@ const ConnectServer = () => {
 
       if (response.ok) {
         console.log('Request successful')
-        CustomToast('Request successful!', 'success');
+        CustomToast('Request successful!', 'success')
       } else {
         console.error('Request failed')
-        CustomToast('Request failed!', 'error');
+        CustomToast('Request failed!', 'error')
       }
     } catch (error) {
       console.error('Error:', error)
@@ -39,7 +38,7 @@ const ConnectServer = () => {
 
   return (
     <div className='row mb-6'>
-         <Toast />
+      <Toast />
       <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server Setting</label>
       <div className='col-lg-8'>
         <div className='row'>
