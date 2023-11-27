@@ -1,0 +1,71 @@
+import React, {useState} from 'react'
+import {CustomToast, Toast} from './CustomToast'
+
+const FetchServer = () => {
+  const [option, setOption] = useState('')
+  const [data, setData] = useState<ConfigData[]>([])
+  const [loading, setLoading] = useState(false)
+
+  interface ConfigData {
+    ID: number
+    name: string
+    port: number
+  }
+
+  const fetchData = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    try {
+      const response = await fetch('http://127.0.0.1:8000/config', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      console.log('Response status:', response.status)
+
+      if (response.ok) {
+        const data = await response.json()
+        setData(data)
+        console.log('Data received:', data)
+      } else {
+        console.error('Request failed')
+        CustomToast('Failed to fetch data!', 'error')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      CustomToast('An error occurred while fetching configuration data!', 'error')
+    } finally {
+      setLoading(false)
+    }
+  }
+  return (
+    <div className='row mb-6'>
+      <Toast />
+      <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server POS</label>
+
+      <div className='col-lg-4 fv-row'>
+        <select
+          className='form-select form-select-solid form-select-lg'
+          name='option'
+          value={option}
+          onChange={(e) => setOption(e.target.value)}
+        >
+          <option value=''>Select a server..</option>
+          {data.map((elt) => (
+            <option key={elt.ID} value={elt.ID}>
+              {elt.name} : {elt.port}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className='col-lg-4 fv-row'>
+        <button className='btn btn-primary' onClick={fetchData}>
+          Fetch
+        </button>
+      </div>
+    </div>
+  )
+}
+
+export default FetchServer
