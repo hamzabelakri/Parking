@@ -5,13 +5,10 @@ import clsx from 'clsx'
 import {useFormik} from 'formik'
 import {getUserByToken, login} from '../../modules/auth/core/_requests'
 import {useAuth} from '../../modules/auth'
-import {ListsWidget2} from '../../../_metronic/partials/widgets'
-import Alert from '../dashboard/Alert'
-
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import UserSession from './UserSession'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -36,7 +33,7 @@ const initialValues = {
   https://medium.com/@maurice.de.beijer/yup-validation-and-typescript-and-formik-6c342578a20e
 */
 
-export function Login({closeModal, openAdminAuth}) {
+export function AdminAuth({closeModal}) {
   const [loading, setLoading] = useState(false)
   const [incorrectLogin, setIncorrectLogin] = useState(false)
 
@@ -81,10 +78,8 @@ export function Login({closeModal, openAdminAuth}) {
       />
       {/* begin::Heading */}
       <div className='text-center'>
-        <h1 className='text-dark fw-bolder mb-3'>Sign In</h1>
+        <h1 className='text-dark fw-bolder mb-3'>Administrator</h1>
       </div>
-    
-      <i className="bi bi-gear fs-2x text-center" onClick={openAdminAuth} ></i>
 
       <div className='fv-row'>
         <label className='form-label fs-6 fw-bolder text-dark'></label>
@@ -133,6 +128,7 @@ export function Login({closeModal, openAdminAuth}) {
           </div>
         )}
       </div>
+      <Link to={"/config"}>
       <div className='d-grid'>
         <button
           type='submit'
@@ -148,10 +144,7 @@ export function Login({closeModal, openAdminAuth}) {
             </span>
           )}
         </button>
-        <div className='mt-3'>
-          <UserSession className='card-xl-stretch mb-xl-8' />
-        </div>
-      </div>
+      </div></Link>
     </form>
   )
 }

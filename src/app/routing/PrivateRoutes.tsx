@@ -6,6 +6,7 @@ import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import Test from '../pages/dashboard/Test'
 import { DashboardWrapper } from '../pages/dashboard/DashboardWrapper'
+import Config from '../pages/Config/Config'
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
@@ -23,6 +24,7 @@ const PrivateRoutes = () => {
         {/* Pages */}
         <Route path='dashboard' element={<DashboardWrapper />} />
         <Route path='test' element={<Test />} />
+        <Route path='config' element={<Config />} />
 
         {/* Page Not Found */}
         <Route path='*' element={<Navigate to='/error/404' />} />

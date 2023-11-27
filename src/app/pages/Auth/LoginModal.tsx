@@ -1,22 +1,29 @@
 import React, {useEffect, useState} from 'react'
-import {KTSVG} from '../../../_metronic/helpers'
-import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import { Login } from './LoginForm'
+import { AdminAuth } from './AdminAuth'
 const LoginModal = () => {
   const [show, setShow] = useState(false)
+  const [currentComponent, setCurrentComponent] = useState('login'); // State to determine which component to render
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
+  const openAdminAuth = () => {
+    setCurrentComponent('adminAuth');
+  };
   useEffect(() => {
     handleShow()
   }, [])
   return (
     <div>
       <Modal centered show={show} backdrop="static" onHide={handleClose} >
-        <Modal.Body >
-          <Login closeModal={setShow} />
+      <Modal.Body>
+          {currentComponent === 'login' ? (
+            <Login closeModal={setShow}  openAdminAuth={openAdminAuth}/>
+          ) : (
+            <AdminAuth closeModal={setShow} />
+          )}
         </Modal.Body>
       </Modal>
     </div>
