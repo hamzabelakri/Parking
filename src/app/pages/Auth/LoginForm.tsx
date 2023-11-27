@@ -56,7 +56,7 @@ export function Login({closeModal, openAdminAuth}) {
         setSubmitting(false)
         setLoading(false)
         setIncorrectLogin(true)
-        toast.error('wrong email or password')
+        toast.error('Wrong Email or Password')
       }
     },
   })
@@ -65,7 +65,7 @@ export function Login({closeModal, openAdminAuth}) {
     <form className='' onSubmit={formik.handleSubmit} noValidate id='kt_login_signin_form'>
       <ToastContainer
         position='top-center'
-        autoClose={5000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -76,7 +76,7 @@ export function Login({closeModal, openAdminAuth}) {
         theme='dark'
       />
       {/* begin::Heading */}
-      <div></div>
+    
       <div className='d-flex justify-content-between'>
         <h1 className='text-dark fw-bolder mb-3'>Sign In</h1>
         <i className="bi bi-gear fs-2x text-center cursor-pointer" onClick={openAdminAuth} ></i>
