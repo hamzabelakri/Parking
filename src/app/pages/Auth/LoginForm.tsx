@@ -5,13 +5,9 @@ import clsx from 'clsx'
 import {useFormik} from 'formik'
 import {getUserByToken, login} from '../../modules/auth/core/_requests'
 import {useAuth} from '../../modules/auth'
-import {ListsWidget2} from '../../../_metronic/partials/widgets'
-import Alert from '../dashboard/Alert'
-
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import UserSession from '../Session/UserSession'
-import { Link } from 'react-router-dom'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -80,11 +76,13 @@ export function Login({closeModal, openAdminAuth}) {
         theme='dark'
       />
       {/* begin::Heading */}
-      <div className='text-center'>
+      <div></div>
+      <div className='d-flex justify-content-between'>
         <h1 className='text-dark fw-bolder mb-3'>Sign In</h1>
+        <i className="bi bi-gear fs-2x text-center cursor-pointer" onClick={openAdminAuth} ></i>
       </div>
     
-      <i className="bi bi-gear fs-2x text-center" onClick={openAdminAuth} ></i>
+     
 
       <div className='fv-row'>
         <label className='form-label fs-6 fw-bolder text-dark'></label>

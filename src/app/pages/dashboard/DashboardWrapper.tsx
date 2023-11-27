@@ -3,7 +3,7 @@ import {FC} from 'react'
 import {useIntl} from 'react-intl'
 import { PageTitle } from '../../../_metronic/layout/core'
 import Test from './Test'
-import LoginModal from '../Modals/LoginModal'
+import LoginModal from '../Modals/UserAuth'
 
 const DashboardPage: FC = () => (
   <>
