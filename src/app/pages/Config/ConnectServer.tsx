@@ -4,33 +4,36 @@ import {CustomToast, Toast} from './CustomToast'
 const ConnectServer = () => {
   const [loading, setLoading] = useState(false)
   const [input, setInput] = useState({ID: '', PORT: ''})
+  const [data, setData] = useState<ConfigData[]>([])
 
+  interface ConfigData {
+    ID: number
+    name: string
+    port: number
+  }
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput({...input, [event.target.name]: event.target.value})
   }
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     try {
-      const response = await fetch('http://127.0.0.1:8000/test', {
-        method: 'POST',
+      const response = await fetch('http://127.0.0.1:8000/config', {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ID: input.ID,
-          PORT: input.PORT,
-        }),
       })
 
       if (response.ok) {
-        console.log('Request successful')
-        CustomToast('Request successful!', 'success')
+        const data = await response.json()
+        setData(data)
+        console.log('Data received:', data)
       } else {
-        console.error('Request failed')
-        CustomToast('Request failed!', 'error')
+        CustomToast('Failed to fetch data!', 'error')
       }
     } catch (error) {
       console.error('Error:', error)
+      CustomToast('An error occurred while fetching configuration data!', 'error')
     } finally {
       setLoading(false)
     }

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {CustomToast, Toast} from './CustomToast'
-import DropDownBox from './DropDownBox'
 import SelectServer from './SelectServer'
+import DropDownBox from './DropDownBox'
 
 const FetchServer = () => {
   const [option, setOption] = useState('')
@@ -43,36 +43,9 @@ const FetchServer = () => {
 
   return (
     <div>
-      <DropDownBox label='Server' name={option} value={option} data={data} />
-      <SelectServer data={data}/>
-
-      {/* <div className='row mb-6'>
-        <Toast />
-        <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server POS</label>
-
-        <div className='col-lg-4 fv-row'>
-          <select
-            className='form-select form-select-solid form-select-lg'
-            name='option'
-            value={option}
-            onChange={(e) => setOption(e.target.value)}
-          >
-            <option value=''>Select a server..</option>
-            {data.map((elt) => (
-              <option key={elt.ID} value={elt.ID}>
-                {elt.name} : {elt.port}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className='col-lg-4 fv-row'>
-          <button className='btn btn-primary' onClick={fetchData}>
-            Fetch
-          </button>
-        </div>
-      </div>
-     
-      </div> */}
+      <DropDownBox label='Server POS' data={data} name='option' 
+      value={option} setOption={setOption}/>
+      <SelectServer data={data} />
     </div>
   )
 }
