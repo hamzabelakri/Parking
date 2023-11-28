@@ -1,11 +1,11 @@
-import React from 'react'
-import {Toast} from './CustomToast'
+import React, { useState } from 'react'
 
 const DropDownBox = ({name, value, label, data, setOption}) => {
-  console.log()
+  const [selectedServer, setSelectedServer]=useState(null);
+ // console.log(value)
   return (
     <div className='row mb-6'>
-      <Toast />
+      
       <label className='col-lg-2 col-form-label required fw-bold fs-6'>{label}</label>
 
       <div className='col-lg-4 fv-row'>

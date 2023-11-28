@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
 import {CustomToast, Toast} from './CustomToast'
+import {useDispatch} from 'react-redux'
+import {getAllData} from '../../../Redux/Server/ServerAction'
 
 const ConnectServer = () => {
+  const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [input, setInput] = useState({ID: '', PORT: ''})
   const [data, setData] = useState<ConfigData[]>([])
@@ -15,33 +18,13 @@ const ConnectServer = () => {
     setInput({...input, [event.target.name]: event.target.value})
   }
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(getAllData())
     event.preventDefault()
-    try {
-      const response = await fetch('http://127.0.0.1:8000/config', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        setData(data)
-        console.log('Data received:', data)
-      } else {
-        CustomToast('Failed to fetch data!', 'error')
-      }
-    } catch (error) {
-      console.error('Error:', error)
-      CustomToast('An error occurred while fetching configuration data!', 'error')
-    } finally {
-      setLoading(false)
-    }
   }
-
+  //console.log(data)
   return (
     <div className='row mb-6'>
-      <Toast />
+
       <label className='col-lg-2 col-form-label required fw-bold fs-6'>Server Setting</label>
       <div className='col-lg-8'>
         <div className='row'>

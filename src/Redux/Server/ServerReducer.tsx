@@ -1,14 +1,14 @@
 import {GET_ALL_DATA} from './Types'
 
-const initState = {products: [], product: {}}
-const ProductReducer = (state = initState, action) => {
+const initState = {data: []}
+const ServerReducer = (state = initState, action) => {
   switch (action.type) {
     case GET_ALL_DATA:
-      return {...state, products: action.payload}
+      return {...state, data: action.payload}
 
     default:
       return state
   }
 }
 
-export default ProductReducer
+export default ServerReducer

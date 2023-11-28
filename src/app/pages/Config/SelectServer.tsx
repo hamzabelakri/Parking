@@ -1,19 +1,19 @@
 import React, {useEffect, useState} from 'react'
 import {CustomToast, Toast} from './CustomToast'
 import DropDownBox from './DropDownBox'
+import {useSelector} from 'react-redux'
 
-const SelectServer = ({data}) => {
+const SelectServer = () => {
   const [option, setOption] = useState('')
   const [loading, setLoading] = useState(false)
+  const {data} = useSelector((state: any) => state.ServerReducer)
 
-console.log("data : ",data)
+  //console.log('data : ', data)
 
   return (
     <div>
-      <DropDownBox label='Server' name={option} 
-      value={option} data={data} setOption=''/> 
+      <DropDownBox label='Server' name={option} value={option} data='' setOption='' />
 
-   
       {/* <div className='row mb-6'>
         <label className='col-lg-2 col-form-label required fw-bold fs-6'>Server POS</label>
         <div className='col-lg-4 fv-row'>
