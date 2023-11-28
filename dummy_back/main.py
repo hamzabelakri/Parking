@@ -27,10 +27,10 @@ def save_config():
             {"id":801,"name":"pos801"},{"id":802,"name":"pos802"},{"id":803,"name":"pos803"}
             ]},
              {"name":"ZR2","ID":7002,"ip":"12.112.12.12","port":"8085","pos":[
-            {"id":804,"name":"pos801"},{"id":805,"name":"pos802"},{"id":806,"name":"pos803"}
+            {"id":804,"name":"pos804"},{"id":805,"name":"pos805"},{"id":806,"name":"pos806"}
             ]},
              {"name":"ZR3","ID":7003,"ip":"12.112.12.12","port":"8086","pos":[
-            {"id":807,"name":"pos801"},{"id":808,"name":"pos802"},{"id":809,"name":"pos803"}
+            {"id":807,"name":"pos807"},{"id":808,"name":"pos808"},{"id":809,"name":"pos809"}
             ]},
        
     ])

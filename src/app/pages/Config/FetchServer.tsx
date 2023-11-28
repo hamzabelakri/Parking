@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {CustomToast, Toast} from './CustomToast'
+import DropDownBox from './DropDownBox'
 
 const FetchServer = () => {
   const [option, setOption] = useState('')
@@ -11,33 +12,41 @@ const FetchServer = () => {
     name: string
     port: number
   }
-
-  const fetchData = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-    try {
-      const response = await fetch('http://127.0.0.1:8000/config', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      if (response.ok) {
-        const data = await response.json()
-        setData(data)
-        console.log('Data received:', data)
-      } else {
-        CustomToast('Failed to fetch data!', 'error')
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/config', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (response.ok) {
+          const data = await response.json();
+          setData(data);
+          console.log('Data received:', data);
+        } else {
+          CustomToast('Failed to fetch data!', 'error');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        CustomToast('An error occurred while fetching configuration data!', 'error');
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error('Error:', error)
-      CustomToast('An error occurred while fetching configuration data!', 'error')
-    } finally {
-      setLoading(false)
-    }
-  }
+    };
+  
+    fetchData();  // Call the fetchData function immediately
+  
+  }, []);
+  
   return (
     <div>
-      <div className='row mb-6'>
+      <DropDownBox label='Server' name={option} value={option} data={data} />
+      <DropDownBox label='Server POS' name={option} value={option} data={data} />
+
+      {/* <div className='row mb-6'>
         <Toast />
         <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server POS</label>
 
@@ -76,7 +85,7 @@ const FetchServer = () => {
         <div className='col-lg-4 fv-row'>
           <button className='btn btn-primary'>Select</button>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
