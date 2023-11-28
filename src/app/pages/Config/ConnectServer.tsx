@@ -39,7 +39,7 @@ const ConnectServer = () => {
   return (
     <div className='row mb-6'>
       <Toast />
-      <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server Setting</label>
+      <label className='col-lg-2 col-form-label required fw-bold fs-6'>Server Setting</label>
       <div className='col-lg-8'>
         <div className='row'>
           <div className='col-lg-4 fv-row'>
@@ -57,7 +57,7 @@ const ConnectServer = () => {
             <input
               type='text'
               className='form-control form-control-lg form-control-solid'
-              placeholder='S.Port'
+              placeholder='Port'
               name='PORT'
               value={input.PORT}
               required

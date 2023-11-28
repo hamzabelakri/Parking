@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {CustomToast, Toast} from './CustomToast'
 import DropDownBox from './DropDownBox'
+import SelectServer from './SelectServer'
 
 const FetchServer = () => {
   const [option, setOption] = useState('')
@@ -20,31 +21,30 @@ const FetchServer = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-        });
-  
+        })
+
         if (response.ok) {
-          const data = await response.json();
-          setData(data);
-          console.log('Data received:', data);
+          const data = await response.json()
+          setData(data)
+          console.log('Data received:', data)
         } else {
-          CustomToast('Failed to fetch data!', 'error');
+          CustomToast('Failed to fetch data!', 'error')
         }
       } catch (error) {
-        console.error('Error:', error);
-        CustomToast('An error occurred while fetching configuration data!', 'error');
+        console.error('Error:', error)
+        CustomToast('An error occurred while fetching configuration data!', 'error')
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
-  
-    fetchData();  // Call the fetchData function immediately
-  
-  }, []);
-  
+    }
+
+    fetchData() // Call the fetchData function immediately
+  }, [])
+
   return (
     <div>
       <DropDownBox label='Server' name={option} value={option} data={data} />
-      <DropDownBox label='Server POS' name={option} value={option} data={data} />
+      <SelectServer data={data}/>
 
       {/* <div className='row mb-6'>
         <Toast />
@@ -71,20 +71,7 @@ const FetchServer = () => {
           </button>
         </div>
       </div>
-      <div className='row mb-6'>
-        <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server POS</label>
-        <div className='col-lg-4 fv-row'>
-          <select
-            className='form-select form-select-solid form-select-lg'
-            name='option'
-            value={option}
-          >
-            <option value=''>Select a server..</option>
-          </select>
-        </div>
-        <div className='col-lg-4 fv-row'>
-          <button className='btn btn-primary'>Select</button>
-        </div>
+     
       </div> */}
     </div>
   )

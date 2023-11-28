@@ -3,7 +3,7 @@ import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ConnectServer from './ConnectServer'
 import FetchServer from './FetchServer'
-
+import SelectServer from './SelectServer'
 
 const Config = () => {
   const [loading, setLoading] = useState(false)
@@ -11,13 +11,9 @@ const Config = () => {
 
   return (
     <div className='card mb-5 mb-xl-10 mx-15'>
-
       <div
-        className='card-header border-0 cursor-pointer'
-        role='button'
-        data-bs-toggle='collapse'
+        className='card-header border-0'
         data-bs-target='#kt_account_profile_details'
-        aria-expanded='true'
         aria-controls='kt_account_profile_details'
       >
         <div className='card-title m-0'>
@@ -29,7 +25,7 @@ const Config = () => {
           <div className='card-body border-top p-9'>
             <ConnectServer />
             <FetchServer />
-            
+          
           </div>
           <div className='card-footer d-flex justify-content-end py-6 px-9'>
             <button className='btn btn-light btn-active-light-primary me-2'>Discard</button>
