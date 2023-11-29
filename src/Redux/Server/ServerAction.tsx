@@ -12,6 +12,17 @@ export const getAllData: any = () => async (dispatch) => {
   }
 }
 
+export const postAllData: any = (data) => async (dispatch) => {
+  try {
+    const response = await axios.post('http://127.0.0.1:8000/config', data);
+    console.log(response.data)
+    dispatch({type: GET_ALL_DATA, payload: response.data})
+  } catch (error) {
+    //console.log(error)
+  }
+}
+
+
 export const selectedServer = (selectedServer) => async (dispatch) => {
   try {
     dispatch({ type: SELECT_SERVER, payload: selectedServer });

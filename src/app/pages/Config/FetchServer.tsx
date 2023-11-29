@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {useSelector} from 'react-redux'
 
-const FetchServer = () => {
+const FetchServer = ({setConfigOption}) => {
   const [selectedZr, setselectedZr] = useState(null)
   const [selectedPos, setselectedPos] = useState(null)
 
@@ -12,8 +12,10 @@ const FetchServer = () => {
   }
 
   const onPosSelection = async (event) => {
-    setselectedPos(event.target.value)
+    setselectedPos(event.target.value);
+    setConfigOption({ selectedZr, selectedPos: event.target.value });
   }
+  
   const ZrOptions = (data) => {
     return (
       <>

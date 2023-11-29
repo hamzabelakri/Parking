@@ -3,11 +3,10 @@ import {CustomToast, Toast} from './CustomToast'
 import {useDispatch} from 'react-redux'
 import {getAllData} from '../../../Redux/Server/ServerAction'
 
-const ConnectServer = () => {
+const ConnectServer = ({setServerOption}) => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [input, setInput] = useState({ID: '', PORT: ''})
-  const [data, setData] = useState<ConfigData[]>([])
 
   interface ConfigData {
     ID: number
@@ -19,6 +18,7 @@ const ConnectServer = () => {
   }
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(getAllData())
+    setServerOption(input)
     event.preventDefault()
   }
   //console.log(data)
