@@ -3,7 +3,6 @@ import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ConnectServer from './ConnectServer'
 import FetchServer from './FetchServer'
-import SelectServer from './SelectServer'
 
 const Config = () => {
   const [loading, setLoading] = useState(false)

@@ -24,7 +24,6 @@ const ConnectServer = () => {
   //console.log(data)
   return (
     <div className='row mb-6'>
-
       <label className='col-lg-2 col-form-label required fw-bold fs-6'>Server Setting</label>
       <div className='col-lg-8'>
         <div className='row'>
