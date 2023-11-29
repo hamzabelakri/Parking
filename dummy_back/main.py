@@ -29,7 +29,7 @@ def post_data():
     request_data = request.get_json()
     print(f'--- ALL parameters:{request.args}')
     print(f'--- Request BODY  :{request_data}')
-    return jsonify({"start":"ok"})
+    return jsonify({"start":"Saved Successfully"})
 
 
 app.run(host='0.0.0.0', port=8000, threaded=True ,debug=True)

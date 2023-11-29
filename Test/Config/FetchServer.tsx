@@ -1,60 +1,59 @@
 import React, {useEffect, useState} from 'react'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import {setSelectedServer} from '../../../Redux/Server/ServerAction'
 
 const FetchServer = ({setConfigOption}) => {
+  const dispatch = useDispatch()
   const [selectedZr, setselectedZr] = useState(null)
   const [selectedPos, setselectedPos] = useState(null)
 
-  const {data} = useSelector((state: any) => state.ServerReducer)
+  const {data, selectedServer} = useSelector((state: any) => state.ServerReducer)
+  console.log(selectedServer)
+  const filteredData = selectedServer ? data.filter((item) => item.id === selectedServer) : []
+  console.log(filteredData)
 
   const onZrSelection = async (event) => {
-    setselectedZr(event.target.value)
+    const selectedId = event.target.value
+    setselectedZr(selectedId)
+    dispatch(setSelectedServer(selectedId))
   }
 
   const onPosSelection = async (event) => {
-    setselectedPos(event.target.value);
-    setConfigOption({ selectedZr, selectedPos: event.target.value });
+    setselectedPos(event.target.value)
+    setConfigOption({selectedZr, selectedPos: event.target.value})
   }
-  
+
   const ZrOptions = (data) => {
-    if (!Array.isArray(data)) {
-      return null; // or handle the case when data is not an array
-    }
-  
     return (
       <>
-        {data.map((zr) => (
+        {data?.map((zr) => (
           <option key={zr.id} value={zr.id}>
             {zr.name}
           </option>
         ))}
       </>
-    );
-  };
-  
+    )
+  }
 
-  const PosOptions = (data, id) => {
-   // console.table(data)
+  const PosOptions = (data, selectedServer) => {
+    //console.table(data)
     let posOptions = []
-  
-    if (Array.isArray(data)) {
-      data.forEach((zr) => {
-        if (zr.id == id) {
-          //console.log(zr)
-          posOptions = zr.pos.map((pos) => {
-            return (
-              <option key={pos.id} value={pos.id}>
-                {pos.name}
-              </option>
-            )
-          })
+
+    {
+      data?.forEach((zr) => {
+        if (zr.id == selectedServer) {
+          // console.log(zr)
+          posOptions = zr.pos.map((pos) => (
+            <option key={pos.id} value={pos.id}>
+              {pos.name}
+            </option>
+          ))
         }
       })
     }
-    //console.log(posOptions)
+    // console.log(posOptions)
     return posOptions
   }
-  
 
   return (
     <div>
@@ -63,7 +62,11 @@ const FetchServer = ({setConfigOption}) => {
         <div className='col-lg-4 fv-row'>
           <select className='form-select form-select-solid form-select-lg' onChange={onZrSelection}>
             <option>Select ZR</option>
-            {ZrOptions(data)}
+            {data?.map((zr) => (
+              <option key={zr.id} value={zr.id}>
+                {zr.name}
+              </option>
+            ))}
           </select>
         </div>
       </div>

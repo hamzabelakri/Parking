@@ -15,10 +15,8 @@ export const getAllData: any = () => async (dispatch) => {
 export const postAllData: any = (data) => async (dispatch) => {
   try {
     const response = await axios.post('http://127.0.0.1:8000/config', data);
-    
-
+    console.log(response.data)
     dispatch({type: POST_ALL_DATA, payload: response.data})
-    CustomToast('This is a test message', 'success');
   } catch (error) {
     //console.log(error)
   }
