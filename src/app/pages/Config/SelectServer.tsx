@@ -12,7 +12,8 @@ const SelectServer = () => {
 
   return (
     <div>
-      <DropDownBox label='Server' name={option} value={option} data='' setOption='' />
+{/*        <DropDownBox label='Server' name={option} 
+       value={option} data='' setOption='' />  */}
 
       {/* <div className='row mb-6'>
         <label className='col-lg-2 col-form-label required fw-bold fs-6'>Server POS</label>

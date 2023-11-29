@@ -8,6 +8,7 @@ import SelectServer from './SelectServer'
 const Config = () => {
   const [loading, setLoading] = useState(false)
   const [option, setOption] = useState('')
+  const [serverObject, setServerObject] = useState()
 
   return (
     <div className='card mb-5 mb-xl-10 mx-15'>

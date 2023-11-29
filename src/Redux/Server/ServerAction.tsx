@@ -1,4 +1,4 @@
-import {GET_ALL_DATA} from './Types'
+import {GET_ALL_DATA, SELECT_SERVER} from './Types'
 import axios from 'axios'
 import {CustomToast, Toast} from '../../app/pages/Config/CustomToast'
 
@@ -12,3 +12,9 @@ export const getAllData: any = () => async (dispatch) => {
   }
 }
 
+export const selectedServer = (selectedServer) => async (dispatch) => {
+  try {
+    dispatch({ type: SELECT_SERVER, payload: selectedServer });
+    console.log(selectedServer);
+  } catch (error) {}
+};

@@ -1,25 +1,27 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 
-const DropDownBox = ({name, value, label, data, setOption}) => {
-  const [selectedServer, setSelectedServer]=useState(null);
- // console.log(value)
+const DropDownBox = ({name, value, label, data, optionlabel, setOption}) => {
+  const [selectedServer, setSelectedServer] = useState(null)
+  const handleChange = (event) => {
+    setOption(event.target.value)
+  }
+  
+  // console.log(value)
   return (
     <div className='row mb-6'>
-      
       <label className='col-lg-2 col-form-label required fw-bold fs-6'>{label}</label>
-
       <div className='col-lg-4 fv-row'>
         <select
           className='form-select form-select-solid form-select-lg'
           name={name}
           value={value}
-          onChange={(e) => setOption(e.target.value)}
+          onChange={handleChange}
         >
-          <option>Select a server..</option>
+          <option>{optionlabel}</option>
           {data &&
             data.map((elt) => (
-              <option key={elt.ID} value={elt.ID}>
-                {elt.name} : {elt.port}
+              <option key={elt.id} value={elt.id}>
+                {elt.rowtext}
               </option>
             ))}
         </select>

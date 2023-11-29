@@ -26,11 +26,11 @@ import rootReducer from "./rootReducer";
     }
   }
   
-  const persistedState = loadFromLocalStorage();
+  //const persistedState = loadFromLocalStorage();
   
   const store = createStore(
     rootReducer,
-    persistedState,
+    //persistedState,
     compose(
       applyMiddleware(thunk),
       window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() || compose
