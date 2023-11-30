@@ -3,17 +3,23 @@ import ConnectServer from './ConnectServer'
 import FetchServer from './FetchServer'
 import {useDispatch} from 'react-redux'
 import {postAllData} from '../../../Redux/Server/ServerAction'
+
 const Config = () => {
   const [loading, setLoading] = useState(false)
-  const [serverOption, setServerOption] = useState("")
-  const [configOption, setConfigOption] = useState("")
+  const [serverOption, setServerOption] = useState('')
+  const [configOption, setConfigOption] = useState({selectedZR: '', selectedPos: ''})
 
+  const handleConfigOptionChange = (selectedZR, selectedPos) => {
+    setConfigOption({selectedZR, selectedPos})
+  }
+  //console.log(configOption)
   const dispatch = useDispatch()
 
   const onsubmit = (event) => {
-    dispatch(postAllData({serverOption,configOption}))
+    dispatch(postAllData({serverOption, configOption}))
     event.preventDefault()
   }
+
   return (
     <div className='card mb-5 mb-xl-10 mx-15' onSubmit={onsubmit}>
       <div
@@ -28,8 +34,8 @@ const Config = () => {
       <div id='kt_account_profile_details' className='collapse show'>
         <form noValidate className='form'>
           <div className='card-body border-top p-9'>
-            <ConnectServer setServerOption={setServerOption}/>
-            <FetchServer setConfigOption={setConfigOption}/>
+            <ConnectServer setServerOption={setServerOption} />
+            <FetchServer setConfigOption={handleConfigOptionChange} />
           </div>
           <div className='card-footer d-flex justify-content-end py-6 px-9'>
             <button className='btn btn-light btn-active-light-primary me-2'>Discard</button>

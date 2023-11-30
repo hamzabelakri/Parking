@@ -11,63 +11,50 @@ const validationSchema = Yup.object().shape({
   selectedZR: Yup.string().required('Select a ZR'),
   selectedPos: Yup.string().required('Select a Pos'),
 })
-const FetchServer = ({setConfigOption}) => {
+const TwoFormsComponent = () => {
   const {data} = useSelector((state: any) => state.ServerReducer)
+  console.log('TwoFormsComponent Rendered', data);
 
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-
+      
+      // Handle form submission
+      console.log('Form Submitted:', values)
     },
   })
 
-  const handleZROptionChange = (event) => {
-    const selectedZR = event.target.value;
-    formik.handleChange(event);
-    setConfigOption(selectedZR, formik.values.selectedPos);
-  };
-
-  const handlePosOptionChange = (event) => {
-    const selectedPos = event.target.value;
-    formik.handleChange(event);
-    setConfigOption(formik.values.selectedZR, selectedPos);
-  };
-
-  
+ 
   return (
     <div>
       <div className='row mb-6'>
         <label className='col-lg-2 col-form-label required fw-bold fs-6'>Server</label>
         <div className='col-lg-4 fv-row'>
-          <select
-            className='form-select form-select-solid form-select-lg'
-            name='selectedZR'
-            onChange={handleZROptionChange}
-            value={formik.values.selectedZR}
+          <select className='form-select form-select-solid form-select-lg'
+             name="selectedZR" 
+             onChange={formik.handleChange}  
+           
+             value={formik.values.selectedZR} 
           >
             <option>Select ZR</option>
-            {Array.isArray(data) &&
-              data.map((item) => (
-                <option key={item.id} value={item.name}>
-                  {item.name}
-                </option>
-              ))}
+            {data.map((item) => (
+              <option key={item.id} value={item.name}>{item.name}</option>
+            ))}
           </select>
         </div>
       </div>
       <div className='row mb-6'>
         <label className='col-lg-2 col-form-label required fw-bold fs-6'>POS</label>
         <div className='col-lg-4 fv-row'>
-          <select
-            className='form-select form-select-solid form-select-lg'
-            name='selectedPos'
-            onChange={handlePosOptionChange}
-            value={formik.values.selectedPos}
+          <select className='form-select form-select-solid form-select-lg'
+            name="selectedPos"  
+            onChange={formik.handleChange}  
+        
+            value={formik.values.selectedPos} 
           >
             <option>SelectPos</option>
-            {Array.isArray(data) &&
-              data
+            {data
                 .find((item) => item.name === formik.values.selectedZR)
                 ?.pos.map((pos) => (
                   <option key={pos.id} value={pos.name} label={pos.name} />
@@ -75,8 +62,9 @@ const FetchServer = ({setConfigOption}) => {
           </select>
         </div>
       </div>
+   
     </div>
   )
 }
 
-export default FetchServer
+export default TwoFormsComponent
