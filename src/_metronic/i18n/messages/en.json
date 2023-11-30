@@ -65,5 +65,14 @@
   "ECOMMERCE.CUSTOMERS.UPDATE_STATUS.TITLE": "Status has been updated for selected customers",
   "ECOMMERCE.CUSTOMERS.UPDATE_STATUS.MESSAGE": "Selected customers status have successfully been updated",
   "ECOMMERCE.CUSTOMERS.EDIT.UPDATE_MESSAGE": "Customer has been updated",
-  "ECOMMERCE.CUSTOMERS.EDIT.ADD_MESSAGE": "Customer has been created"
+  "ECOMMERCE.CUSTOMERS.EDIT.ADD_MESSAGE": "Customer has been created",
+  
+  "------------------------------------------":"CUSTOM INPUTS",
+  
+  "CONFIG.SERVERSETTING": "Server Setting",
+  "CONFIG.PORT": "port ",
+  "CONFIG.ZRID":"ZR ID",
+  "CONFIG.CONNECT": "Connect",
+  "CONFIG.CONFIGURATION":"Configuration",
+"CONFIG.DISCARD":"Discard"
 }

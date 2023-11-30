@@ -38,8 +38,8 @@ const FetchServer = ({setConfigOption}) => {
   return (
     <div>
       <div className='row mb-6'>
-        <label className='col-lg-2 col-form-label required fw-bold fs-6'>Server</label>
-        <div className='col-lg-4 fv-row'>
+        <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server</label>
+        <div className='col-lg-6 fv-row'>
           <select
             className='form-select form-select-solid form-select-lg'
             name='selectedZR'
@@ -47,7 +47,7 @@ const FetchServer = ({setConfigOption}) => {
             value={formik.values.selectedZR}
           >
             <option>Select ZR</option>
-            {Array.isArray(data) &&
+           {Array.isArray(data) &&
               data.map((item) => (
                 <option key={item.id} value={item.name}>
                   {item.name}
@@ -57,8 +57,8 @@ const FetchServer = ({setConfigOption}) => {
         </div>
       </div>
       <div className='row mb-6'>
-        <label className='col-lg-2 col-form-label required fw-bold fs-6'>POS</label>
-        <div className='col-lg-4 fv-row'>
+        <label className='col-lg-4 col-form-label required fw-bold fs-6'>POS</label>
+        <div className='col-lg-6 fv-row'>
           <select
             className='form-select form-select-solid form-select-lg'
             name='selectedPos'

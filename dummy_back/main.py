@@ -8,7 +8,7 @@ def index():
     return 'Web App with Python Flask!'
 
 
-@app.route('/config', methods=['GET'])
+@app.route('/lrgeometry', methods=['GET'])
 def get_data():
     return jsonify([
         {"name":"ZR1","id":7001,"ip":"12.112.12.12","port":"8084","pos":[
@@ -23,6 +23,9 @@ def get_data():
             ]},
     ])
 
+@app.route('/local/config', methods=['GET'])
+def get_localconfig():
+    return jsonify([])
 
 @app.route('/config', methods=['POST'])
 def post_data():
