@@ -11,30 +11,35 @@ const validationSchema = Yup.object().shape({
   selectedZR: Yup.string().required('Select a ZR'),
   selectedPos: Yup.string().required('Select a Pos'),
 })
-const FetchServer = ({setConfigOption}) => {
-  const {data} = useSelector((state: any) => state.ServerReducer)
+const FetchServer = ({setConfigOption, configOption}) => {
+  const {oneServerData} = useSelector((state: any) => state.ServerReducer)
 
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values) => {
-
-    },
+    onSubmit: (values) => {},
   })
-
+  useEffect(() => {}, [oneServerData])
   const handleZROptionChange = (event) => {
-    const selectedZR = event.target.value;
-    formik.handleChange(event);
-    setConfigOption(selectedZR, formik.values.selectedPos);
-  };
+    const selectedZR = event.target.value
+    formik.handleChange(event)
+    setConfigOption(selectedZR, formik.values.selectedPos)
+  }
 
   const handlePosOptionChange = (event) => {
-    const selectedPos = event.target.value;
-    formik.handleChange(event);
-    setConfigOption(formik.values.selectedZR, selectedPos);
-  };
+    const selectedPos = event.target.value
+    formik.handleChange(event)
+    setConfigOption(formik.values.selectedZR, selectedPos)
+  }
 
-  
+  console.log("fetch" ,oneServerData)
+
+/*   useEffect(() => {
+    if (oneServerData) {
+      setConfigOption({selectedZR: formik.values.selectedZR.name, selectedPos: formik.values.selectedPos.name})
+    }
+  }, [oneServerData])  */
+
   return (
     <div>
       <div className='row mb-6'>
@@ -45,11 +50,12 @@ const FetchServer = ({setConfigOption}) => {
             name='selectedZR'
             onChange={handleZROptionChange}
             value={formik.values.selectedZR}
+            defaultValue={configOption}
           >
             <option>Select ZR</option>
-           {Array.isArray(data) &&
-              data.map((item) => (
-                <option key={item.id} value={item.name}>
+            {Array.isArray(oneServerData) &&
+              oneServerData.map((item) => (
+                <option key={item.id} value={item.name} id={item.selected ? '' : 'selected'}>
                   {item.name}
                 </option>
               ))}
@@ -64,14 +70,13 @@ const FetchServer = ({setConfigOption}) => {
             name='selectedPos'
             onChange={handlePosOptionChange}
             value={formik.values.selectedPos}
+            defaultValue={configOption}
           >
             <option>SelectPos</option>
-            {Array.isArray(data) &&
-              data
+            {Array.isArray(oneServerData) &&
+              oneServerData
                 .find((item) => item.name === formik.values.selectedZR)
-                ?.pos.map((pos) => (
-                  <option key={pos.id} value={pos.name} label={pos.name} />
-                ))}
+                ?.pos.map((pos) => <option key={pos.id} value={pos.name} label={pos.name} />)}
           </select>
         </div>
       </div>

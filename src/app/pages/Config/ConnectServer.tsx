@@ -1,17 +1,26 @@
-import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
+import React, {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import {getAllData, getOneServer} from '../../../Redux/Server/ServerAction'
 import {useIntl} from 'react-intl'
 const ConnectServer = ({setServerOption}) => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
-  const [input, setInput] = useState({ID: '', PORT: ''})
+  const [input, setInput] = useState({id: '', port: ''})
+
   const intl = useIntl()
+  const {data} = useSelector((state: any) => state.ServerReducer)
+
+  useEffect(() => {
+    if (data) {
+      setInput({id: data.serverip, port: data.serverport})
+    }
+  }, [data])
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput({...input, [event.target.name]: event.target.value})
   }
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    dispatch(getAllData(input))
+    dispatch(getOneServer(input))
     setServerOption(input)
     event.preventDefault()
   }
@@ -28,8 +37,8 @@ const ConnectServer = ({setServerOption}) => {
               type='text'
               className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
               placeholder={intl.formatMessage({id: 'CONFIG.ZRID'})}
-              name='ID'
-              value={input.ID}
+              name='id'
+              value={input.id}
               required
               onChange={handleChange}
             />
@@ -39,8 +48,8 @@ const ConnectServer = ({setServerOption}) => {
               type='text'
               className='form-control form-control-lg form-control-solid'
               placeholder={intl.formatMessage({id: 'CONFIG.PORT'})}
-              name='PORT'
-              value={input.PORT}
+              name='port'
+              value={input.port}
               required
               onChange={handleChange}
             />

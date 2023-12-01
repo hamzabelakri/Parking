@@ -1,4 +1,4 @@
-import {GET_ALL_DATA, GET_ONE_SERVER, POST_ALL_DATA, SELECT_SERVER} from './Types'
+import {GET_ALL_DATA, GET_ONE_SERVER, GET_SAVED_DATA, POST_ALL_DATA, SELECT_SERVER} from './Types'
 
 const initState = {data: [], selectedServer: null}
 const ServerReducer = (state = initState, action) => {
@@ -6,7 +6,9 @@ const ServerReducer = (state = initState, action) => {
     case GET_ALL_DATA:
       return {...state, data: action.payload}
       case GET_ONE_SERVER:
-      return {...state, data: action.payload}
+      return {...state, oneServerData: action.payload}
+      case GET_SAVED_DATA:
+        return {...state, data: action.payload}
       case POST_ALL_DATA:
       return {...state, data: action.payload}
     case SELECT_SERVER:

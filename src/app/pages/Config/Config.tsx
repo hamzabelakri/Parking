@@ -1,11 +1,10 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import ConnectServer from './ConnectServer'
 import FetchServer from './FetchServer'
-import {useDispatch} from 'react-redux'
-import {postAllData} from '../../../Redux/Server/ServerAction'
+import {useDispatch, useSelector} from 'react-redux'
+import {getAllData, getSavedData, postAllData} from '../../../Redux/Server/ServerAction'
 import {useIntl} from 'react-intl'
 import {Container} from 'react-bootstrap'
-import { ToastContainer } from 'react-toastify'
 import { Toast } from './CustomToast'
 const Config = () => {
   const [loading, setLoading] = useState(false)
@@ -15,13 +14,20 @@ const Config = () => {
   const handleConfigOptionChange = (selectedZR, selectedPos) => {
     setConfigOption({selectedZR, selectedPos})
   }
-  //console.log(configOption)
+
+  const {data} = useSelector((state: any) => state.ServerReducer)
+  //console.log(data)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllData());
+  }, [dispatch]);
 
   const onsubmit = (event) => {
     dispatch(postAllData({serverOption, configOption}))
     event.preventDefault()
   }
+
   const intl = useIntl()
   return (
     <Container className='w-900px'>
@@ -39,8 +45,8 @@ const Config = () => {
         <div id='kt_account_profile_details' className='collapse show'>
           <form noValidate className='form px-15'>
             <div className='card-body border-top p-9 '>
-              <ConnectServer setServerOption={setServerOption} />
-              <FetchServer setConfigOption={handleConfigOptionChange} />
+              <ConnectServer setServerOption={setServerOption}/>
+              <FetchServer setConfigOption={handleConfigOptionChange} configOption={configOption}/>
             </div>
             <div className='card-footer d-flex justify-content-center py-6 px-9'>
               <button className='btn btn-light btn-active-light-primary me-2'>
