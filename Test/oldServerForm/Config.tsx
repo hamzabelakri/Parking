@@ -2,26 +2,22 @@ import React, {useEffect, useState} from 'react'
 import ConnectServer from './ConnectServer'
 import FetchServer from './FetchServer'
 import {useDispatch, useSelector} from 'react-redux'
-import {getAllData, getSavedData, postAllData} from '../../../Redux/Server/ServerAction'
+import {getAllData, postAllData} from '../../../Redux/Server/ServerAction'
 import {useIntl} from 'react-intl'
 import {Container} from 'react-bootstrap'
-import { Toast } from './CustomToast'
+import {Toast} from './CustomToast'
 const Config = () => {
   const [loading, setLoading] = useState(false)
   const [serverOption, setServerOption] = useState('')
-  const [configOption, setConfigOption] = useState({selectedZR: '', selectedPos: ''})
-
-  const handleConfigOptionChange = (selectedZR, selectedPos) => {
-    setConfigOption({selectedZR, selectedPos})
-  }
+  const [configOption, setConfigOption] = useState('')
 
   const {data} = useSelector((state: any) => state.ServerReducer)
   //console.log(data)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getAllData());
-  }, [dispatch]);
+    dispatch(getAllData())
+  }, [dispatch])
 
   const onsubmit = (event) => {
     dispatch(postAllData({serverOption, configOption}))
@@ -31,8 +27,8 @@ const Config = () => {
   const intl = useIntl()
   return (
     <Container className='w-900px'>
-      <Toast/>
-      <div className='card mb-5 mb-xl-10 mx-15' onSubmit={onsubmit}>
+      <Toast />
+      <div className='card mb-5 mb-xl-10 mx-15'>
         <div
           className='card-header border-0'
           data-bs-target='#kt_account_profile_details'
@@ -43,10 +39,14 @@ const Config = () => {
           </div>
         </div>
         <div id='kt_account_profile_details' className='collapse show'>
-          <form noValidate className='form px-15'>
+          <form noValidate className='form px-15' onSubmit={onsubmit}>
             <div className='card-body border-top p-9 '>
-              <ConnectServer setServerOption={setServerOption}/>
-              <FetchServer setConfigOption={handleConfigOptionChange} configOption={configOption}/>
+              <ConnectServer setServerOption={setServerOption} />
+              <FetchServer
+                setConfigOption={setConfigOption}
+                configOption={configOption}
+                data={data}
+              />
             </div>
             <div className='card-footer d-flex justify-content-center py-6 px-9'>
               <button className='btn btn-light btn-active-light-primary me-2'>

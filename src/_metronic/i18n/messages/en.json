@@ -70,8 +70,8 @@
   "------------------------------------------":"CUSTOM INPUTS",
   
   "CONFIG.SERVERSETTING": "Server Setting",
-  "CONFIG.PORT": "port ",
-  "CONFIG.ZRID":"ZR ID",
+  "CONFIG.PORT": "Port ",
+  "CONFIG.ZRID":"ZR IP",
   "CONFIG.CONNECT": "Connect",
   "CONFIG.CONFIGURATION":"Configuration",
 "CONFIG.DISCARD":"Discard"

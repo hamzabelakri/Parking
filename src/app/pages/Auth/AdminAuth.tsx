@@ -128,7 +128,7 @@ export function AdminAuth({closeModal}) {
           </div>
         )}
       </div>
-      <Link to={"/config"}>
+      <Link to={"/server-form"}>
       <div className='d-grid'>
         <button
           type='submit'
