@@ -6,34 +6,22 @@ import {getAllData, getOneServer, postAllData} from '../../../Redux/Server/Serve
 import {Toast} from './CustomToast'
 import {Container} from 'react-bootstrap'
 import {useIntl} from 'react-intl'
+import {profileDetailsSchema, initialValues} from './utilities'
 
-
-const profileDetailsSchema = Yup.object().shape({
-  ip: Yup.string().required('IP is required'),
-  port: Yup.number().typeError('Must be a number').required('Port is required'),
-  selectedZR: Yup.string().required('ZR is required'),
-  selectedPos: Yup.string().required('Pos is required'),
-})
 const SecondTest: React.FC = () => {
   const dispatch = useDispatch()
   const {data} = useSelector((state: any) => state.ServerReducer)
   const {oneServerData} = useSelector((state: any) => state.ServerReducer)
-  console.log(oneServerData)
-
-  const initialValues = {
-    ip: '',
-    port: '',
-    selectedZR: '',
-    selectedPos: '',
-  }
+  //console.log(oneServerData)
 
   const [loading, setLoading] = useState(false)
   const formik = useFormik({
     initialValues,
     validationSchema: profileDetailsSchema,
     onSubmit: (values) => {
+      formik.setErrors({port: ''})
+      formik.setTouched({port: false})
       dispatch(postAllData(formik.values))
-      //console.log(formik.values)
     },
   })
 
@@ -54,12 +42,11 @@ const SecondTest: React.FC = () => {
   }, [data])
 
   const intl = useIntl()
-  //console.log(data)
 
   return (
     <Container className='w-900px'>
       <div className='card mb-5 mb-xl-10'>
-      <Toast />
+        <Toast />
         <div
           className='card-header border-0 cursor-pointer'
           role='button'
@@ -73,11 +60,16 @@ const SecondTest: React.FC = () => {
           </div>
         </div>
 
+      {/* // ---------------------- Connect Server ------------------------------------ // */}
+
         <div id='kt_account_profile_details' className='collapse show'>
           <form onSubmit={formik.handleSubmit} noValidate className='form px-15'>
             <div className='card-body border-top p-9'>
               <div className='row mb-6'>
-                <label className='col-lg-4 col-form-label required fw-bold fs-6'> {intl.formatMessage({id: 'CONFIG.SERVERSETTING'})}</label>
+                <label className='col-lg-4 col-form-label required fw-bold fs-6'>
+                  {' '}
+                  {intl.formatMessage({id: 'CONFIG.SERVERSETTING'})}
+                </label>
 
                 <div className='col-lg-8'>
                   <div className='row'>
@@ -97,11 +89,12 @@ const SecondTest: React.FC = () => {
 
                     <div className='col-lg-4 fv-row'>
                       <input
-                        type='text'
+                        type='number'
                         className='form-control form-control-lg form-control-solid'
                         placeholder='PORT'
                         {...formik.getFieldProps('port')}
-                      />  {formik.touched.port && formik.errors.port && (
+                      />
+                      {formik.touched.port && formik.errors.port && (
                         <div className='fv-plugins-message-container'>
                           <div className='fv-help-block'>{formik.errors.port}</div>
                         </div>
@@ -115,6 +108,8 @@ const SecondTest: React.FC = () => {
                   </div>
                 </div>
               </div>
+
+        {/* // ---------------------- DropDownBoxes ------------------------------------ // */}
 
               <div className='row mb-6'>
                 <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server</label>
@@ -166,6 +161,8 @@ const SecondTest: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            {/* // ---------------------- Submit Button ------------------------------------ // */}
 
             <div className='card-footer d-flex justify-content-center py-6 px-9'>
               <button className='btn btn-light btn-active-light-primary me-2'>
