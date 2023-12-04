@@ -66,5 +66,15 @@
   "ECOMMERCE.CUSTOMERS.UPDATE_STATUS.MESSAGE": "Le statut des clients sélectionnés a été mis à jour avec succès",
   "ECOMMERCE.CUSTOMERS.EDIT.UPDATE_MESSAGE": "Le client a été mis à jour",
   "ECOMMERCE.CUSTOMERS.EDIT.ADD_MESSAGE": "Le client a été créé",
-  "CONFIG.SERVERSETTING": "Configuration serveur"
+  "CONFIG.CONFIGURATION":"Paramètres serveur",
+  "CONFIG.SERVERSETTING": "Configuration serveur",
+  "CONFIG.SERVERSELECT": " Serveur",
+  "CONFIG.POSSELECT": " POS",
+  "CONFIG.ZROPTION":"choisir un ZR",
+  "CONFIG.POSOPTION":"choisir un Pos",
+  "CONFIG.PORT": "Port ",
+  "CONFIG.ZRIP": "ZR IP",
+  "CONFIG.CONNECT": "Connecter",
+  "CONFIG.SAVECHANGES": "Sauvegarder",
+  "CONFIG.DISCARD": "Annuler"
 }

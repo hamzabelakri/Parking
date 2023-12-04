@@ -6,7 +6,7 @@ import {getAllData, getOneServer, postAllData} from '../../../Redux/Server/Serve
 import {Toast} from './CustomToast'
 import {Container} from 'react-bootstrap'
 import {useIntl} from 'react-intl'
-import {profileDetailsSchema, initialValues} from './utilities'
+import {serverFormSchema, initialValues} from './utilities'
 
 const SecondTest: React.FC = () => {
   const dispatch = useDispatch()
@@ -17,7 +17,7 @@ const SecondTest: React.FC = () => {
   const [loading, setLoading] = useState(false)
   const formik = useFormik({
     initialValues,
-    validationSchema: profileDetailsSchema,
+    validationSchema: serverFormSchema,
     onSubmit: (values) => {
       formik.setErrors({port: ''})
       formik.setTouched({port: false})
@@ -38,6 +38,9 @@ const SecondTest: React.FC = () => {
     if (data) {
       formik.setFieldValue('ip', data.serverip)
       formik.setFieldValue('port', data.serverport)
+      const selectedZR = data.lrgeometry?.find((zr) => zr.selected)?.name ?? ''
+      // formik.setFieldValue('selectedZR', selectedZR)
+      console.log(selectedZR)
     }
   }, [data])
 
@@ -48,9 +51,9 @@ const SecondTest: React.FC = () => {
       <div className='card mb-5 mb-xl-10'>
         <Toast />
         <div
-          className='card-header border-0 cursor-pointer'
-          role='button'
-          data-bs-toggle='collapse'
+          className='card-header border-0'
+          role=''
+          data-bs-toggle=''
           data-bs-target='#kt_account_profile_details'
           aria-expanded='true'
           aria-controls='kt_account_profile_details'
@@ -60,7 +63,7 @@ const SecondTest: React.FC = () => {
           </div>
         </div>
 
-      {/* // ---------------------- Connect Server ------------------------------------ // */}
+        {/* // ---------------------- Connect Server ------------------------------------ // */}
 
         <div id='kt_account_profile_details' className='collapse show'>
           <form onSubmit={formik.handleSubmit} noValidate className='form px-15'>
@@ -77,7 +80,7 @@ const SecondTest: React.FC = () => {
                       <input
                         type='text'
                         className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
-                        placeholder='IP'
+                        placeholder={intl.formatMessage({id: 'CONFIG.ZRIP'})}
                         {...formik.getFieldProps('ip')}
                       />
                       {formik.touched.ip && formik.errors.ip && (
@@ -89,9 +92,9 @@ const SecondTest: React.FC = () => {
 
                     <div className='col-lg-4 fv-row'>
                       <input
-                        type='number'
+                        type='text'
                         className='form-control form-control-lg form-control-solid'
-                        placeholder='PORT'
+                        placeholder={intl.formatMessage({id: 'CONFIG.PORT'})}
                         {...formik.getFieldProps('port')}
                       />
                       {formik.touched.port && formik.errors.port && (
@@ -109,17 +112,19 @@ const SecondTest: React.FC = () => {
                 </div>
               </div>
 
-        {/* // ---------------------- DropDownBoxes ------------------------------------ // */}
+              {/* // ---------------------- DropDownBoxes ------------------------------------ // */}
 
               <div className='row mb-6'>
-                <label className='col-lg-4 col-form-label required fw-bold fs-6'>Server</label>
+                <label className='col-lg-4 col-form-label required fw-bold fs-6'>
+                  {intl.formatMessage({id: 'CONFIG.SERVERSELECT'})}
+                </label>
 
                 <div className='col-lg-6 fv-row'>
                   <select
                     className='form-select form-select-solid form-select-lg'
                     {...formik.getFieldProps('selectedZR')}
                   >
-                    <option value=''>Select a ZR</option>
+                    <option value=''>{intl.formatMessage({id: 'CONFIG.ZROPTION'})}</option>
                     {oneServerData &&
                       oneServerData.map((item) => (
                         <option key={item.id} value={item.value}>
@@ -136,14 +141,16 @@ const SecondTest: React.FC = () => {
               </div>
 
               <div className='row mb-6'>
-                <label className='col-lg-4 col-form-label required fw-bold fs-6'>POS</label>
+                <label className='col-lg-4 col-form-label required fw-bold fs-6'>
+                  {intl.formatMessage({id: 'CONFIG.POSSELECT'})}
+                </label>
 
                 <div className='col-lg-6 fv-row'>
                   <select
                     className='form-select form-select-solid form-select-lg'
                     {...formik.getFieldProps('selectedPos')}
                   >
-                    <option value=''>Select a Pos</option>
+                    <option value=''>{intl.formatMessage({id: 'CONFIG.POSOPTION'})}</option>
                     {oneServerData &&
                       oneServerData
                         .find((item) => item.name === formik.values.selectedZR)
@@ -168,9 +175,14 @@ const SecondTest: React.FC = () => {
               <button className='btn btn-light btn-active-light-primary me-2'>
                 {intl.formatMessage({id: 'CONFIG.DISCARD'})}
               </button>
-              <button type='submit' className='btn btn-primary' disabled={loading}>
-                {!loading && 'Save Changes'}
-                {loading && (
+              <button
+                type='submit'
+                className='btn btn-primary'
+                disabled={loading || !formik.isValid}
+              >
+                {!loading ? (
+                  intl.formatMessage({id: 'CONFIG.SAVECHANGES'})
+                ) : (
                   <span className='indicator-progress' style={{display: 'block'}}>
                     Please wait...{' '}
                     <span className='spinner-border spinner-border-sm align-middle ms-2'></span>

@@ -8,7 +8,7 @@ import {useAuth} from '../../modules/auth'
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import UserSession from '../Session/UserSession'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -36,7 +36,7 @@ const initialValues = {
 export function AdminAuth({closeModal}) {
   const [loading, setLoading] = useState(false)
   const [incorrectLogin, setIncorrectLogin] = useState(false)
-
+const navigate=useNavigate()
   const {saveAuth, setCurrentUser} = useAuth()
 
   const formik = useFormik({
@@ -50,6 +50,7 @@ export function AdminAuth({closeModal}) {
         const {data: user} = await getUserByToken(auth.api_token)
         setCurrentUser(user)
         closeModal(false)
+        navigate('/server-form')
       } catch (error) {
         console.error(error)
         saveAuth(undefined)
@@ -128,7 +129,7 @@ export function AdminAuth({closeModal}) {
           </div>
         )}
       </div>
-      <Link to={"/server-form"}>
+      
       <div className='d-grid'>
         <button
           type='submit'
@@ -144,7 +145,7 @@ export function AdminAuth({closeModal}) {
             </span>
           )}
         </button>
-      </div></Link>
+      </div>
     </form>
   )
 }
