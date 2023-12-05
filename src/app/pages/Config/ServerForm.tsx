@@ -7,9 +7,10 @@ import {Toast} from './CustomToast'
 import {Container} from 'react-bootstrap'
 import {useIntl} from 'react-intl'
 import {serverFormSchema, initialValues} from './utilities'
-import { Toaster } from "react-hot-toast";
+import {Toaster} from 'react-hot-toast'
+import { useAuth } from '../../modules/auth'
 
-const SecondTest: React.FC = () => {
+const ServerForm: React.FC = () => {
   const dispatch = useDispatch()
   const {data} = useSelector((state: any) => state.ServerReducer)
   const {oneServerData} = useSelector((state: any) => state.ServerReducer)
@@ -31,14 +32,19 @@ const SecondTest: React.FC = () => {
     event.preventDefault()
   }
 
+  const handleDiscard = () => {
+    formik.resetForm()
+    formik.setErrors({})
+  }
+
   useEffect(() => {
     dispatch(getAllData())
   }, [dispatch])
 
   useEffect(() => {
     if (data) {
-      formik.setFieldValue('ip', data.serverip)
-      formik.setFieldValue('port', data.serverport)
+      formik.setFieldValue('ip', data.serverip ||'')
+      formik.setFieldValue('port', data.serverport || '')
       const selectedZR = data.lrgeometry?.find((zr) => zr.selected)?.name ?? ''
       // formik.setFieldValue('selectedZR', selectedZR)
       console.log(selectedZR)
@@ -46,12 +52,13 @@ const SecondTest: React.FC = () => {
   }, [data])
 
   const intl = useIntl()
+  const {currentUser, logout} = useAuth()
 
   return (
     <Container className='w-900px'>
       <div className='card mb-5 mb-xl-10'>
         <Toast />
-        <Toaster position="top-center" reverseOrder={false} />
+        <Toaster position='top-center' reverseOrder={false} />
         <div
           className='card-header border-0'
           role=''
@@ -174,7 +181,10 @@ const SecondTest: React.FC = () => {
             {/* // ---------------------- Submit Button ------------------------------------ // */}
 
             <div className='card-footer d-flex justify-content-center py-6 px-9'>
-              <button className='btn btn-light btn-active-light-primary me-2'>
+              <button
+                className='btn btn-light btn-active-light-primary me-2'
+                onClick={logout}
+              >
                 {intl.formatMessage({id: 'CONFIG.DISCARD'})}
               </button>
               <button
@@ -186,7 +196,7 @@ const SecondTest: React.FC = () => {
                   intl.formatMessage({id: 'CONFIG.SAVECHANGES'})
                 ) : (
                   <span className='indicator-progress' style={{display: 'block'}}>
-                    Please wait...{' '}
+                    {intl.formatMessage({id: 'AUTH.LOGIN.WAIT'})}
                     <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
                   </span>
                 )}
@@ -199,4 +209,4 @@ const SecondTest: React.FC = () => {
   )
 }
 
-export default SecondTest
+export default ServerForm
