@@ -7,6 +7,7 @@ import {Toast} from './CustomToast'
 import {Container} from 'react-bootstrap'
 import {useIntl} from 'react-intl'
 import {serverFormSchema, initialValues} from './utilities'
+import { Toaster } from "react-hot-toast";
 
 const SecondTest: React.FC = () => {
   const dispatch = useDispatch()
@@ -50,6 +51,7 @@ const SecondTest: React.FC = () => {
     <Container className='w-900px'>
       <div className='card mb-5 mb-xl-10'>
         <Toast />
+        <Toaster position="top-center" reverseOrder={false} />
         <div
           className='card-header border-0'
           role=''
@@ -114,7 +116,7 @@ const SecondTest: React.FC = () => {
 
               {/* // ---------------------- DropDownBoxes ------------------------------------ // */}
 
-              <div className='row mb-6'>
+              <div className='row mb-6 '>
                 <label className='col-lg-4 col-form-label required fw-bold fs-6'>
                   {intl.formatMessage({id: 'CONFIG.SERVERSELECT'})}
                 </label>

@@ -11,6 +11,12 @@ const languages = [
     flag: toAbsoluteUrl('/media/flags/united-states.svg'),
   },
   {
+    lang: 'ar',
+    name: 'Arabic',
+    flag: toAbsoluteUrl('/media/flags/saudi-arabia.svg'),
+  },
+  
+  {
     lang: 'zh',
     name: 'Mandarin',
     flag: toAbsoluteUrl('/media/flags/china.svg'),

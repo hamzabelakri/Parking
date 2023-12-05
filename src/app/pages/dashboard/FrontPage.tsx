@@ -3,7 +3,7 @@ import {Mixed} from '../../modules/widgets/components/Mixed'
 import Payment from './Payment'
 import {KTIcon, toAbsoluteUrl} from '../../../_metronic/helpers'
 
-const Test = () => {
+const FrontPage = () => {
   return (
     <div className='app-main flex-column flex-row-fluid' id='kt_app_main'>
       <div className='d-flex flex-column flex-column-fluid'>
@@ -1396,4 +1396,4 @@ const Test = () => {
   )
 }
 
-export default Test
+export default FrontPage

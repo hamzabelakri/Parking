@@ -5,9 +5,11 @@ import clsx from 'clsx'
 import {useFormik} from 'formik'
 import {getUserByToken, login} from '../../modules/auth/core/_requests'
 import {useAuth} from '../../modules/auth'
-import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import UserSession from '../Session/UserSession'
+import toast, { Toaster } from 'react-hot-toast';
+import { useIntl } from 'react-intl'
+import { useNavigate } from 'react-router-dom'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -37,6 +39,7 @@ export function Login({closeModal, openAdminAuth}) {
   const [incorrectLogin, setIncorrectLogin] = useState(false)
 
   const {saveAuth, setCurrentUser} = useAuth()
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues,
@@ -49,6 +52,7 @@ export function Login({closeModal, openAdminAuth}) {
         const {data: user} = await getUserByToken(auth.api_token)
         setCurrentUser(user)
         closeModal(false)
+        navigate('/dashboard')
       } catch (error) {
         console.error(error)
         saveAuth(undefined)
@@ -60,29 +64,14 @@ export function Login({closeModal, openAdminAuth}) {
       }
     },
   })
-
+  const intl = useIntl()
   return (
     <form className='' onSubmit={formik.handleSubmit} noValidate id='kt_login_signin_form'>
-      <ToastContainer
-        position='top-center'
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme='dark'
-      />
-      {/* begin::Heading */}
-    
+      <Toaster />
       <div className='d-flex justify-content-between'>
-        <h1 className='text-dark fw-bolder mb-3'>Sign In</h1>
-        <i className="bi bi-gear fs-2x text-center cursor-pointer" onClick={openAdminAuth} ></i>
+        <h1 className='text-dark fw-bolder mb-3'>{intl.formatMessage({id: 'AUTH.LOGIN.BUTTON'})}</h1>
+        <i className='bi bi-gear fs-2x text-center cursor-pointer' onClick={openAdminAuth}></i>
       </div>
-    
-     
 
       <div className='fv-row'>
         <label className='form-label fs-6 fw-bolder text-dark'></label>
@@ -138,10 +127,10 @@ export function Login({closeModal, openAdminAuth}) {
           className='btn btn-primary'
           disabled={formik.isSubmitting || !formik.isValid}
         >
-          {!loading && <span className='indicator-label'>Continue</span>}
+          {!loading && <span className='indicator-label'>{intl.formatMessage({id: 'AUTH.LOGIN.CONTINUE'})}</span>}
           {loading && (
             <span className='indicator-progress' style={{display: 'block'}}>
-              Please wait...
+              {intl.formatMessage({id: 'AUTH.LOGIN.WAIT'})}
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
             </span>
           )}

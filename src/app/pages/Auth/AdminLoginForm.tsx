@@ -5,10 +5,10 @@ import clsx from 'clsx'
 import {useFormik} from 'formik'
 import {getUserByToken, login} from '../../modules/auth/core/_requests'
 import {useAuth} from '../../modules/auth'
-import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import UserSession from '../Session/UserSession'
 import {Link, useNavigate} from 'react-router-dom'
+import {useIntl} from 'react-intl'
+import toast, {Toaster} from 'react-hot-toast'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -33,10 +33,10 @@ const initialValues = {
   https://medium.com/@maurice.de.beijer/yup-validation-and-typescript-and-formik-6c342578a20e
 */
 
-export function AdminAuth({closeModal}) {
+export function AdminLoginForm({closeModal}) {
   const [loading, setLoading] = useState(false)
   const [incorrectLogin, setIncorrectLogin] = useState(false)
-const navigate=useNavigate()
+  const navigate = useNavigate()
   const {saveAuth, setCurrentUser} = useAuth()
 
   const formik = useFormik({
@@ -62,24 +62,16 @@ const navigate=useNavigate()
       }
     },
   })
+  const intl = useIntl()
 
   return (
     <form className='' onSubmit={formik.handleSubmit} noValidate id='kt_login_signin_form'>
-      <ToastContainer
-        position='top-center'
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme='dark'
-      />
+      <Toaster />
       {/* begin::Heading */}
       <div className='text-center'>
-        <h1 className='text-dark fw-bolder mb-3'>Administrator</h1>
+        <h1 className='text-dark fw-bolder mb-3'>
+          {intl.formatMessage({id: 'AUTH.ADMINLOGIN.TITLE'})}
+        </h1>
       </div>
 
       <div className='fv-row'>
@@ -129,7 +121,7 @@ const navigate=useNavigate()
           </div>
         )}
       </div>
-      
+
       <div className='d-grid'>
         <button
           type='submit'
@@ -137,10 +129,14 @@ const navigate=useNavigate()
           className='btn btn-primary'
           disabled={formik.isSubmitting || !formik.isValid}
         >
-          {!loading && <span className='indicator-label'>Continue</span>}
+          {!loading && (
+            <span className='indicator-label'>
+              {intl.formatMessage({id: 'AUTH.LOGIN.CONTINUE'})}
+            </span>
+          )}
           {loading && (
             <span className='indicator-progress' style={{display: 'block'}}>
-              Please wait...
+              {intl.formatMessage({id: 'AUTH.LOGIN.WAIT'})}
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
             </span>
           )}

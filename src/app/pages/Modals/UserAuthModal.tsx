@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { Login } from '../Auth/LoginForm'
-import { AdminAuth } from '../Auth/AdminAuth'
+import { AdminLoginForm } from '../Auth/AdminLoginForm'
 const LoginModal = () => {
   const [show, setShow] = useState(false)
-  const [currentComponent, setCurrentComponent] = useState('login'); // State to determine which component to render
-
+  const [currentComponent, setCurrentComponent] = useState('login');
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
@@ -17,12 +16,12 @@ const LoginModal = () => {
   }, [])
   return (
     <div>
-      <Modal centered show={show} backdrop="static" onHide={handleClose} >
+      <Modal centered show={show} backdrop="static" onHide={handleClose} keyboard={false} >
       <Modal.Body>
           {currentComponent === 'login' ? (
             <Login closeModal={setShow}  openAdminAuth={openAdminAuth}/>
           ) : (
-            <AdminAuth closeModal={setShow} />
+            <AdminLoginForm closeModal={setShow} />
           )}
         </Modal.Body>
       </Modal>
