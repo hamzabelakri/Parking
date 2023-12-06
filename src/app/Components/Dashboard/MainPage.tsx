@@ -13,7 +13,6 @@ const MainPage = () => {
               <div className='d-flex flex-row-fluid me-xl-9 mb-10 mb-xl-0'>
                 <Table />
               </div>
-
               <div className='flex-row-auto w-xl-450px'>
                 <Payment />
               </div>

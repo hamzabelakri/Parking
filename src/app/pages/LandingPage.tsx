@@ -1,13 +1,13 @@
 import React from 'react'
-import LoginModal from '../Modals/UserAuthModal'
-import { toAbsoluteUrl } from '../../../_metronic/helpers'
 import { Link, Outlet } from 'react-router-dom'
+import { toAbsoluteUrl } from '../../_metronic/helpers'
+import AuthModal from '../Components/Modals/AuthModal'
 
-const AuthPage = () => {
+const LandingPage = () => {
   return (
     <div>
      
-      <LoginModal />
+      <AuthModal />
       <div className='d-flex flex-column flex-lg-row flex-column-fluid h-100'>
       {/* begin::Body */}
       <div className='d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1'>
@@ -93,4 +93,4 @@ const AuthPage = () => {
   )
 }
 
-export default AuthPage
+export default LandingPage

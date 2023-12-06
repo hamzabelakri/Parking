@@ -11,7 +11,8 @@ import {PrivateRoutes} from './PrivateRoutes'
 import {ErrorsPage} from '../modules/errors/ErrorsPage'
 import {Logout, useAuth} from '../modules/auth'
 import {App} from '../App'
-import AuthPage from '../pages/Auth/AuthPage'
+import AuthPage from '../pages/LandingPage'
+
 
 /**
  * Base URL of the website.

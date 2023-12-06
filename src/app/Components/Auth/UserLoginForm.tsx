@@ -3,13 +3,14 @@ import {useState} from 'react'
 import * as Yup from 'yup'
 import clsx from 'clsx'
 import {useFormik} from 'formik'
-import {getUserByToken, login} from '../../modules/auth/core/_requests'
-import {useAuth} from '../../modules/auth'
-import 'react-toastify/dist/ReactToastify.css'
-import UserSession from '../Session/UserSession'
 import toast, { Toaster } from 'react-hot-toast';
 import { useIntl } from 'react-intl'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../modules/auth'
+import { getUserByToken, login } from '../../modules/auth/core/_requests'
+import UserSession from '../Session/UserSession'
+
+
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -34,7 +35,7 @@ const initialValues = {
   https://medium.com/@maurice.de.beijer/yup-validation-and-typescript-and-formik-6c342578a20e
 */
 
-export function Login({closeModal, openAdminAuth}) {
+export function UserLoginForm({closeModal, openAdminAuth}) {
   const [loading, setLoading] = useState(false)
   const [incorrectLogin, setIncorrectLogin] = useState(false)
 

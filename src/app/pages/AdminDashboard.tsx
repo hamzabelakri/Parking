@@ -2,15 +2,14 @@ import React, {useEffect, useState} from 'react'
 import * as Yup from 'yup'
 import {useFormik} from 'formik'
 import {useDispatch, useSelector} from 'react-redux'
-import {getAllData, getOneServer, postAllData} from '../../../Redux/Server/ServerAction'
-import {Toast} from './CustomToast'
 import {Container} from 'react-bootstrap'
 import {useIntl} from 'react-intl'
-import {serverFormSchema, initialValues} from './utilities'
 import {Toaster} from 'react-hot-toast'
-import { useAuth } from '../../modules/auth'
+import {initialValues, serverFormSchema} from '../Components/Types'
+import {getAllData, getOneServer, postAllData} from '../../Redux/Server/ServerAction'
+import {useAuth} from '../modules/auth'
 
-const ServerForm: React.FC = () => {
+const AdminDashboard: React.FC = () => {
   const dispatch = useDispatch()
   const {data} = useSelector((state: any) => state.ServerReducer)
   const {oneServerData} = useSelector((state: any) => state.ServerReducer)
@@ -43,7 +42,7 @@ const ServerForm: React.FC = () => {
 
   useEffect(() => {
     if (data) {
-      formik.setFieldValue('ip', data.serverip ||'')
+      formik.setFieldValue('ip', data.serverip || '')
       formik.setFieldValue('port', data.serverport || '')
       const selectedZR = data.lrgeometry?.find((zr) => zr.selected)?.name ?? ''
       // formik.setFieldValue('selectedZR', selectedZR)
@@ -57,7 +56,6 @@ const ServerForm: React.FC = () => {
   return (
     <Container className='w-900px'>
       <div className='card mb-5 mb-xl-10'>
-        <Toast />
         <Toaster position='top-center' reverseOrder={false} />
         <div
           className='card-header border-0'
@@ -181,10 +179,7 @@ const ServerForm: React.FC = () => {
             {/* // ---------------------- Submit Button ------------------------------------ // */}
 
             <div className='card-footer d-flex justify-content-center py-6 px-9'>
-              <button
-                className='btn btn-light btn-active-light-primary me-2'
-                onClick={logout}
-              >
+              <button className='btn btn-light btn-active-light-primary me-2' onClick={logout}>
                 {intl.formatMessage({id: 'CONFIG.DISCARD'})}
               </button>
               <button
@@ -209,4 +204,4 @@ const ServerForm: React.FC = () => {
   )
 }
 
-export default ServerForm
+export default AdminDashboard

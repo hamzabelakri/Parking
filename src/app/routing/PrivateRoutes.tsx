@@ -4,12 +4,8 @@ import {MasterLayout} from '../../_metronic/layout/MasterLayout'
 import TopBarProgress from 'react-topbar-progress-indicator'
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
-import DashboardWrapper from '../pages/dashboard/DashboardWrapper'
-import ServerForm from '../pages/Config/ServerForm'
-import FrontPage from '../pages/dashboard/FrontPage'
-import AuthTest from '../pages/AuthTest'
-import MainPage from '../pages/dashboard/MainPage'
-
+import ServerForm from '../pages/AdminDashboard'
+import DashboardWrapper from '../pages/UserDashboard'
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
@@ -22,14 +18,10 @@ const PrivateRoutes = () => {
   return (
     <Routes>
       <Route element={<MasterLayout />}>
-        
         <Route path='/' element={<Navigate to='/dashboard' />} />
         {/* Pages */}
         <Route path='dashboard' element={<DashboardWrapper />} />
-        <Route path='front-page' element={<FrontPage />} />
         <Route path='server-form' element={<ServerForm />} />
-        <Route path='session' element={<AuthTest />} />
-        <Route path='main' element={<MainPage />} />
         <Route path='*' element={<Navigate to='/error/404' />} />
       </Route>
     </Routes>
