@@ -8,6 +8,7 @@ import DashboardWrapper from '../pages/dashboard/DashboardWrapper'
 import ServerForm from '../pages/Config/ServerForm'
 import FrontPage from '../pages/dashboard/FrontPage'
 import AuthTest from '../pages/AuthTest'
+import MainPage from '../pages/dashboard/MainPage'
 
 
 const PrivateRoutes = () => {
@@ -28,6 +29,7 @@ const PrivateRoutes = () => {
         <Route path='front-page' element={<FrontPage />} />
         <Route path='server-form' element={<ServerForm />} />
         <Route path='session' element={<AuthTest />} />
+        <Route path='main' element={<MainPage />} />
         <Route path='*' element={<Navigate to='/error/404' />} />
       </Route>
     </Routes>

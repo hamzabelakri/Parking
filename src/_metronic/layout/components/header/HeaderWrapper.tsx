@@ -47,7 +47,7 @@ export function HeaderWrapper() {
           </>
         )}
 
-        {!(config.layoutType === 'dark-sidebar' || config.layoutType === 'light-sidebar') && (
+       {/*  {!(config.layoutType === 'dark-sidebar' || config.layoutType === 'light-sidebar') && (
           <div className='d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15'>
             <Link to='/dashboard'>
               {config.layoutType !== 'dark-header' ? (
@@ -72,7 +72,7 @@ export function HeaderWrapper() {
               )}
             </Link>
           </div>
-        )}
+        )} */}
 
         <div
           id='kt_app_header_wrapper'

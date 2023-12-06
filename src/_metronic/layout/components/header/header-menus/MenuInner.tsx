@@ -8,8 +8,8 @@ export function MenuInner() {
   return (
     <>
       <MenuItem title={intl.formatMessage({id: 'MENU.DASHBOARD'})} to='/dashboard' /> 
-      {/* <MenuItem title='Layout Builder' to='/builder' />
-      <MenuInnerWithSub
+      <MenuItem title={intl.formatMessage({id: 'MENU.PAYMENT'})} to='/main' />
+      {/* <MenuInnerWithSub
           title='Pages'
           to='/crafted/pages'
           fontIcon='bi-archive'
@@ -35,7 +35,7 @@ export function MenuInner() {
               hasBullet={true}
             />
           </MenuInnerWithSub>
-          </MenuInnerWithSub>
+          </MenuInnerWithSub> */}
 
       <MenuInnerWithSub
         isMega={true}
@@ -45,7 +45,7 @@ export function MenuInner() {
         menuTrigger='click'
       >
         <MegaMenu />
-      </MenuInnerWithSub> */}
+      </MenuInnerWithSub> 
     </>
   )
 }
