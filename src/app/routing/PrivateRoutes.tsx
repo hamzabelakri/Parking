@@ -6,6 +6,9 @@ import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import ServerForm from '../pages/AdminDashboard'
 import DashboardWrapper from '../pages/UserDashboard'
+import ShiftPage from '../pages/ShiftPage'
+import CarListPage from '../pages/CarListPage'
+
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
@@ -22,7 +25,18 @@ const PrivateRoutes = () => {
         {/* Pages */}
         <Route path='dashboard' element={<DashboardWrapper />} />
         <Route path='server-form' element={<ServerForm />} />
+        <Route path='shift' element={<ShiftPage />} />
+        <Route path='carlist' element={<CarListPage />} />
         <Route path='*' element={<Navigate to='/error/404' />} />
+ 
+        <Route
+          path='apps/user-management/*'
+          element={
+            <SuspensedView>
+              <UsersPage />
+            </SuspensedView>
+          }
+        />
       </Route>
     </Routes>
   )
