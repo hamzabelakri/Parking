@@ -10,6 +10,7 @@ import ShiftPage from '../pages/ShiftPage'
 import CarListPage from '../pages/CarListPage'
 
 
+
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
   const WizardsPage = lazy(() => import('../modules/wizards/WizardsPage'))
@@ -27,6 +28,7 @@ const PrivateRoutes = () => {
         <Route path='server-form' element={<ServerForm />} />
         <Route path='shift' element={<ShiftPage />} />
         <Route path='carlist' element={<CarListPage />} />
+ 
         <Route path='*' element={<Navigate to='/error/404' />} />
  
         <Route

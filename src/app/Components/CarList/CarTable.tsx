@@ -43,7 +43,7 @@ const CarTable = () => {
                   <input className='form-check-input' type='checkbox' defaultValue={1} />
                 </div>
               </td> */}
-              <td className='d-flex align-items-center'>
+              <td className='d-flex align-items-center hover-scale'>
                 {/*begin:: Avatar */}
                 <div className='symbol symbol-150px overflow-hidden me-3'>
                   <div className='symbol-label'>
@@ -107,7 +107,7 @@ const CarTable = () => {
               </td> */}
               <td className='d-flex align-items-center'>
                 {/*begin:: Avatar */}
-                <div className='symbol symbol-150px overflow-hidden me-3'>
+                <div className='symbol symbol-150px overflow-hidden me-3 hover-scale'>
                   <div className='symbol-label'>
                     <img
                       src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIRACdfu0dl_mkO4WD_5Yrb01_qDbvJKKzQw&usqp=CAU'
@@ -170,7 +170,7 @@ const CarTable = () => {
               </td> */}
               <td className='d-flex align-items-center'>
                 {/*begin:: Avatar */}
-                <div className='symbol symbol-150px overflow-hidden me-3'>
+                <div className='symbol symbol-150px overflow-hidden me-3 hover-scale'>
                   <div className='symbol-label'>
                     <img
                       src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKRqDRiTrjrauAEgMLSPdR8Y-UDMFORynAkWFyQ9lZD4gURItwn7syexQCEwCUGDLoJps&usqp=CAU'

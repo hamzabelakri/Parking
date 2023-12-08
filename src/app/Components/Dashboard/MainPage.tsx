@@ -1,26 +1,24 @@
-import {Mixed} from '../../modules/widgets/components/Mixed'
-import Payment from './Payment'
-import {KTIcon, toAbsoluteUrl} from '../../../_metronic/helpers'
-import Table from './Table'
+import Checkout from './Checkout'
+import Form from './Form'
+import Actions from './Actions'
 
 const MainPage = () => {
   return (
-    <div className='app-main flex-column flex-row-fluid' id='kt_app_main'>
-      <div className='d-flex flex-column flex-column-fluid'>
-        <div id='kt_app_content' className='app-content flex-column-fluid'>
-          <div id='kt_app_content_container' className='app-container container-xxl'>
-            <div className='d-flex flex-column flex-xl-row'>
-              <div className='d-flex flex-row-fluid me-xl-9 mb-10 mb-xl-0'>
-                <Table />
-              </div>
-              <div className='flex-row-auto w-xl-450px'>
-                <Payment />
-              </div>
-            </div>
+    <>
+      <div className='row gy-5 g-xl-8'>
+        <div className='col-xl-8'>
+          <div className='card-xl mb-xl-8'>
+            <Form />
+            <Actions />
+          </div>
+        </div>
+        <div className='col-xl-4'>
+          <div className='card-xl mb-xl-8'>
+            <Checkout />
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

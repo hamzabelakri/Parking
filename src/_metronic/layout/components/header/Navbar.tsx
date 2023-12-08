@@ -46,6 +46,7 @@ const Navbar = () => {
       <div className={clsx('app-navbar-item', itemClass)}>
         <ThemeModeSwitcher toggleBtnClass={clsx('btn-active-light-primary btn-custom')} />
       </div>
+      
       <div className={clsx('app-navbar-item', itemClass)}>
         <div
           className={clsx('cursor-pointer symbol', userAvatarClass)}
@@ -68,6 +69,24 @@ const Navbar = () => {
           </div>
         </div>
       )}
+
+      <div className='app-navbar-item ms-2 ms-lg-6 '>
+        <a
+          href='../../demo39/dist/authentication/layouts/corporate/sign-in.html'
+          className='btn btn-icon btn-custom btn-color-gray-600 btn-active-color-primary w-35px h-35px w-md-40px h-md-40px'
+        >
+          <i className='ki-outline ki-exit-right fs-1' />
+        </a>
+      </div>
+
+      <div className='app-navbar-item ms-2 ms-lg-6 ms-n2 me-3 d-flex d-lg-none'>
+        <div
+          className='btn btn-icon btn-custom btn-color-gray-600 btn-active-color-primary w-35px h-35px w-md-40px h-md-40px'
+          id='kt_app_aside_mobile_toggle'
+        >
+          <i className='ki-outline ki-burger-menu-2 fs-2' />
+        </div>
+      </div>
     </div>
   )
 }
