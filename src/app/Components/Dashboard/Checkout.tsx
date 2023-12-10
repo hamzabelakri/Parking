@@ -1,6 +1,16 @@
 import React, {useState} from 'react'
+import CarTable from '../CarList/CarTable'
 
 const Checkout = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const openModal = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
   return (
     <div className='card card-flush bg-body' id='kt_pos_form'>
       {/*begin::Header*/}
@@ -17,7 +27,7 @@ const Checkout = () => {
 
       <div className='card-body pt-0'>
         <div className='table-responsive mb-8'>
-         {/*  <table className='table align-middle gs-0 gy-4 my-0'>
+          {/*  <table className='table align-middle gs-0 gy-4 my-0'>
             <thead>
               <tr>
                 <th className='min-w-175px' />
@@ -309,6 +319,9 @@ const Checkout = () => {
             <label
               className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4 active'
               data-kt-button='true'
+              data-bs-toggle='modal'
+              data-bs-target='#kt_modal_1'
+              onClick={openModal}
             >
               {/*begin::Input*/}
               <input className='btn-check' type='radio' name='method' defaultValue={1} />
@@ -337,6 +350,14 @@ const Checkout = () => {
           </div>
 
           <button className='btn btn-primary fs-1 w-100 py-4'>Print Bills</button>
+        </div>
+
+        <div className='modal fade" tabIndex={-1}' id='kt_modal_1'>
+          <div className='modal-dialog modal-dialog-centered mw-900px'>
+            <div className='modal-content'>
+              <CarTable />
+            </div>
+          </div>
         </div>
       </div>
     </div>
