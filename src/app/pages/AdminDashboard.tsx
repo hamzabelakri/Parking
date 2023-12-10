@@ -46,7 +46,7 @@ const AdminDashboard: React.FC = () => {
       formik.setFieldValue('port', data.serverport || '')
       const selectedZR = data.lrgeometry?.find((zr) => zr.selected)?.name ?? ''
       // formik.setFieldValue('selectedZR', selectedZR)
-      console.log(selectedZR)
+      //console.log(selectedZR)
     }
   }, [data])
 

@@ -27,7 +27,7 @@ export const getOneServer: any = (input) => async (dispatch) => {
 
 export const postAllData: any = (data) => async (dispatch) => {
   try {
-    const response = await axios.post('http://127.0.0.1:8000/local/config', data)
+    const response = await axios.post('http://127.0.0.1:8000/', data)
     //console.log(response.data.start)
     dispatch({type: POST_ALL_DATA, payload: response.data})
     toast.success(response.data.start)
