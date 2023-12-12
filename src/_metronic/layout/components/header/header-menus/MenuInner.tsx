@@ -7,7 +7,7 @@ export function MenuInner() {
   const intl = useIntl()
   return (
     <>
-      <MenuItem title={intl.formatMessage({id: 'MENU.DASHBOARD'})} to='/dashboard' />
+      <MenuItem title={intl.formatMessage({id: 'MENU.PAYMENT'})} to='/dashboard' />
       <MenuItem title={intl.formatMessage({id: 'MENU.SHIFT'})} to='/shift' />
    {/*    <MenuInnerWithSub
         title='Pages'
