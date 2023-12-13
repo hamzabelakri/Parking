@@ -36,7 +36,7 @@ const CarTable = () => {
 
               <tbody className='fs-6 fw-semibold text-gray-600'>
                 {rowsData.map((rowData, index) => (
-                  <tr key={index}>
+                  <tr key={index} className= '' role="button">
                     <td className='symbol symbol-150px ps-9'>
                       <img src={rowData.imageUrl} alt='' className='hover-scale' />
                     </td>

@@ -155,10 +155,29 @@ export const PaymentIcons = [
   {
     title: 'Card',
     img: (
-        <i className='ki-duotone ki-credit-cart fs-2hx mb-2 pe-0'>
+      <i className='ki-duotone ki-credit-cart fs-2hx mb-2 pe-0'>
         <span className='path1' />
         <span className='path2' />
       </i>
     ),
+  },
+]
+
+export const BarrierIcons = [
+  {
+    title: 'Close Barrier',
+    img: 'media/buttons/Close.png',
+  },
+  {
+    title: 'Open Barrier',
+    img: 'media/buttons/Open.png',
+  },
+  {
+    title: 'Lock Barrier',
+    img: 'media/buttons/Lock.png',
+  },
+  {
+    title: 'Unlock Barrier',
+    img: 'media/buttons/Unlock.png',
   },
 ]

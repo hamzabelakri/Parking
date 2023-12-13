@@ -5,6 +5,7 @@ import {PaymentIcons} from './CheckoutIcons'
 import FirstSection from './Sections/FirstSection'
 import SecondSection from './Sections/SecondSection'
 import ItemsList from './Sections/ItemsList'
+import BarrierSection from './Sections/BarrierSection'
 
 const Checkout = () => {
   return (
@@ -47,6 +48,7 @@ const Checkout = () => {
 
         <div className='m-0'>
           <FirstSection />
+          <BarrierSection/>
           <h1 className='fw-bold text-gray-800 mb-5'>Payment Method</h1>
           <SecondSection />
         </div>
