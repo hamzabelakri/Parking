@@ -1,4 +1,4 @@
-import Checkout from './Checkout'
+import Checkout from './Checkout/Checkout'
 import Form from './Form'
 import Actions from './Actions'
 import _Actions from './_Actions'

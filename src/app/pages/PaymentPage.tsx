@@ -2,10 +2,10 @@
 import {FC} from 'react'
 import {useIntl} from 'react-intl'
 import {PageTitle} from '../../_metronic/layout/core'
-import MainPage from '../Components/Dashboard/MainPage'
+import MainPage from '../Components/Payment/MainPage'
 import {useAuth} from '../modules/auth'
 
-const UserDashboard: FC = () => {
+const PaymentPage: FC = () => {
   const intl = useIntl()
   const {currentUser} = useAuth()
 
@@ -17,4 +17,4 @@ const UserDashboard: FC = () => {
   )
 }
 
-export default UserDashboard
+export default PaymentPage

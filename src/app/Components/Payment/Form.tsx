@@ -9,7 +9,7 @@ const Form: React.FC = () => {
           <div className='col-md-5'>
             <img
               id='kt_contact_map'
-              className='img-fluid object-fit-cover h-100 rounded mb-2 mb-lg-0 mt-2'
+              className='img-fluid object-fit-cover h-100 rounded mb-2 mb-lg-0'
               src='https://images.unsplash.com/photo-1627936354732-ffbe552799d8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njd8fGJtdyUyMGNhcnxlbnwwfHwwfHx8MA%3D%3D'
             />
           </div>

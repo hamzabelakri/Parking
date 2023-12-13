@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
-import CarTable from '../CarList/CarTable'
+import CarTable from '../../CarList/CarTable'
+import {Icons} from './CheckoutIcons'
+import {PaymentIcons} from './CheckoutIcons'
 
 const Checkout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -119,110 +121,52 @@ const Checkout = () => {
               $93.46
             </span>
           </div>
-     
         </div>
 
         <div className='m-0'>
-
-        <div
+          <div
             className='d-flex flex-equal gap-5 gap-xxl-9 px-0 mb-5'
             data-kt-buttons='true'
             data-kt-buttons-target='[data-kt-button]'
           >
-     
-            <label
-              className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4'
-              data-kt-button='true'
-            >
-      
-              <input className='btn-check' type='radio' name='method' defaultValue={0} />
-      
-              <i className='ki-duotone ki-dollar fs-2hx mb-2 pe-0'>
-                <span className='path1' />
-                <span className='path2' />
-                <span className='path3' />
-              </i>
-       
-              <span className='fs-7 fw-bold d-block'>Cash</span>
-            </label>
-        
-            <label
-              className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4 active'
-              data-kt-button='true'
-            >
-          
-              <input className='btn-check' type='radio' name='method' defaultValue={1} />
+            {Icons.map((icon, index) => (
+              <label
+                key={index}
+                className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4'
+                data-kt-button='true'
+              >
+                <input className='btn-check' type='radio' name='method' defaultValue={index} />
 
-              <i className='ki-duotone ki-credit-cart fs-2hx mb-2 pe-0'>
-                <span className='path1' />
-                <span className='path2' />
-              </i>
-
-              <span className='fs-7 fw-bold d-block'>Card</span>
-            </label>
-
-            <label
-              className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4'
-              data-kt-button='true'
-            >
-              <input className='btn-check' type='radio' name='method' defaultValue={2} />
-
-              <i className='ki-duotone ki-paypal fs-2hx mb-2 pe-0'>
-                <span className='path1' />
-                <span className='path2' />
-              </i>
-
-              <span className='fs-7 fw-bold d-block'>E-Wallet</span>
-            </label>
+                {icon.img}
+                <span className='fs-7 fw-bold d-block'>{icon.title}</span>
+              </label>
+            ))}
           </div>
-     
+
           <h1 className='fw-bold text-gray-800 mb-5'>Payment Method</h1>
-       
-          
+
           <div
             className='d-flex flex-equal gap-5 gap-xxl-9 px-0'
             data-kt-buttons='true'
             data-kt-buttons-target='[data-kt-button]'
           >
-         
-            <label
-              className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4'
-              data-kt-button='true'
-            >
-        
-              <input className='btn-check' type='radio' name='method' defaultValue={0} />
-             
-              <i className='ki-duotone ki-dollar fs-2hx mb-2 pe-0'>
-                <span className='path1' />
-                <span className='path2' />
-                <span className='path3' />
-              </i>
-             
-              <span className='fs-7 fw-bold d-block'>Cash</span>
-            
-            </label>
-            
-            <label
-              className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4'
-              data-kt-button='true'
-              data-bs-toggle='modal'
-              data-bs-target='#kt_modal_1'
-              onClick={openModal}
-            >
-        
-              <input className='btn-check' type='radio' name='method' defaultValue={1} />
+            {PaymentIcons.map((icon, index) => (
+              <label
+                key={index}
+                className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4'
+                data-kt-button='true'
+                data-bs-toggle='modal'
+                data-bs-target='#kt_modal_1'
+                onClick={openModal}
+              >
+                <input className='btn-check' type='radio' name='method' defaultValue={0} />
 
-              <i className='ki-duotone ki-credit-cart fs-2hx mb-2 pe-0'>
-                <span className='path1' />
-                <span className='path2' />
-              </i>
+                {icon.img}
 
-              <span className='fs-7 fw-bold d-block'>Card</span>
-            </label>
-
-           
+                <span className='fs-7 fw-bold d-block'>{icon.title}</span>
+              </label>
+            ))}
           </div>
-
         </div>
 
         <div className='modal fade" tabIndex={-1}' id='kt_modal_1'>

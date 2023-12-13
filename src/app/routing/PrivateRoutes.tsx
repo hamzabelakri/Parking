@@ -5,7 +5,7 @@ import TopBarProgress from 'react-topbar-progress-indicator'
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import ServerForm from '../pages/AdminDashboard'
-import DashboardWrapper from '../pages/UserDashboard'
+import DashboardWrapper from '../pages/PaymentPage'
 import ShiftPage from '../pages/ShiftPage'
 import CarListPage from '../pages/CarListPage'
 
