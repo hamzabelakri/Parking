@@ -1,8 +1,8 @@
 import Checkout from './Checkout/Checkout'
 import Form from './Form'
-import Actions from './Actions'
-import _Actions from './_Actions'
-
+import _Actions from './ControlButtons/Second_set_buttons'
+import First_set_buttons from './ControlButtons/First_set_buttons'
+import Second_set_buttons from './ControlButtons/Second_set_buttons'
 
 const MainPage = () => {
   return (
@@ -11,8 +11,8 @@ const MainPage = () => {
         <div className='col-xl-8'>
           <div className='card-xl mb-xl-8'>
             <Form />
-            <Actions />
-            <_Actions />
+            <First_set_buttons />
+            <Second_set_buttons />
           </div>
         </div>
         <div className='col-xl-4'>
