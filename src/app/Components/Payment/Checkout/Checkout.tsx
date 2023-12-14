@@ -48,7 +48,7 @@ const Checkout = () => {
 
         <div className='m-0'>
           <FirstSection />
-          <BarrierSection/>
+          
           <h1 className='fw-bold text-gray-800 mb-5'>Payment Method</h1>
           <SecondSection />
         </div>

@@ -23,7 +23,7 @@ const buttonsData = [
   },
   {
     id: 5,
-    img: 'media/buttons/Frame 19.png',
+    img: 'media/buttons/Frame.png',
     title: 'Free Rate',
   },
 ]
@@ -32,7 +32,7 @@ const First_set_buttons = () => {
   return (
     <div className='card mt-8'>
       <div className='card-body'>
-        <div className=' d-flex justify-content-between gap-3'>
+        <div className='nav d-flex justify-content-between gap-3'>
           {buttonsData.map((button) => (
             <div className='mb-3 me-0'>
               <button
