@@ -1,10 +1,16 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
+import { KTIcon, toAbsoluteUrl } from '../../../_metronic/helpers'
 import Search from './Search'
 
-const Form: React.FC = () => {
+type Props = {
+  className: string
+}
+
+const Form: React.FC<Props> = ({className}) => {
   return (
-    <div className='card'>
-      <div className='card-body'>
+    <div className={`card ${className}`}>
+     <div className='card-body'>
         <div className='row mb-3'>
           <div className='col-md-5'>
             <img
@@ -65,10 +71,9 @@ const Form: React.FC = () => {
         {/* second form */}
         <div className="separator separator mt-8"></div>
         <div className='mb-4 mt-6'>
-          <Search />
+        <Search/>
         </div>
       </div>
-      {/*end::Body*/}
     </div>
   )
 }

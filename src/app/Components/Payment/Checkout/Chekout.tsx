@@ -1,16 +1,18 @@
-import React, {useState} from 'react'
-import CarTable from '../../CarList/CarTable'
-import {Icons} from './CheckoutIcons'
-import {PaymentIcons} from './CheckoutIcons'
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from 'react'
+import { KTIcon, toAbsoluteUrl } from '../../../../_metronic/helpers'
 import FirstSection from './Sections/FirstSection'
 import SecondSection from './Sections/SecondSection'
 import ItemsList from './Sections/ItemsList'
-import BarrierSection from './Sections/BarrierSection'
 
-const Checkout = () => {
+type Props = {
+  className: string
+}
+
+const Checkout: React.FC<Props> = ({className}) => {
   return (
-    <div className='card card-flush bg-body' id='kt_pos_form'>
-      <div className='card-header pt-5'>
+    <div className={`card card-flush ${className}`}>
+       <div className='card-header pt-5'>
         <h3 className='card-title fw-bold text-gray-800 fs-2qx'>Articles</h3>
 
         <div className='card-toolbar'>
