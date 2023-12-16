@@ -1,11 +1,15 @@
 import * as Yup from 'yup'
+import {IntlShape, useIntl } from 'react-intl';
 
-export const serverFormSchema = Yup.object().shape({
-  ip: Yup.string().required('IP is required'),
-  port: Yup.number().typeError('Must be a number').required('Port is required'),
-  selectedZR: Yup.string().required('ZR is required'),
-  selectedPos: Yup.string().required('Pos is required'),
-})
+export const serverFormSchema = (intl:IntlShape) => {
+  return Yup.object().shape({
+    ip: Yup.string().required(intl.formatMessage({ id: 'INPUT.IP.VALIDATION.REQUIRED' })),
+    port: Yup.number().typeError(intl.formatMessage({ id: 'INPUT.PORT.VALIDATION.INVALID' })).required(intl.formatMessage({ id: 'INPUT.PORT.VALIDATION.REQUIRED' })),
+    selectedZR: Yup.string().required(intl.formatMessage({ id: 'INPUT.ZR.VALIDATION.REQUIRED' })),
+    selectedPos: Yup.string().required(intl.formatMessage({ id: 'INPUT.POS.VALIDATION.REQUIRED' })),
+  });
+}
+
 
 export const initialValues = {
   ip: '',

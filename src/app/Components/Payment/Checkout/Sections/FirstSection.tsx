@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Icons} from '../CheckoutIcons'
 import BarrierSection from './BarrierSection'
 
-const FirstSection = () => {
+const FirstSection: React.FC = () => {
   const [showBarrierSection, setShowBarrierSection] = useState(false)
 
   const handleButtonClick = (icon) => {

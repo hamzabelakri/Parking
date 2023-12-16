@@ -1,7 +1,7 @@
 import React from 'react';
 import { BarrierIcons } from '../CheckoutIcons';
 
-const BarrierSection = () => {
+const BarrierSection: React.FC = () => {
   const renderIconRow = (icons) => (
     <div className='row'>
       {icons.map((icon, index) => (

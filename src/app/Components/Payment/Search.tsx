@@ -1,6 +1,9 @@
 import React from 'react'
+import {useIntl} from 'react-intl'
 
-const Search = () => {
+const Search: React.FC = () => {
+  const intl = useIntl()
+
   return (
     <>
       <div className='card'>
@@ -9,7 +12,9 @@ const Search = () => {
             <div className='row '>
               <div className='row col  justify-content-center'>
                 <div className='col-auto'>
-                  <label className='col-form-label'>Licence Plate</label>
+                  <label className='col-form-label'>
+                    {intl.formatMessage({id: 'INPUT.LICENCEPLATE'})}
+                  </label>
                 </div>
                 <div className='col-7'>
                   <input type='password' className='form-control' placeholder='FV...' />
@@ -17,7 +22,9 @@ const Search = () => {
               </div>
               <div className='row col  justify-content-center'>
                 <div className='col-auto'>
-                  <label className='col-form-label'>Time Interval</label>
+                  <label className='col-form-label'>
+                    {intl.formatMessage({id: 'INPUT.TIMEINTERVAL'})}
+                  </label>
                 </div>
                 <div className='col-7'>
                   <input
@@ -29,7 +36,7 @@ const Search = () => {
               </div>
               <div className='col-2  d-flex justify-content-end'>
                 <button type='submit' className='btn btn-primary '>
-                  Search
+                  {intl.formatMessage({id: 'SEARCH.BUTTON'})}
                 </button>
               </div>
             </div>

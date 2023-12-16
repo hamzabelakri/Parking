@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { KTIcon, toAbsoluteUrl } from '../../../_metronic/helpers'
 import Search from './Search'
+import { useIntl } from 'react-intl'
 
 type Props = {
   className: string
 }
 
 const Form: React.FC<Props> = ({className}) => {
+  const intl = useIntl()
+
   return (
     <div className={`card ${className}`}>
      <div className='card-body'>
@@ -33,7 +35,7 @@ const Form: React.FC<Props> = ({className}) => {
               </div>
               <div className='row gx-10'>
                 <div className='col-lg-6'>
-                  <label className='form-label fs-6 fw-bold text-gray-700'>Licence Plate</label>
+                  <label className='form-label fs-6 fw-bold text-gray-700'>{intl.formatMessage({id: 'INPUT.LICENCEPLATE'})}</label>
 
                   <div className='mb-5'>
                     <input type='text' className='form-control ' placeholder='FV64XST' />
@@ -41,7 +43,7 @@ const Form: React.FC<Props> = ({className}) => {
                 </div>
 
                 <div className='col-lg-6'>
-                  <label className='form-label fs-6 fw-bold text-gray-700'>Card Type</label>
+                  <label className='form-label fs-6 fw-bold text-gray-700'>{intl.formatMessage({id: 'INPUT.CARDTYPE'})}</label>
 
                   <div className='mb-5'>
                     <input type='text' className='form-control ' placeholder='Short Term Parker' />
@@ -50,7 +52,7 @@ const Form: React.FC<Props> = ({className}) => {
               </div>
               <div className='row gx-10'>
                 <div className='col-lg-6'>
-                  <label className='form-label fs-6 fw-bold text-gray-700'>Entry Time</label>
+                  <label className='form-label fs-6 fw-bold text-gray-700'>{intl.formatMessage({id: 'INPUT.ENTRYTIME'})}</label>
 
                   <div className='mb-5'>
                     <input type='text' className='form-control ' placeholder='10/11/23 10:02:02' />
@@ -58,7 +60,7 @@ const Form: React.FC<Props> = ({className}) => {
                 </div>
 
                 <div className='col-lg-6'>
-                  <label className='form-label fs-6 fw-bold text-gray-700'>Duration Stay</label>
+                  <label className='form-label fs-6 fw-bold text-gray-700'>{intl.formatMessage({id: 'INPUT.DURATIONSTAY'})}</label>
 
                   <div className='mb-5'>
                     <input type='text' className='form-control ' placeholder='4h' />

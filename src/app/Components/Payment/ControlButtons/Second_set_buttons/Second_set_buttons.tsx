@@ -1,37 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-const buttonsData = [
-  {
-    id: 1,
-    img: 'media/buttons/Empty.png',
-    title: 'Article 1',
-  },
-  {
-    id: 2,
-    img: 'media/buttons/Empty.png',
-    title: 'Article 2',
-  },
-  {
-    id: 3,
-    img: 'media/buttons/Empty.png',
-    title: 'Article 3',
-  },
-  {
-    id: 4,
-    img: 'media/buttons/Empty.png',
-    title: 'Article 4',
-  },
-  {
-    id: 5,
-    img: 'media/buttons/Empty.png',
-    title: 'Article 5',
-  },
-]
+import {buttonsData} from './ButtonsData'
+import {useIntl} from 'react-intl'
+
 type Props = {
   className: string
 }
 
 const Second_set_buttons: React.FC<Props> = ({className}) => {
+  const intl = useIntl()
+
   return (
     <div className={`card ${className}`}>
       <div className='card-body'>
@@ -47,7 +25,7 @@ const Second_set_buttons: React.FC<Props> = ({className}) => {
                 </div>
 
                 <div className=''>
-                  <span className='text-gray-800 fw-bold fs-3 d-block'>{button.title}</span>
+                  <span className='text-gray-800 fw-bold fs-3 d-block'>{intl.formatMessage({ id: button.title })}</span>
                 </div>
               </button>
             </div>

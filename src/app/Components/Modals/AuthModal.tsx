@@ -4,7 +4,7 @@ import { UserLoginForm } from '../../Components/Auth/UserLoginForm';
 import { AdminLoginForm } from '../../Components/Auth/AdminLoginForm';
 
 
-const AuthModal = () => {
+const AuthModal: React.FC = () => {
   const [show, setShow] = useState(false)
   const [currentComponent, setCurrentComponent] = useState('login');
   const handleClose = () => setShow(false)

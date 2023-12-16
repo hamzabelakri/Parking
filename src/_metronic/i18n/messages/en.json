@@ -76,18 +76,52 @@
   "ECOMMERCE.CUSTOMERS.EDIT.UPDATE_MESSAGE": "Customer has been updated",
   "ECOMMERCE.CUSTOMERS.EDIT.ADD_MESSAGE": "Customer has been created",
 
-  "------------------------------------------": "CUSTOM INPUTS",
+  "------------------------------------------": "Server-Configuration",
 
   "CONFIG.SERVERSETTING": "Server Setting",
 
-  "CONFIG.SERVERSELECT": " Server",
-  "CONFIG.ZROPTION": "select a ZR",
-  "CONFIG.POSOPTION": "select a Pos",
-  "CONFIG.POSSELECT": " POS",
+  "CONFIG.SERVER_SELECT": " Server",
+  "CONFIG.ZR_OPTION": "select a ZR",
+  "CONFIG.PO_SOPTION": "select a Pos",
+  "CONFIG.POS_SELECT": " POS",
   "CONFIG.PORT": "Port ",
   "CONFIG.ZRIP": "ZR IP",
   "CONFIG.CONNECT": "Connect",
   "CONFIG.CONFIGURATION": "Configuration",
-  "CONFIG.SAVECHANGES": "Save Changes",
-  "CONFIG.DISCARD": "Discard"
+  "CONFIG.SAVE_CHANGES": "Save Changes",
+  "CONFIG.DISCARD": "Discard",
+
+  "INPUT.IP.VALIDATION.REQUIRED":"IP is required",
+  "INPUT.PORT.VALIDATION.REQUIRED":"Port is required",
+  "INPUT.PORT.VALIDATION.INVALID":"Must be a number",
+  "INPUT.ZR.VALIDATION.REQUIRED":"ZR is required",
+  "INPUT.POS.VALIDATION.REQUIRED":"POS is required",
+
+  "-------------------------------------------": "Payment Page",
+
+  "INPUT.LICENCEPLATE": "Licence Plate",
+  "INPUT.CARDTYPE": "Card Type",
+  "INPUT.ENTRYTIME": "Entry Time",
+  "INPUT.DURATIONSTAY": "Duration Stay",
+  "INPUT.TIMEINTERVAL": "Time Interval",
+  "SEARCH.BUTTON": "Search",
+
+
+  "CONTROL.BUTTON.NOT_FOUND_LPN": "Not Found LPN",
+  "CONTROL.BUTTON.SHORT_TERM_BARKER": "Short Term Parker",
+  "CONTROL.BUTTON.LOST_TICKET": "Lost Ticket",
+  "CONTROL.BUTTON.FREE_RATE": "Free Rate",
+
+  "CONTROL.BUTTON.ARTICLE": "Article",
+
+  "CHEKOUT.ARTICLES": "Articles",
+  "CHEKOUT.CLEAR.BUTTON": "Clear All",
+  "CHEKOUT.SHORT_TERM_PARKER": "Short Term Parker",
+  "CHEKOUT.LOST_TICKET": "Lost Ticket",
+  "CHEKOUT.SUBTOTAL": "Subtotal",
+  "CHEKOUT.DISCOUNTS": "Discounts",
+  "CHEKOUT.TAX": "Tax",
+  "CHEKOUT.TOTAL": "Total",
+  "CHEKOUT.PAYMENT_METHOD": "Payment Method"
+
 }

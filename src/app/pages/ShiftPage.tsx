@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl'
 import { PageTitle } from '../../_metronic/layout/core'
 import Shift from '../Components/Shift/Shift'
 
-const ShiftPage = () => {
+const ShiftPage: React.FC = () => {
   const intl = useIntl()
 
   return (

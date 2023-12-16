@@ -88,5 +88,41 @@
   "CONFIG.CONNECT": "اتصال",
   "CONFIG.CONFIGURATION": "إعدادات",
   "CONFIG.SAVECHANGES": "حفظ التغييرات",
-  "CONFIG.DISCARD": "إلغاء"
+  "CONFIG.DISCARD": "إلغاء",
+
+
+  "INPUT.IP.VALIDATION.REQUIRED":"الرجاء إدخال عنوان ال IP",
+  "INPUT.PORT.VALIDATION.REQUIRED":"الرجاء إدخال رقم المنفذ",
+  "INPUT.PORT.VALIDATION.INVALID":"يجب أن يكون رقمًا",
+  "INPUT.ZR.VALIDATION.REQUIRED":"الرجاء إدخال قيمة ال ZR",
+  "INPUT.POS.VALIDATION.REQUIRED":"الرجاء إدخال قيمة ال POS",
+
+
+  "-------------------------------------------": "Payment Page",
+
+  "INPUT.LICENCEPLATE": "لوحة الترخيص",
+  "INPUT.CARDTYPE": "نوع البطاقة",
+  "INPUT.ENTRYTIME": "وقت الدخول",
+  "INPUT.DURATIONSTAY": "مدة الإقامة",
+  "INPUT.TIMEINTERVAL": "الفاصل الزمني",
+  "SEARCH.BUTTON": "البحث",
+
+  "CONTROL.BUTTON.NOT_FOUND_LPN": "LPN غير موجود",
+  "CONTROL.BUTTON.SHORT_TERM_BARKER": "Short Term Parker",
+  "CONTROL.BUTTON.LOST_TICKET": "تذكرة ضائعة",
+  "CONTROL.BUTTON.FREE_RATE": "سعر مجاني",
+  "CONTROL.BUTTON.ARTICLE": "العنصر",
+
+  
+
+  "CHEKOUT.ARTICLES": "العناصر",
+  "CHEKOUT.CLEAR.BUTTON": "امسح الكل",
+  "CHEKOUT.SHORT_TERM_PARKER": "",
+  "CHEKOUT.LOST_TICKET": "تذكرة ضائعة",
+  "CHEKOUT.SUBTOTAL": "المجموعة الفرعي",
+  "CHEKOUT.DISCOUNTS": "الخصم",
+  "CHEKOUT.TAX": "الضريبة",
+  "CHEKOUT.TOTAL": "المجموع",
+  "CHEKOUT.PAYMENT_METHOD": "طريقة الدفع"
+
 }

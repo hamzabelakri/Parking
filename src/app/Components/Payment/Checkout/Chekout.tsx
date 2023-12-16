@@ -4,20 +4,22 @@ import { KTIcon, toAbsoluteUrl } from '../../../../_metronic/helpers'
 import FirstSection from './Sections/FirstSection'
 import SecondSection from './Sections/SecondSection'
 import ItemsList from './Sections/ItemsList'
+import { useIntl } from 'react-intl'
 
 type Props = {
   className: string
 }
 
 const Checkout: React.FC<Props> = ({className}) => {
+  const intl = useIntl()
   return (
     <div className={`card card-flush ${className}`}>
        <div className='card-header pt-5'>
-        <h3 className='card-title fw-bold text-gray-800 fs-2qx'>Articles</h3>
+        <h3 className='card-title fw-bold text-gray-800 fs-2qx'>{intl.formatMessage({id: 'CHEKOUT.ARTICLES'})}</h3>
 
         <div className='card-toolbar'>
           <a href='#' className='btn btn-light-primary fs-4 fw-bold py-4'>
-            Clear All
+          {intl.formatMessage({id: 'CHEKOUT.CLEAR.BUTTON'})}
           </a>
         </div>
       </div>
@@ -26,10 +28,10 @@ const Checkout: React.FC<Props> = ({className}) => {
         <ItemsList />
         <div className='d-flex flex-stack bg-success rounded-3 p-6 mb-6'>
           <div className='fs-6 fw-bold text-white'>
-            <span className='d-block lh-1 mb-2'>Subtotal</span>
-            <span className='d-block mb-2'>Discounts</span>
-            <span className='d-block mb-9'>Tax(12%)</span>
-            <span className='d-block fs-2qx lh-1'>Total</span>
+            <span className='d-block lh-1 mb-2'>{intl.formatMessage({id: 'CHEKOUT.SUBTOTAL'})}</span>
+            <span className='d-block mb-2'>{intl.formatMessage({id: 'CHEKOUT.DISCOUNTS'})}</span>
+            <span className='d-block mb-9'>{intl.formatMessage({id: 'CHEKOUT.TAX'})}(12%)</span>
+            <span className='d-block fs-2qx lh-1'>{intl.formatMessage({id: 'CHEKOUT.TOTAL'})}</span>
           </div>
 
           <div className='fs-6 fw-bold text-white text-end'>
@@ -51,7 +53,7 @@ const Checkout: React.FC<Props> = ({className}) => {
         <div className='m-0'>
           <FirstSection />
           
-          <h1 className='fw-bold text-gray-800 mb-5'>Payment Method</h1>
+          <h1 className='fw-bold text-gray-800 mb-5'>{intl.formatMessage({id: 'CHEKOUT.PAYMENT_METHOD'})}</h1>
           <SecondSection />
         </div>
       </div>

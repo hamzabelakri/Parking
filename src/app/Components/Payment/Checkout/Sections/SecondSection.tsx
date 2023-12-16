@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {PaymentIcons} from '../CheckoutIcons'
 import CarTable from '../../../CarList/CarTable'
 
-const SecondSection = () => {
+const SecondSection: React.FC = () => {
   return (
     <>
       <div className='card'>

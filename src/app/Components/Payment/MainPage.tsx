@@ -1,9 +1,9 @@
 import Checkout from './Checkout/Chekout'
-import First_set_buttons from './ControlButtons/First_set_buttons'
-import Second_set_buttons from './ControlButtons/Second_set_buttons'
+import First_set_buttons from './ControlButtons/First_set_buttons/First_set_buttons'
+import Second_set_buttons from './ControlButtons/Second_set_buttons/Second_set_buttons'
 import Form from './Form'
 
-const MainPage = () => {
+const MainPage: React.FC = () => {
   return (
     <>
       <div className='row g-5 g-xl-8'>

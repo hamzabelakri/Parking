@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import * as Yup from 'yup'
 import {useFormik} from 'formik'
 import {useDispatch, useSelector} from 'react-redux'
 import {Container} from 'react-bootstrap'
@@ -14,11 +13,12 @@ const AdminDashboard: React.FC = () => {
   const {data} = useSelector((state: any) => state.ServerReducer)
   const {oneServerData} = useSelector((state: any) => state.ServerReducer)
   //console.log(oneServerData)
-
+  const intl = useIntl()
   const [loading, setLoading] = useState(false)
   const formik = useFormik({
     initialValues,
-    validationSchema: serverFormSchema,
+    validationSchema: serverFormSchema(intl),
+
     onSubmit: (values) => {
       formik.setErrors({port: ''})
       formik.setTouched({port: false})
@@ -50,7 +50,7 @@ const AdminDashboard: React.FC = () => {
     }
   }, [data])
 
-  const intl = useIntl()
+
   const {currentUser, logout} = useAuth()
 
   return (
@@ -86,7 +86,7 @@ const AdminDashboard: React.FC = () => {
                     <div className='col-lg-5 fv-row'>
                       <input
                         type='text'
-                        className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
+                        className='form-control form-control-lg  mb-3 mb-lg-0'
                         placeholder={intl.formatMessage({id: 'CONFIG.ZRIP'})}
                         {...formik.getFieldProps('ip')}
                       />
@@ -100,7 +100,7 @@ const AdminDashboard: React.FC = () => {
                     <div className='col-lg-4 fv-row'>
                       <input
                         type='text'
-                        className='form-control form-control-lg form-control-solid'
+                        className='form-control form-control-lg '
                         placeholder={intl.formatMessage({id: 'CONFIG.PORT'})}
                         {...formik.getFieldProps('port')}
                       />
@@ -128,7 +128,7 @@ const AdminDashboard: React.FC = () => {
 
                 <div className='col-lg-6 fv-row'>
                   <select
-                    className='form-select form-select-solid form-select-lg'
+                    className='form-select  form-select-lg'
                     {...formik.getFieldProps('selectedZR')}
                   >
                     <option value=''>{intl.formatMessage({id: 'CONFIG.ZROPTION'})}</option>
@@ -154,7 +154,7 @@ const AdminDashboard: React.FC = () => {
 
                 <div className='col-lg-6 fv-row'>
                   <select
-                    className='form-select form-select-solid form-select-lg'
+                    className='form-select  form-select-lg'
                     {...formik.getFieldProps('selectedPos')}
                   >
                     <option value=''>{intl.formatMessage({id: 'CONFIG.POSOPTION'})}</option>

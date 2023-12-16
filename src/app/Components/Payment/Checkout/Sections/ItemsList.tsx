@@ -1,6 +1,8 @@
 import React from 'react'
+import { useIntl } from 'react-intl'
 
-const ItemsList = () => {
+const ItemsList: React.FC = () => {
+  const intl = useIntl()
   return (
     <div className='table-responsive mb-2'>
       <table className='table align-middle gs-0 gy-4 my-0'>
@@ -22,7 +24,7 @@ const ItemsList = () => {
                   alt=''
                 />
                 <span className='fw-bold text-gray-800 cursor-pointer text-hover-primary fs-6 me-1'>
-                  Short Term Parker
+                {intl.formatMessage({id: 'CHEKOUT.SHORT_TERM_PARKER'})}
                 </span>
               </div>
             </td>
@@ -51,7 +53,7 @@ const ItemsList = () => {
                   alt=''
                 />
                 <span className='fw-bold text-gray-800 cursor-pointer text-hover-primary fs-6 me-1'>
-                  Lost Ticket
+                {intl.formatMessage({id: 'CHEKOUT.LOST_TICKET'})}
                 </span>
               </div>
             </td>

@@ -70,7 +70,7 @@ const Navbar = () => {
         </div>
       )}
 
-    {/*   <div className='app-navbar-item ms-2 ms-lg-6 '>
+      {/*   <div className='app-navbar-item ms-2 ms-lg-6 '>
         <a
           href='../../demo39/dist/authentication/layouts/corporate/sign-in.html'
           className='btn btn-icon btn-custom btn-color-gray-600 btn-active-color-primary w-35px h-35px w-md-40px h-md-40px'
