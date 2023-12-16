@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { KTIcon, toAbsoluteUrl } from '../../../../_metronic/helpers'
-import FirstSection from './Sections/FirstSection'
-import SecondSection from './Sections/SecondSection'
-import ItemsList from './Sections/ItemsList'
+import FirstSection from './Sections/FirstSection/FirstSection'
+import SecondSection from './Sections/SecondSection/SecondSection'
+import ItemsList from './Sections/ItemsList/ItemsList'
 import { useIntl } from 'react-intl'
 
 type Props = {

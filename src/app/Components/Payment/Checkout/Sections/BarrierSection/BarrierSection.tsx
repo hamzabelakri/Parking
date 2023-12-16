@@ -1,7 +1,10 @@
 import React from 'react';
-import { BarrierIcons } from '../CheckoutIcons';
+import { ButtonsData } from '../BarrierSection/ButtonsData';
+import { useIntl } from 'react-intl';
 
 const BarrierSection: React.FC = () => {
+  const intl = useIntl()
+
   const renderIconRow = (icons) => (
     <div className='row'>
       {icons.map((icon, index) => (
@@ -27,8 +30,8 @@ const BarrierSection: React.FC = () => {
           data-kt-buttons='true'
           data-kt-buttons-target='[data-kt-button]'
         >
-          {renderIconRow(BarrierIcons.slice(0, 2))}
-          {renderIconRow(BarrierIcons.slice(2, 4))}
+          {renderIconRow(ButtonsData.slice(0, 2))}
+          {renderIconRow(ButtonsData.slice(2, 4))}
         </div>
       </div>
       <div className='modal fade" tabIndex={-1}' id='kt_modal_1'>

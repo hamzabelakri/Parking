@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {Icons} from '../CheckoutIcons'
-import BarrierSection from './BarrierSection'
+import BarrierSection from '../BarrierSection/BarrierSection'
+import { ButtonsData } from './ButtonsData'
 
 const FirstSection: React.FC = () => {
   const [showBarrierSection, setShowBarrierSection] = useState(false)
@@ -19,7 +19,7 @@ const FirstSection: React.FC = () => {
           data-kt-buttons='true'
           data-kt-buttons-target='[data-kt-button]'
         >
-          {Icons.map((icon, index) => (
+          {ButtonsData.map((data, index) => (
             <label
               key={index}
               className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4'
@@ -28,8 +28,8 @@ const FirstSection: React.FC = () => {
             >
               <input className='btn-check' type='radio' name='method' defaultValue={index} />
 
-              {icon.img}
-              <span className='fs-7 fw-bold d-block'>{icon.title}</span>
+              {data.img}
+              <span className='fs-7 fw-bold d-block'>{data.title}</span>
             </label>
           ))}
         </div>

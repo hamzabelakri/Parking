@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {PaymentIcons} from '../CheckoutIcons'
-import CarTable from '../../../CarList/CarTable'
+import CarTable from '../../../../CarList/CarTable'
+import { ButtonsData } from './ButtonsData'
 
 const SecondSection: React.FC = () => {
   return (
@@ -11,7 +11,7 @@ const SecondSection: React.FC = () => {
           data-kt-buttons='true'
           data-kt-buttons-target='[data-kt-button]'
         >
-          {PaymentIcons.map((icon, index) => (
+          {ButtonsData.map((data, index) => (
             <label
               key={index}
               className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4'
@@ -21,9 +21,9 @@ const SecondSection: React.FC = () => {
             >
               <input className='btn-check' type='radio' name='method' defaultValue={0} />
 
-              {icon.img}
+              {data.img}
 
-              <span className='fs-7 fw-bold d-block'>{icon.title}</span>
+              <span className='fs-7 fw-bold d-block'>{data.title}</span>
             </label>
           ))}
         </div>
