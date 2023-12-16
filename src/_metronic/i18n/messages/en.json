@@ -122,6 +122,20 @@
   "CHEKOUT.DISCOUNTS": "Discounts",
   "CHEKOUT.TAX": "Tax",
   "CHEKOUT.TOTAL": "Total",
-  "CHEKOUT.PAYMENT_METHOD": "Payment Method"
+  "CHEKOUT.PAYMENT_METHOD": "Payment Method",
+
+  "CHEKOUT.BARRIER.BUTTON": "Barrier",
+  "CHEKOUT.PRINT.BUTTON": "Print on",
+  "CHEKOUT.RECEIPT.BUTTON": "Receipt",
+
+  "CHEKOUT.CASH.BUTTON": "Cash",
+  "CHEKOUT.CARD.BUTTON": "Card",
+
+  "BARRIER.BUTTON_CLOSE": "Close Barrier",
+  "BARRIER.OPEN": "Open Barrier",
+  "BARRIER.LOCK": "Lock Barrier",
+  "BARRIER.UNLOCK": "Unlock Barrier"
+
+
 
 }

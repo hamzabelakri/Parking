@@ -35,7 +35,12 @@ const initialValues = {
   https://medium.com/@maurice.de.beijer/yup-validation-and-typescript-and-formik-6c342578a20e
 */
 
-export function UserLoginForm({closeModal, openAdminAuth}) {
+interface UserLoginFormProps {
+  closeModal: (value: boolean) => void;
+  openAdminAuth: () => void;
+}
+
+ const UserLoginForm:React.FC<UserLoginFormProps>=({closeModal, openAdminAuth}) =>{
   const [loading, setLoading] = useState(false)
   const [incorrectLogin, setIncorrectLogin] = useState(false)
 
@@ -143,3 +148,4 @@ export function UserLoginForm({closeModal, openAdminAuth}) {
     </form>
   )
 }
+export default UserLoginForm

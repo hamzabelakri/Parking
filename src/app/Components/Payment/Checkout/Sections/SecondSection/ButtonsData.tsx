@@ -1,6 +1,6 @@
 export const ButtonsData = [
   {
-    title: 'Cash',
+    title: 'CHEKOUT.CASH.BUTTON',
     img: (
       <i className='ki-duotone ki-dollar fs-2hx mb-2 pe-0'>
         <span className='path1' />
@@ -10,7 +10,7 @@ export const ButtonsData = [
     ),
   },
   {
-    title: 'Card',
+    title: 'CHEKOUT.CARD.BUTTON',
     img: (
       <i className='ki-duotone ki-credit-cart fs-2hx mb-2 pe-0'>
         <span className='path1' />

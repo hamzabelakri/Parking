@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import BarrierSection from '../BarrierSection/BarrierSection'
-import { ButtonsData } from './ButtonsData'
+import {ButtonsData} from './ButtonsData'
+import {useIntl} from 'react-intl'
 
 const FirstSection: React.FC = () => {
   const [showBarrierSection, setShowBarrierSection] = useState(false)
@@ -11,6 +12,8 @@ const FirstSection: React.FC = () => {
 
     setShowBarrierSection(icon)
   }
+  const intl = useIntl()
+
   return (
     <>
       <div className='card mb-5'>
@@ -19,7 +22,7 @@ const FirstSection: React.FC = () => {
           data-kt-buttons='true'
           data-kt-buttons-target='[data-kt-button]'
         >
-          {ButtonsData.map((data, index) => (
+          {ButtonsData.map((data, index:number) => (
             <label
               key={index}
               className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4'
@@ -29,7 +32,7 @@ const FirstSection: React.FC = () => {
               <input className='btn-check' type='radio' name='method' defaultValue={index} />
 
               {data.img}
-              <span className='fs-7 fw-bold d-block'>{data.title}</span>
+              <span className='fs-7 fw-bold d-block'>{intl.formatMessage({id: data.title})}</span>
             </label>
           ))}
         </div>

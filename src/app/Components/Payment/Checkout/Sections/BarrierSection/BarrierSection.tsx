@@ -1,26 +1,31 @@
-import React from 'react';
-import { ButtonsData } from '../BarrierSection/ButtonsData';
-import { useIntl } from 'react-intl';
+import React from 'react'
+import {ButtonsData} from '../BarrierSection/ButtonsData'
+import {useIntl} from 'react-intl'
 
 const BarrierSection: React.FC = () => {
   const intl = useIntl()
 
-  const renderIconRow = (icons) => (
+  interface Icon {
+    img: string
+    title: string
+  }
+
+  const renderIconRow = (icons: Icon[]) => (
     <div className='row'>
-      {icons.map((icon, index) => (
+      {icons.map((icon: Icon, index: number) => (
         <div key={index} className='col-md-6 my-2'>
           <label
             className='btn  btn-outline btn-flex btn-active-color-primary btn-active-light-primary w-100 px-4 gap-2'
             data-kt-button='true'
           >
             <input className='btn-check' type='radio' name='method' defaultValue={0} />
-            <img src={icon.img} alt={icon.title} className='icon-img' />
-            <span className='fs-8 fw-bold d-block'>{icon.title}</span>
+            <img src={icon.img} alt='' className='icon-img' />
+            <span className='fs-8 fw-bold d-block'>{intl.formatMessage({id: icon.title})}</span>
           </label>
         </div>
       ))}
     </div>
-  );
+  )
 
   return (
     <>
@@ -40,7 +45,7 @@ const BarrierSection: React.FC = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default BarrierSection;
+export default BarrierSection

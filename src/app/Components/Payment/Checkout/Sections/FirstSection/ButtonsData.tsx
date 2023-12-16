@@ -1,6 +1,6 @@
 export const ButtonsData = [
     {
-      title: 'Barrier',
+      title: 'CHEKOUT.BARRIER.BUTTON',
       img: (
         <svg
           width='37'
@@ -44,7 +44,7 @@ export const ButtonsData = [
       ),
     },
     {
-      title: 'Print on',
+      title: 'CHEKOUT.PRINT.BUTTON',
       img: (
         <svg
           width='37'
@@ -92,7 +92,7 @@ export const ButtonsData = [
       ),
     },
     {
-      title: 'Receipt',
+      title: 'CHEKOUT.RECEIPT.BUTTON',
       img: (
         <svg
           width='37'

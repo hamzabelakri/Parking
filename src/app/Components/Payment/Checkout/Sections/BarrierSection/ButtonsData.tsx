@@ -1,18 +1,18 @@
 export const ButtonsData = [
   {
-    title: 'Close Barrier',
+    title: 'BARRIER.BUTTON_CLOSE',
     img: 'media/buttons/Close.png',
   },
   {
-    title: 'Open Barrier',
+    title: 'BARRIER.BUTTON_OPEN',
     img: 'media/buttons/Open.png',
   },
   {
-    title: 'Lock Barrier',
+    title: 'BARRIER.BUTTON_LOCK',
     img: 'media/buttons/Lock.png',
   },
   {
-    title: 'Unlock Barrier',
+    title: 'BARRIER.BUTTON_UNLOCK',
     img: 'media/buttons/Unlock.png',
   },
 ]

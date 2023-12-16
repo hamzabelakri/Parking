@@ -1,18 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import {buttonsData} from './ButtonsData'
-import { useIntl } from 'react-intl'
+import {useIntl} from 'react-intl'
 
 type Props = {
   className: string
 }
-const buttonStyle = {
-  width: 138,
-  height: 150,
-  borderColor: 'var(--primary-color)'
-}
+
 const First_set_buttons: React.FC<Props> = ({className}) => {
-  const intl = useIntl();
+  const intl = useIntl()
 
   return (
     <div className={`card ${className}`}>
@@ -29,7 +25,9 @@ const First_set_buttons: React.FC<Props> = ({className}) => {
                 </div>
 
                 <div className=''>
-                  <span className='text-gray-800 fw-bold fs-3 d-block'>{intl.formatMessage({ id: button.title })}</span>
+                  <span className='text-gray-800 fw-bold fs-3 d-block'>
+                    {intl.formatMessage({id: button.title})}
+                  </span>
                 </div>
               </button>
             </div>

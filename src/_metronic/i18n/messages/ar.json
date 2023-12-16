@@ -123,6 +123,18 @@
   "CHEKOUT.DISCOUNTS": "الخصم",
   "CHEKOUT.TAX": "الضريبة",
   "CHEKOUT.TOTAL": "المجموع",
-  "CHEKOUT.PAYMENT_METHOD": "طريقة الدفع"
+  "CHEKOUT.PAYMENT_METHOD": "طريقة الدفع",
 
+
+  "CHEKOUT.BARRIER.BUTTON": "الحاجز",
+  "CHEKOUT.PRINT.BUTTON": "اطبع",
+  "CHEKOUT.RECEIPT.BUTTON": "الإيصال",
+
+  "CHEKOUT.CASH.BUTTON": "نقد",
+  "CHEKOUT.CARD.BUTTON": "بطاقة إئتمان",
+
+  "BARRIER.BUTTON_CLOSE": "إغلاق الحاجز",
+  "BARRIER.BUTTON_OPEN": "رفع الحاجز",
+  "BARRIER.BUTTON_LOCK": " قفل الحاجز",
+  "BARRIER.BUTTON_UNLOCK": "فتح الحاجز"
 }

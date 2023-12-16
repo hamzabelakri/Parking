@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
 import CarTable from '../../../../CarList/CarTable'
-import { ButtonsData } from './ButtonsData'
+import {ButtonsData} from './ButtonsData'
+import {useIntl} from 'react-intl'
 
 const SecondSection: React.FC = () => {
+  const intl = useIntl()
+
   return (
     <>
       <div className='card'>
@@ -11,7 +14,7 @@ const SecondSection: React.FC = () => {
           data-kt-buttons='true'
           data-kt-buttons-target='[data-kt-button]'
         >
-          {ButtonsData.map((data, index) => (
+          {ButtonsData.map((data, index:number) => (
             <label
               key={index}
               className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4'
@@ -23,7 +26,7 @@ const SecondSection: React.FC = () => {
 
               {data.img}
 
-              <span className='fs-7 fw-bold d-block'>{data.title}</span>
+              <span className='fs-7 fw-bold d-block'>{intl.formatMessage({id: data.title})}</span>
             </label>
           ))}
         </div>

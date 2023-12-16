@@ -8,8 +8,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import {Link, useNavigate} from 'react-router-dom'
 import {useIntl} from 'react-intl'
 import toast, {Toaster} from 'react-hot-toast'
-import { useAuth } from '../../modules/auth'
-import { getUserByToken, login } from '../../modules/auth/core/_requests'
+import {useAuth} from '../../modules/auth'
+import {getUserByToken, login} from '../../modules/auth/core/_requests'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -34,7 +34,11 @@ const initialValues = {
   https://medium.com/@maurice.de.beijer/yup-validation-and-typescript-and-formik-6c342578a20e
 */
 
-export function AdminLoginForm({closeModal}) {
+type Props = {
+  closeModal: (value: boolean) => void
+}
+
+const AdminLoginForm: React.FC<Props> = ({closeModal}) => {
   const [loading, setLoading] = useState(false)
   const [incorrectLogin, setIncorrectLogin] = useState(false)
   const navigate = useNavigate()
@@ -146,3 +150,4 @@ export function AdminLoginForm({closeModal}) {
     </form>
   )
 }
+export default AdminLoginForm
