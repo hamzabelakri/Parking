@@ -132,9 +132,9 @@
   "CHEKOUT.CARD.BUTTON": "Card",
 
   "BARRIER.BUTTON_CLOSE": "Close Barrier",
-  "BARRIER.OPEN": "Open Barrier",
-  "BARRIER.LOCK": "Lock Barrier",
-  "BARRIER.UNLOCK": "Unlock Barrier"
+  "BARRIER.BUTTON_OPEN": "Open Barrier",
+  "BARRIER.BUTTON_LOCK": "Lock Barrier",
+  "BARRIER.BUTTON_UNLOCK": "Unlock Barrier"
 
 
 

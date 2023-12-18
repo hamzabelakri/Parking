@@ -15,7 +15,7 @@ const First_set_buttons: React.FC<Props> = ({className}) => {
       <div className='card-body'>
         <div className='nav d-flex justify-content-between gap-3'>
           {buttonsData.map((button) => (
-            <div className='mb-3 me-0'>
+            <div className='mb-3 me-0' key={button.id}>
               <button
                 className=' btn btn-outline btn-flex flex-column flex-stack pt-9 pb-7  page-bg show rounded-4'
                 style={{width: 138, height: 150}}
