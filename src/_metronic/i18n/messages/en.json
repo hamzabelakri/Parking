@@ -134,8 +134,18 @@
   "BARRIER.BUTTON_CLOSE": "Close Barrier",
   "BARRIER.BUTTON_OPEN": "Open Barrier",
   "BARRIER.BUTTON_LOCK": "Lock Barrier",
-  "BARRIER.BUTTON_UNLOCK": "Unlock Barrier"
+  "BARRIER.BUTTON_UNLOCK": "Unlock Barrier",
 
 
+  "--------------------------------------------": "Shift Page",
+
+  "SHIFT.CARD.USER_MANAGEMENT":"user management",
+  "SHIFT.CARD.TO_GOAL":"to Goal",
+
+  "SHIFT.TABLE.TITLE":"Transaction Details",
+  "SHIFT.TABLE.HEADER.ARTICLE_ID":"Article ID",
+  "SHIFT.TABLE.HEADER.PRICE":"Price",
+  "SHIFT.TABLE.HEADER.CARTE_TYPE":"Carte Type",
+  "SHIFT.TABLE.HEADER.DURATION":"Duration"
 
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import {useIntl} from 'react-intl'
-import CarTable from '../../CarList/CarTable'
+import CarTable from '../../../CarList/CarTable'
 
-const Search: React.FC = () => {
+const SearchBar: React.FC = () => {
   const intl = useIntl()
 
   return (
@@ -60,4 +60,4 @@ const Search: React.FC = () => {
   )
 }
 
-export default Search
+export default SearchBar

@@ -55,7 +55,7 @@ const AdminLoginForm: React.FC<Props> = ({closeModal}) => {
         const {data: user} = await getUserByToken(auth.api_token)
         setCurrentUser(user)
         closeModal(false)
-        navigate('/server-form')
+        navigate('/config')
       } catch (error) {
         console.error(error)
         saveAuth(undefined)

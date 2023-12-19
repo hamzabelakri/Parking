@@ -1,5 +1,3 @@
-// import OrdersThisMonthCard from "./OrdersThisMonthCard/OrdersThisMonthCard"
-
 import Card from "./Card"
 import ShiftReportTable from "./ShiftReportTable"
 

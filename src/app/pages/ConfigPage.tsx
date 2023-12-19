@@ -8,7 +8,7 @@ import {initialValues, serverFormSchema} from '../Components/Types'
 import {getAllData, getOneServer, postAllData} from '../../Redux/Server/ServerAction'
 import {useAuth} from '../modules/auth'
 
-const AdminDashboard: React.FC = () => {
+const ConfigPage: React.FC = () => {
   const dispatch = useDispatch()
   const {data} = useSelector((state: any) => state.ServerReducer)
   const {oneServerData} = useSelector((state: any) => state.ServerReducer)
@@ -204,4 +204,4 @@ const AdminDashboard: React.FC = () => {
   )
 }
 
-export default AdminDashboard
+export default ConfigPage

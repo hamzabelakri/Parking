@@ -58,7 +58,7 @@ interface UserLoginFormProps {
         const {data: user} = await getUserByToken(auth.api_token)
         setCurrentUser(user)
         closeModal(false)
-        navigate('/dashboard')
+        navigate('/payment')
       } catch (error) {
         console.error(error)
         saveAuth(undefined)

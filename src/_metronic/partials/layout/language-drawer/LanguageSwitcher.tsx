@@ -14,6 +14,11 @@ const LanguageSwitcher = () => {
       name: 'Arabic',
       flag: toAbsoluteUrl('/media/flags/saudi-arabia.svg'),
     },
+    {
+      lang: 'pk',
+      name: 'Urdu',
+      flag: toAbsoluteUrl('/media/flags/pakistan.svg'),
+    },
   ]
   const itemClass = 'ms-1 ms-md-4'
   const userAvatarClass = 'symbol-35px'

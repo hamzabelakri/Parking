@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import Modal from 'react-bootstrap/Modal'
-import AdminLoginForm from '../Auth/AdminLoginForm';
-import UserLoginForm from '../Auth/UserLoginForm';
+import UserLoginForm from '../UserLoginForm';
+import AdminLoginForm from '../AdminLoginForm';
+
 
 
 const AuthModal: React.FC = () => {

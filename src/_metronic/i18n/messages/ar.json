@@ -136,5 +136,16 @@
   "BARRIER.BUTTON_CLOSE": "إغلاق الحاجز",
   "BARRIER.BUTTON_OPEN": "رفع الحاجز",
   "BARRIER.BUTTON_LOCK": " قفل الحاجز",
-  "BARRIER.BUTTON_UNLOCK": "فتح الحاجز"
+  "BARRIER.BUTTON_UNLOCK": "فتح الحاجز",
+
+  "--------------------------------------------": "Shift Page",
+
+  "SHIFT.CARD.USER_MANAGEMENT":"إدارة المستخدم",
+  "SHIFT.CARD.TO_GOAL":"إلى الهدف",
+
+  "SHIFT.TABLE.TITLE":"تفاصيل الصفقه",
+  "SHIFT.TABLE.HEADER.ARTICLE_ID":"العنصر ID",
+  "SHIFT.TABLE.HEADER.PRICE":"السعر",
+  "SHIFT.TABLE.HEADER.CARTE_TYPE":"نوع البطاقة",
+  "SHIFT.TABLE.HEADER.DURATION":"المدة"
 }
