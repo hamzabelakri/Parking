@@ -8,7 +8,7 @@ const ShiftPage: React.FC = () => {
 
   return (
     <>
-    <PageTitle breadcrumbs={[]}>{intl.formatMessage({id: 'MENU.SHIFT'})}</PageTitle>
+    {/* <PageTitle breadcrumbs={[]}>{intl.formatMessage({id: 'MENU.SHIFT'})}</PageTitle> */}
     <Shift />
   </>
   )

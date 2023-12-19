@@ -1,9 +1,15 @@
-import React from 'react'
+// import OrdersThisMonthCard from "./OrdersThisMonthCard/OrdersThisMonthCard"
 
-const Shift: React.FC = () => {
-  return (
-    <div>React.FC</div>
-  )
+import Card from "./Card"
+import ShiftReportTable from "./ShiftReportTable"
+
+const Shift = () => {
+    return (
+        <>
+            <Card />
+            <ShiftReportTable />
+        </>
+    )
 }
 
 export default Shift
