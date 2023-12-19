@@ -13,14 +13,14 @@ const BarrierSection: React.FC = () => {
   const renderIconRow = (icons: Icon[]) => (
     <div className='row'>
       {icons.map((icon: Icon, index: number) => (
-        <div key={index} className='col-md-6 my-2'>
+        <div key={index} className='col-md-6 my-1'>
           <label
-            className='btn  btn-outline btn-flex btn-active-color-primary btn-active-light-primary w-100 px-4 gap-2'
+            className='btn btn-outline btn-active-color-primary btn-active-light-primary border border-1 border-primary w-100 p-4'
             data-kt-button='true'
           >
-            <input className='btn-check' type='radio' name='method' defaultValue={0} />
+            
             <img src={icon.img} alt='' className='icon-img' />
-            <span className='fs-8 fw-bold d-block'>{intl.formatMessage({id: icon.title})}</span>
+            <span className='fs-8 fw-bold'>{intl.formatMessage({id: icon.title})}</span>
           </label>
         </div>
       ))}
@@ -29,9 +29,9 @@ const BarrierSection: React.FC = () => {
 
   return (
     <>
-      <div className='card mb-5'>
+      <div className='card mb-5 shadow-sm '>
         <div
-          className='d-flex flex-column gap-5 gap-xxl-0 px-2 py-2'
+          className='d-flex flex-column gap-xxl-0 px-4 py-4'
           data-kt-buttons='true'
           data-kt-buttons-target='[data-kt-button]'
         >

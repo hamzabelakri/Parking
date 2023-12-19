@@ -39,7 +39,7 @@ const LanguageSwitcher = () => {
               />
             </span>
           </div>
-          <div className='menu-sub menu-sub-dropdown w-175px py-4' data-kt-menu='true'>
+          <div className='menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-175px py-4' data-kt-menu='true'>
             {languages.map((l) => (
               <div
                 className='menu-item px-3'

@@ -1,5 +1,6 @@
 import React from 'react'
 import {useIntl} from 'react-intl'
+import CarTable from '../CarList/CarTable'
 
 const Search: React.FC = () => {
   const intl = useIntl()
@@ -34,11 +35,23 @@ const Search: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className='col-2  d-flex justify-content-end'>
+              <div
+                className='col-2  d-flex justify-content-end'
+                data-kt-button='true'
+                data-bs-toggle='modal'
+                data-bs-target='#kt_modal_1'
+              >
                 <button type='submit' className='btn btn-primary '>
                   {intl.formatMessage({id: 'SEARCH.BUTTON'})}
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+        <div className='modal fade" tabIndex={-1}' id='kt_modal_1'>
+          <div className='modal-dialog modal-dialog-centered mw-900px'>
+            <div className='modal-content'>
+              <CarTable />
             </div>
           </div>
         </div>

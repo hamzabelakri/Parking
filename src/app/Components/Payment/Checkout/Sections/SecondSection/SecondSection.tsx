@@ -8,19 +8,16 @@ const SecondSection: React.FC = () => {
 
   return (
     <>
-      <div className='card'>
+      <div className='card shadow-sm'>
         <div
-          className='d-flex flex-equal gap-5 gap-xxl-9 px-2 py-2'
+          className='d-flex flex-equal gap-4 px-4 py-4'
           data-kt-buttons='true'
           data-kt-buttons-target='[data-kt-button]'
         >
-          {ButtonsData.map((data, index:number) => (
+          {ButtonsData.map((data, index: number) => (
             <label
               key={index}
-              className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4'
-              data-kt-button='true'
-              data-bs-toggle='modal'
-              data-bs-target='#kt_modal_1'
+              className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-1 border-primary border-active-primary btn-active-light-primary w-100 px-4 py-2'
             >
               <input className='btn-check' type='radio' name='method' defaultValue={0} />
 
@@ -29,13 +26,6 @@ const SecondSection: React.FC = () => {
               <span className='fs-7 fw-bold d-block'>{intl.formatMessage({id: data.title})}</span>
             </label>
           ))}
-        </div>
-      </div>
-      <div className='modal fade" tabIndex={-1}' id='kt_modal_1'>
-        <div className='modal-dialog modal-dialog-centered mw-900px'>
-          <div className='modal-content'>
-            <CarTable />
-          </div>
         </div>
       </div>
     </>

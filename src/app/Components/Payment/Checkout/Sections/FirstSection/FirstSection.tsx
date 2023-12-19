@@ -16,23 +16,23 @@ const FirstSection: React.FC = () => {
 
   return (
     <>
-      <div className='card mb-5'>
+      <div className='card mb-5 shadow-sm'>
         <div
-          className='d-flex flex-equal gap-5 gap-xxl-9 px-2 py-2'
+          className='d-flex flex-equal  gap-xxl-4 px-4 py-4'
           data-kt-buttons='true'
           data-kt-buttons-target='[data-kt-button]'
         >
-          {ButtonsData.map((data, index:number) => (
+          {ButtonsData.map((data, index: number) => (
             <label
               key={index}
-              className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-3 border-gray-100 border-active-primary btn-active-light-primary w-100 px-4'
+              className='btn bg-light btn-color-gray-600 btn-active-light-primary border border-1 border-primary border-active-primary w-100 px-4 py-5'
               data-kt-button='true'
               onClick={handleButtonClick}
             >
-              <input className='btn-check' type='radio' name='method' defaultValue={index} />
+              <input className='btn-check svg-icon svg-icon-1"' type='radio' name='method' defaultValue={index} />
 
               {data.img}
-              <span className='fs-7 fw-bold d-block'>{intl.formatMessage({id: data.title})}</span>
+              <span className='fs-7 fw-bold d-block mt-2'>{intl.formatMessage({id: data.title})}</span>
             </label>
           ))}
         </div>
