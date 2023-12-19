@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import FirstSection from './Sections/FirstSection/FirstSection'
-import SecondSection from './Sections/SecondSection/SecondSection'
-import ItemsList from './Sections/ItemsList/ItemsList'
 import {useIntl} from 'react-intl'
+import ItemsList from './ItemsList/ItemsList'
+import Control_Buttons from './Control_Buttons/Control_Buttons'
+import Payment_Buttons from './Payment_Buttons/Payment_Buttons'
+
 
 type Props = {
   className: string
@@ -54,12 +55,12 @@ const Checkout: React.FC<Props> = ({className}) => {
         </div>
 
         <div className='m-0'>
-          <FirstSection />
+          <Control_Buttons />
 
           <h1 className='fw-bold text-gray-800 mb-5'>
             {intl.formatMessage({id: 'CHEKOUT.PAYMENT_METHOD'})}
           </h1>
-          <SecondSection />
+          <Payment_Buttons />
         </div>
       </div>
     </div>

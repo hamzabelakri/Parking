@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import BarrierSection from '../BarrierSection/BarrierSection'
 import {ButtonsData} from './ButtonsData'
 import {useIntl} from 'react-intl'
+import BarrierSection from './BarrierSection/BarrierSection'
 
-const FirstSection: React.FC = () => {
+const Control_Buttons: React.FC = () => {
   const [showBarrierSection, setShowBarrierSection] = useState(false)
 
   const handleButtonClick = (icon) => {
@@ -43,4 +43,4 @@ const FirstSection: React.FC = () => {
   )
 }
 
-export default FirstSection
+export default Control_Buttons

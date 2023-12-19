@@ -7,7 +7,7 @@ type Props = {
   className: string
 }
 
-const Form: React.FC<Props> = ({className}) => {
+const Transaction_Details: React.FC<Props> = ({className}) => {
   const intl = useIntl()
 
   return (
@@ -80,4 +80,4 @@ const Form: React.FC<Props> = ({className}) => {
   )
 }
 
-export default Form
+export default Transaction_Details

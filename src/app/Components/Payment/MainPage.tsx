@@ -1,7 +1,7 @@
+import First_Article_Buttons from './Transaction/Article_Buttons/First_Article_Buttons/First_Article_Buttons'
+import Second_Article_Buttons from './Transaction/Article_Buttons/Second_Article_Buttons/Second_Article_Buttons'
 import Checkout from './Checkout/Chekout'
-import First_set_buttons from './ControlButtons/First_set_buttons/First_set_buttons'
-import Second_set_buttons from './ControlButtons/Second_set_buttons/Second_set_buttons'
-import Form from './Form'
+import Transaction_Details from './Transaction/Transaction_Details'
 
 const MainPage: React.FC = () => {
   return (
@@ -9,9 +9,9 @@ const MainPage: React.FC = () => {
       <div className='row g-5 g-xl-8'>
         <div className='col-xl-8'>
           <div>
-            <Form className='card-xl-stretch mb-5 mb-xl-8' />
-            <First_set_buttons className='card-xl-stretch mb-5 mb-xl-8' />
-            <Second_set_buttons className='card-xl-stretch mb-5 mb-xl-8' />
+            <Transaction_Details className='card-xl-stretch mb-5 mb-xl-8' />
+            <First_Article_Buttons className='card-xl-stretch mb-5 mb-xl-8' />
+            <Second_Article_Buttons className='card-xl-stretch mb-5 mb-xl-8' />
           </div>
         </div>
         <div className='col-xl-4'>

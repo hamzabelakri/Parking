@@ -7,7 +7,7 @@ type Props = {
   className: string
 }
 
-const First_set_buttons: React.FC<Props> = ({className}) => {
+const Second_Article_Buttons: React.FC<Props> = ({className}) => {
   const intl = useIntl()
 
   return (
@@ -15,9 +15,9 @@ const First_set_buttons: React.FC<Props> = ({className}) => {
       <div className='card-body'>
         <div className='nav d-flex justify-content-between gap-3'>
           {buttonsData.map((button) => (
-            <div className='mb-3 me-0' key={button.id}>
+            <div className='mb-3 me-0'>
               <button
-                className=' btn btn-outline btn-flex flex-column flex-stack pt-9 pb-7  page-bg show rounded-4'
+                className=' btn btn-outline btn-flex btn-active-color-primary flex-column flex-stack pt-9 pb-7 page-bg show rounded-4 '
                 style={{width: 138, height: 150}}
               >
                 <div className='mb-3'>
@@ -25,9 +25,7 @@ const First_set_buttons: React.FC<Props> = ({className}) => {
                 </div>
 
                 <div className=''>
-                  <span className='text-gray-800 fw-bold fs-3 d-block'>
-                    {intl.formatMessage({id: button.title})}
-                  </span>
+                  <span className='text-gray-800 fw-bold fs-3 d-block'>{intl.formatMessage({ id: button.title })}</span>
                 </div>
               </button>
             </div>
@@ -38,4 +36,4 @@ const First_set_buttons: React.FC<Props> = ({className}) => {
   )
 }
 
-export default First_set_buttons
+export default Second_Article_Buttons

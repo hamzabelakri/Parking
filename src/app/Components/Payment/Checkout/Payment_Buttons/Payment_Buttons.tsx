@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
-import CarTable from '../../../../CarList/CarTable'
 import {ButtonsData} from './ButtonsData'
 import {useIntl} from 'react-intl'
 
-const SecondSection: React.FC = () => {
+const Payment_Buttons: React.FC = () => {
   const intl = useIntl()
 
   return (
@@ -32,4 +31,4 @@ const SecondSection: React.FC = () => {
   )
 }
 
-export default SecondSection
+export default Payment_Buttons
