@@ -1,5 +1,5 @@
-import Card from "./Card"
-import ShiftReportTable from "./ShiftReportTable"
+import Card from "./Shift_Card/Card"
+import ShiftReportTable from "./Shift_Report_Table/ShiftReportTable"
 
 const Shift = () => {
     return (
