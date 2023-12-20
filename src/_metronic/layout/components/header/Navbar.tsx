@@ -4,6 +4,7 @@ import {HeaderNotificationsMenu, HeaderUserMenu, Search, ThemeModeSwitcher} from
 import {useLayout} from '../../core'
 import {useLang} from '../../../i18n/Metronici18n'
 import {LanguageSwitcher} from '../../../partials/layout/language-drawer/LanguageSwitcher'
+import { useAuth } from '../../../../app/modules/auth'
 
 const itemClass = 'ms-1 ms-md-4'
 const btnClass =
@@ -13,7 +14,7 @@ const btnIconClass = 'fs-2'
 
 const Navbar = () => {
   const {config} = useLayout()
-
+  const {currentUser, logout} = useAuth()
   return (
     <div className='app-navbar flex-shrink-0'>
       <LanguageSwitcher />
@@ -53,20 +54,11 @@ const Navbar = () => {
           <i className='ki-outline ki-exit-right fs-1' />
         </a>
       </div> */}
-      <div className='app-navbar-item ms-2 ms-lg-6 '>
-        <img src='media/buttons//Pause-Shift.png' />
+      <div className='app-navbar-item ms-2 ms-lg-6' role="button">
+        <img src='media/buttons//Pause-Shift.svg' />
       </div>
-      <div className='app-navbar-item ms-2 ms-lg-6 '>
-        <img src='media/buttons//Close-Shift.png' />
-      </div>
-
-      <div className='app-navbar-item ms-2 ms-lg-6 ms-n2 me-3 d-flex d-lg-none'>
-        <div
-          className='btn btn-icon btn-custom btn-color-gray-600 btn-active-color-primary w-35px h-35px w-md-40px h-md-40px'
-          id='kt_app_aside_mobile_toggle'
-        >
-          <i className='ki-outline ki-burger-menu-2 fs-2' />
-        </div>
+      <div className='app-navbar-item ms-2 ms-lg-6' role="button" onClick={logout}>
+        <img src='media/buttons//Close-Shift.svg' />
       </div>
     </div>
   )

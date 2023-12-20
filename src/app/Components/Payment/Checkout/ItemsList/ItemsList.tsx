@@ -19,7 +19,7 @@ const ItemsList: React.FC = () => {
             <td className='pe-0'>
               <div className='d-flex align-items-center'>
                 <img
-                  src='media/buttons/Parker.png'
+                  src='media/buttons/Parker.svg'
                   className='w-50px h-50px rounded-3 me-3'
                   alt=''
                 />
@@ -48,7 +48,7 @@ const ItemsList: React.FC = () => {
             <td className='pe-0'>
               <div className='d-flex align-items-center'>
                 <img
-                  src='media/buttons/LostTicket.png'
+                  src='media/buttons/LostTicket.svg'
                   className='w-50px h-50px rounded-3 me-3'
                   alt=''
                 />

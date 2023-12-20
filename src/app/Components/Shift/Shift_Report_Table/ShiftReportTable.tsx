@@ -2,6 +2,15 @@ import {useEffect, useState} from 'react'
 import {useIntl} from 'react-intl'
 
 const ShiftReportTable: React.FC = () => {
+  
+  interface Item {
+    ArticleID: number
+    lpn: string
+    price: number
+    carteType: string
+    duration: string
+  }
+
   const [data, setData] = useState<Item[]>([])
 
   useEffect(() => {
@@ -18,18 +27,12 @@ const ShiftReportTable: React.FC = () => {
     }
   }
 
-  interface Item {
-    ArticleID: number
-    lpn: string
-    price: number
-    carteType: string
-    duration: string
-  }
   const intl = useIntl()
 
   return (
     <>
-      <div className='card'>
+      <div className='card mt-6'>
+      <div className='card my-7 mx-5'>
         <div className='card-header card-header-stretch border-bottom border-gray-200'>
           <div className='card-title'>
             <h3 className='fw-bold m-0'>{intl.formatMessage({id: 'SHIFT.TABLE.TITLE'})}</h3>
@@ -49,11 +52,19 @@ const ShiftReportTable: React.FC = () => {
               <table className='table table-row-bordered align-middle gy-4 gs-9'>
                 <thead className='border-bottom border-gray-200 fs-6 fw-bold bg-light bg-opacity-75'>
                   <tr>
-                    <td className=' min-w-150px'>{intl.formatMessage({id: 'SHIFT.TABLE.HEADER.ARTICLE_ID'})}</td>
+                    <td className=' min-w-150px'>
+                      {intl.formatMessage({id: 'SHIFT.TABLE.HEADER.ARTICLE_ID'})}
+                    </td>
                     <td className=' min-w-150px'>LPN</td>
-                    <td className=' min-w-150px'>{intl.formatMessage({id: 'SHIFT.TABLE.HEADER.PRICE'})}</td>
-                    <td className=' min-w-150px'>{intl.formatMessage({id: 'SHIFT.TABLE.HEADER.CARTE_TYPE'})}</td>
-                    <td className=' min-w-100px'>{intl.formatMessage({id: 'SHIFT.TABLE.HEADER.DURATION'})}</td>
+                    <td className=' min-w-150px'>
+                      {intl.formatMessage({id: 'SHIFT.TABLE.HEADER.PRICE'})}
+                    </td>
+                    <td className=' min-w-150px'>
+                      {intl.formatMessage({id: 'SHIFT.TABLE.HEADER.CARTE_TYPE'})}
+                    </td>
+                    <td className=' min-w-100px'>
+                      {intl.formatMessage({id: 'SHIFT.TABLE.HEADER.DURATION'})}
+                    </td>
                   </tr>
                 </thead>
                 <tbody className='fw-semibold text-gray-600'>
@@ -61,7 +72,7 @@ const ShiftReportTable: React.FC = () => {
                     <tr key={item.ArticleID}>
                       <td>{item.ArticleID}</td>
                       <td>{item.lpn}</td>
-                      <td style={{color: '#50CD89'}}>${item.price}</td>
+                      <td className='text-success'>${item.price}</td>
                       <td>{item.carteType}</td>
                       <td>{item.duration}</td>
                     </tr>
@@ -71,7 +82,7 @@ const ShiftReportTable: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div></div>
     </>
   )
 }

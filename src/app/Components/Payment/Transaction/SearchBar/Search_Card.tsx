@@ -1,6 +1,7 @@
 import React from 'react'
 import {useIntl} from 'react-intl'
 import CarTable from '../../../CarList/CarTable'
+import {Pick_Time_bar} from './Pick_Time_bar'
 
 const SearchBar: React.FC = () => {
   const intl = useIntl()
@@ -28,11 +29,7 @@ const SearchBar: React.FC = () => {
                   </label>
                 </div>
                 <div className='col-7'>
-                  <input
-                    type='password'
-                    className='form-control'
-                    placeholder='3/15 08:00 PM - 4/18 04:00 AM'
-                  />
+                  <Pick_Time_bar />
                 </div>
               </div>
               <div

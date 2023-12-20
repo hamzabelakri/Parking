@@ -5,7 +5,6 @@ import ItemsList from './ItemsList/ItemsList'
 import Control_Buttons from './Control_Buttons/Control_Buttons'
 import Payment_Buttons from './Payment_Buttons/Payment_Buttons'
 
-
 type Props = {
   className: string
 }

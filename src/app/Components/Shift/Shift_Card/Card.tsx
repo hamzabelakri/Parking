@@ -36,24 +36,24 @@ const mydata = [
   },
 ]
 
-const Card = () => {
+const Card: React.FC = () => {
   const intl = useIntl()
   return (
- 
-        <div className='d-flex flex-nowrap gap-10'>
-          {mydata.map((data, index) => (
-            <OrdersThisMonthCard
-              key={index}
-              price={data.price}
-              title={intl.formatMessage({id: 'SHIFT.CARD.USER_MANAGEMENT'})} 
-              progressBarTitle={data.progressBarTitle}
-              badgeValue={data.badgeValue}
-              progressBarValue={data.progressBarValue}
-              progressBarWidth={data.progressBarWidth}
-            />
-          ))}
-        </div>
-  
+    <div className='card'>
+      <div className='d-flex flex-nowrap gap-10 py-7 px-5'>
+        {mydata.map((data, index) => (
+          <OrdersThisMonthCard
+            key={index}
+            price={data.price}
+            title={intl.formatMessage({id: 'SHIFT.CARD.USER_MANAGEMENT'})}
+            progressBarTitle={data.progressBarTitle}
+            badgeValue={data.badgeValue}
+            progressBarValue={data.progressBarValue}
+            progressBarWidth={data.progressBarWidth}
+          />
+        ))}
+      </div>{' '}
+    </div>
   )
 }
 

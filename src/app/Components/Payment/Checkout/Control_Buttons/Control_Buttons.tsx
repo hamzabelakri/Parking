@@ -18,27 +18,30 @@ const Control_Buttons: React.FC = () => {
     <>
       <div className='card mb-5 shadow-sm'>
         <div
-          className='d-flex flex-equal  gap-xxl-4 px-4 py-4'
+          className='d-flex flex-equal gap-4 px-4 py-4'
           data-kt-buttons='true'
           data-kt-buttons-target='[data-kt-button]'
         >
           {ButtonsData.map((data, index: number) => (
             <label
               key={index}
-              className='btn bg-light btn-color-gray-600 btn-active-light-primary border border-1 border-primary border-active-primary w-100 px-4 py-5'
-              data-kt-button='true'
+              data-bs-target='#kt_accordion_1_body_1'
+              data-bs-toggle='collapse'
+              className='btn bg-light btn-color-gray-600 btn-active-light-primary border border-1 border-primary border-active-primary  w-100 px-4 py-5 '
               onClick={handleButtonClick}
             >
-              <input className='btn-check svg-icon svg-icon-1"' type='radio' name='method' defaultValue={index} />
+              <input className='btn-check' type='radio' name='method' defaultValue={0} />
 
-              {data.img}
-              <span className='fs-7 fw-bold d-block mt-2'>{intl.formatMessage({id: data.title})}</span>
+              <img src={data.img} />
+
+              <span className='fs-7 fw-bold d-block'>{intl.formatMessage({id: data.title})}</span>
             </label>
           ))}
         </div>
       </div>
-
-      {showBarrierSection && <BarrierSection />}
+      <div id='kt_accordion_1_body_1' className='accordion-collapse collapse'>
+        <BarrierSection />
+      </div>
     </>
   )
 }

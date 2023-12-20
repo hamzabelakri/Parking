@@ -49,24 +49,24 @@ export function HeaderWrapper() {
 
       {!(config.layoutType === 'dark-sidebar' || config.layoutType === 'light-sidebar') && (
           <div className='d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15'>
-            <Link to='/dashboard'>
+            <Link to='/payment'>
               {config.layoutType !== 'dark-header' ? (
                 <img
                   alt='Logo'
-                  src={toAbsoluteUrl('/media/logos/default.svg')}
-                  className='h-20px h-lg-30px app-sidebar-logo-default'
+                  src={toAbsoluteUrl('/media/logos/logo.svg')}
+                  className='h-20px h-lg-20px app-sidebar-logo-default'
                 />
               ) : (
                 <>
                   <img
                     alt='Logo'
-                    src={toAbsoluteUrl('/media/logos/default-dark.svg')}
-                    className='h-20px h-lg-30px app-sidebar-logo-default theme-light-show'
+                    src={toAbsoluteUrl('/media/logos/logo.svg')}
+                    className='h-20px h-lg-20px app-sidebar-logo-default theme-light-show'
                   />
                   <img
                     alt='Logo'
-                    src={toAbsoluteUrl('/media/logos/default-small-dark.svg')}
-                    className='h-20px h-lg-30px app-sidebar-logo-default theme-dark-show'
+                    src={toAbsoluteUrl('/media/logos/logo.svg')}
+                    className='h-20px h-lg-20px app-sidebar-logo-default theme-dark-show'
                   />
                 </>
               )}

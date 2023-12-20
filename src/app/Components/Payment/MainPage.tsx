@@ -4,6 +4,7 @@ import Checkout from './Checkout/Chekout'
 import Transaction_Details from './Transaction/Transaction_Details'
 
 const MainPage: React.FC = () => {
+  
   return (
     <>
       <div className='row g-5 g-xl-8'>
