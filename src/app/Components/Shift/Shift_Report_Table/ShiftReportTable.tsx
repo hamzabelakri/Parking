@@ -2,7 +2,6 @@ import {useEffect, useState} from 'react'
 import {useIntl} from 'react-intl'
 
 const ShiftReportTable: React.FC = () => {
-  
   interface Item {
     ArticleID: number
     lpn: string
@@ -30,9 +29,8 @@ const ShiftReportTable: React.FC = () => {
   const intl = useIntl()
 
   return (
-    <>
-      <div className='card mt-6'>
-      <div className='card my-7 mx-5'>
+    <div className='card-body'>
+      <div className='card'>
         <div className='card-header card-header-stretch border-bottom border-gray-200'>
           <div className='card-title'>
             <h3 className='fw-bold m-0'>{intl.formatMessage({id: 'SHIFT.TABLE.TITLE'})}</h3>
@@ -82,8 +80,8 @@ const ShiftReportTable: React.FC = () => {
             </div>
           </div>
         </div>
-      </div></div>
-    </>
+      </div>
+    </div>
   )
 }
 

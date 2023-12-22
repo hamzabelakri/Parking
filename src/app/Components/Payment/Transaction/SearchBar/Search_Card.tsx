@@ -3,7 +3,7 @@ import {useIntl} from 'react-intl'
 import CarTable from '../../../CarList/CarTable'
 import {Pick_Time_bar} from './Pick_Time_bar'
 
-const SearchBar: React.FC = () => {
+const Search_Card: React.FC = () => {
   const intl = useIntl()
 
   return (
@@ -57,4 +57,4 @@ const SearchBar: React.FC = () => {
   )
 }
 
-export default SearchBar
+export default Search_Card
