@@ -40,18 +40,35 @@ async def send_message(message: str):
         image_data = base64.b64encode(image_file.read()).decode("utf-8")
 
     data_to_send = {
-        'image':f"data:image/jpeg;base64,{image_data}",
         'ticket_data':{
            "epan":"text",
            "licence_plate":"plate",
            "entry_time":"datetime",
            "card_type":"card_type",
-           "duration_stay":"duration" 
+           "duration_stay":"duration",
+           "image":f"data:image/jpeg;base64,{image_data}",
+        },
+        'articles_data':{
+           "article_1":{
+               "name":"Short Term Parker", 
+               "price":66.00
+               },
+           "article_2":{
+               "name":"Lost Ticket", 
+               "price":100.00
+               },
+           "transaction_bill":{
+               "subtotal":"100.50",
+               "discounts":"8.00",
+               "tax":"11.20",
+               "total":"93.46",
+           }    
+           
         },
     }
     await manager.send_message(json.dumps(data_to_send))
     #await manager.send_message(f"data:image/jpeg;base64,{image_data}")
-    print("Image sent")
-    return {"message_sent": message}
+    print("data sent")
+    return {"message_sent": data_to_send}
 
 

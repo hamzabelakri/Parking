@@ -1,9 +1,12 @@
-import React from 'react';
-import { useIntl } from 'react-intl';
+import React from 'react'
+import {useIntl} from 'react-intl'
 
-const Transaction_Table = ({ transaction_Data }) => {
-  const intl = useIntl();
-  const { epan, licence_plate, card_type, entry_time, duration_stay } = transaction_Data?.ticket_data || {};
+type Props = {
+  data
+}
+const Transaction_Table: React.FC<Props> = ({data}) => {
+  const intl = useIntl()
+  const {epan, licence_plate, card_type, entry_time, duration_stay} = data?.ticket_data || {}
 
   return (
     <div className='mb-0'>
@@ -12,54 +15,54 @@ const Transaction_Table = ({ transaction_Data }) => {
           <label className='form-label fs-6 fw-bold text-gray-700'>EPAN</label>
 
           <div className='mb-5'>
-            <input type='text' className='form-control' placeholder={epan} />
+            <input type='text' className='form-control' placeholder={epan} readOnly />
           </div>
         </div>
       </div>
       <div className='row gx-10'>
         <div className='col-lg-6'>
           <label className='form-label fs-6 fw-bold text-gray-700'>
-            {intl.formatMessage({ id: 'INPUT.LICENCEPLATE' })}
+            {intl.formatMessage({id: 'INPUT.LICENCEPLATE'})}
           </label>
 
           <div className='mb-5'>
-            <input type='text' className='form-control' placeholder={licence_plate} />
+            <input type='text' className='form-control' placeholder={licence_plate} readOnly />
           </div>
         </div>
 
         <div className='col-lg-6'>
           <label className='form-label fs-6 fw-bold text-gray-700'>
-            {intl.formatMessage({ id: 'INPUT.CARDTYPE' })}
+            {intl.formatMessage({id: 'INPUT.CARDTYPE'})}
           </label>
 
           <div className='mb-5'>
-            <input type='text' className='form-control' placeholder={card_type} />
+            <input type='text' className='form-control' placeholder={card_type} readOnly />
           </div>
         </div>
       </div>
       <div className='row gx-10'>
         <div className='col-lg-6'>
           <label className='form-label fs-6 fw-bold text-gray-700'>
-            {intl.formatMessage({ id: 'INPUT.ENTRYTIME' })}
+            {intl.formatMessage({id: 'INPUT.ENTRYTIME'})}
           </label>
 
           <div className='mb-5'>
-            <input type='text' className='form-control' placeholder={entry_time} />
+            <input type='text' className='form-control' placeholder={entry_time} readOnly />
           </div>
         </div>
 
         <div className='col-lg-6'>
           <label className='form-label fs-6 fw-bold text-gray-700'>
-            {intl.formatMessage({ id: 'INPUT.DURATIONSTAY' })}
+            {intl.formatMessage({id: 'INPUT.DURATIONSTAY'})}
           </label>
 
           <div className='mb-5'>
-            <input type='text' className='form-control' placeholder={duration_stay} />
+            <input type='text' className='form-control' placeholder={duration_stay} readOnly />
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Transaction_Table;
+export default Transaction_Table

@@ -7,9 +7,16 @@ import Payment_Buttons from './Payment_Buttons/Payment_Buttons'
 
 type Props = {
   className: string
+  data
 }
 
-const Checkout: React.FC<Props> = ({className}) => {
+const Checkout: React.FC<Props> = ({className, data}) => {
+  const {
+    subtotal = 0,
+    discounts = 0,
+    tax = 0,
+    total = 0,
+  } = data?.articles_data?.transaction_bill || {}
   const intl = useIntl()
   return (
     <div className={`card card-flush ${className}`}>
@@ -26,7 +33,7 @@ const Checkout: React.FC<Props> = ({className}) => {
       </div>
 
       <div className='card-body pt-0'>
-        <ItemsList />
+        <ItemsList data={data} />
         <div className='d-flex flex-stack bg-success rounded-3 p-6 mb-6'>
           <div className='fs-6 fw-bold text-white'>
             <span className='d-block lh-1 mb-2'>
@@ -39,16 +46,16 @@ const Checkout: React.FC<Props> = ({className}) => {
 
           <div className='fs-6 fw-bold text-white text-end'>
             <span className='d-block lh-1 mb-2' data-kt-pos-element='total'>
-              $100.50
+              ${subtotal}
             </span>
             <span className='d-block mb-2' data-kt-pos-element='discount'>
-              -$8.00
+              -${discounts}
             </span>
             <span className='d-block mb-9' data-kt-pos-element='tax'>
-              $11.20
+              ${tax}
             </span>
             <span className='d-block fs-2qx lh-1' data-kt-pos-element='grant-total'>
-              $93.46
+              ${total}
             </span>
           </div>
         </div>

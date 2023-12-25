@@ -1,7 +1,13 @@
 import React from 'react'
-import { useIntl } from 'react-intl'
+import {useIntl} from 'react-intl'
 
-const ItemsList: React.FC = () => {
+type Props = {
+  data
+}
+const ItemsList: React.FC<Props> = ({data}) => {
+  const article_1 = data?.articles_data?.article_1 || {}
+  const article_2 = data?.articles_data?.article_2 || {}
+
   const intl = useIntl()
   return (
     <div className='table-responsive mb-2'>
@@ -24,7 +30,7 @@ const ItemsList: React.FC = () => {
                   alt=''
                 />
                 <span className='fw-bold text-gray-800 cursor-pointer text-hover-primary fs-6 me-1'>
-                {intl.formatMessage({id: 'CHEKOUT.SHORT_TERM_PARKER'})}
+                {article_1.name || ''}
                 </span>
               </div>
             </td>
@@ -40,7 +46,7 @@ const ItemsList: React.FC = () => {
             </td>
             <td className='text-end'>
               <span className='fw-bold text-primary fs-2' data-kt-pos-element='item-total'>
-                $66.00
+                ${article_1.price || '0'}
               </span>
             </td>
           </tr>
@@ -53,7 +59,7 @@ const ItemsList: React.FC = () => {
                   alt=''
                 />
                 <span className='fw-bold text-gray-800 cursor-pointer text-hover-primary fs-6 me-1'>
-                {intl.formatMessage({id: 'CHEKOUT.LOST_TICKET'})}
+                {article_2.name || ''}
                 </span>
               </div>
             </td>
@@ -69,7 +75,7 @@ const ItemsList: React.FC = () => {
             </td>
             <td className='text-end'>
               <span className='fw-bold text-primary fs-2' data-kt-pos-element='item-total'>
-                $100.00
+                ${article_2.price || '0'}
               </span>
             </td>
           </tr>
