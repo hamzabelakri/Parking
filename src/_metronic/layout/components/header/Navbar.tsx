@@ -4,17 +4,16 @@ import {HeaderNotificationsMenu, HeaderUserMenu, Search, ThemeModeSwitcher} from
 import {useLayout} from '../../core'
 import {useLang} from '../../../i18n/Metronici18n'
 import {LanguageSwitcher} from '../../../partials/layout/language-drawer/LanguageSwitcher'
-import { useAuth } from '../../../../app/modules/auth'
+import {useAuth} from '../../../../app/modules/auth'
+import AuthButtons from '../../../partials/layout/shift-auth/AuthButtons'
 
 const itemClass = 'ms-1 ms-md-4'
-const btnClass =
-  'btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px'
 const userAvatarClass = 'symbol-35px'
 const btnIconClass = 'fs-2'
 
 const Navbar = () => {
   const {config} = useLayout()
-  const {currentUser, logout} = useAuth()
+
   return (
     <div className='app-navbar flex-shrink-0'>
       <LanguageSwitcher />
@@ -35,31 +34,7 @@ const Navbar = () => {
         <HeaderUserMenu />
       </div>
 
-      {config.app?.header?.default?.menu?.display && (
-        <div className='app-navbar-item d-lg-none ms-2 me-n3' title='Show header menu'>
-          <div
-            className='btn btn-icon btn-active-color-primary w-35px h-35px'
-            id='kt_app_header_menu_toggle'
-          >
-            <KTIcon iconName='text-align-left' className={btnIconClass} />
-          </div>
-        </div>
-      )}
-
-      {/*   <div className='app-navbar-item ms-2 ms-lg-6 '>
-        <a
-          href='../../demo39/dist/authentication/layouts/corporate/sign-in.html'
-          className='btn btn-icon btn-custom btn-color-gray-600 btn-active-color-primary w-35px h-35px w-md-40px h-md-40px'
-        >
-          <i className='ki-outline ki-exit-right fs-1' />
-        </a>
-      </div> */}
-      <div className='app-navbar-item ms-2 ms-lg-6' role="button">
-        <img src='media/buttons//Pause-Shift.svg' />
-      </div>
-      <div className='app-navbar-item ms-2 ms-lg-6' role="button" onClick={logout}>
-        <img src='media/buttons//Close-Shift.svg' />
-      </div>
+      <AuthButtons />
     </div>
   )
 }

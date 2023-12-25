@@ -12,7 +12,7 @@ const LanguageSwitcher = () => {
     {
       lang: 'ar',
       name: 'Arabic',
-      flag: toAbsoluteUrl('/media/flags/saudi-arabia.svg'),
+      flag: toAbsoluteUrl('/media/flags/kuwait.svg'),
     },
     {
       lang: 'pk',

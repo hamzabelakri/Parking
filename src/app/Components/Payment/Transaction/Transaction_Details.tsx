@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import {useIntl} from 'react-intl'
 import Transaction_Table from './Transaction_Table/Transaction_Table'
 import SearchBar from './SearchBar/Search_Card'
@@ -11,31 +11,46 @@ type Props = {
 
 const Transaction_Details: React.FC<Props> = ({className}) => {
   const intl = useIntl()
-  const [imageData, setImageData] = useState('')
+  const [image_Data, setImage_Data] = useState('')
+  const [transaction_Data, setTransaction_Data] = useState(null);
+
 
   useEffect(() => {
-    const ws = new WebSocket('ws://127.0.0.1:8000/ws');
+    const ws = new WebSocket('ws://127.0.0.1:8000/ws')
+
+    ws.onopen = () => {
+      console.log('WebSocket connection opened')
+    }
+
     ws.onmessage = (event) => {
       const data = event.data
-    
-      if (data.startsWith('data:image')) {
-        setImageData(data)
-      } else {
-        
-        console.log(`Received message: ${data}`)
-      }
+      const parsed_data = JSON.parse(data)
+
+      setImage_Data(parsed_data.image)
+      setTransaction_Data(parsed_data);
+
+      console.log('Received Data', parsed_data)
     }
-  }, [imageData])
+
+    ws.onclose = (event) => {
+      console.log('WebSocket connection closed:', event.reason)
+    }
+
+   
+    return () => {
+      ws.close()
+    }
+  }, [])
 
   const backgroundImageStyle = {
     backgroundSize: '100% 100%',
-    backgroundImage: imageData ? `url("${imageData}")` : '',
-  };
+    backgroundImage: image_Data ? `url("${image_Data}")` : '',
+  }
 
   return (
     <div className={`card ${className}`}>
       <div className='card-body'>
-      <div className='container'>
+        <div className='container'>
           <div className='row'>
             <div className='col'>
               {/* <img
@@ -49,11 +64,13 @@ const Transaction_Details: React.FC<Props> = ({className}) => {
               />
             </div>
             <div className='col-7'>
-              <Transaction_Table />
+              <Transaction_Table transaction_Data={transaction_Data}/>
             </div>
           </div>
           <div className='separator separator mt-8'></div>
-          <div className='mb-4 mt-6'><Search_Card/></div>
+          <div className='mb-4 mt-6'>
+            <Search_Card />
+          </div>
         </div>
       </div>
     </div>
