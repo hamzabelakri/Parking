@@ -1,8 +1,7 @@
-from typing import Union
 from fastapi import FastAPI
 from routes.route import router
-from routes.websocket import router
-from routes.img import router
+from routes.websocket_connection import router
+from routes.transaction_routes import router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()

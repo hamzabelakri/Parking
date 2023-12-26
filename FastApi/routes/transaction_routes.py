@@ -1,27 +1,10 @@
 import json
 from fastapi import APIRouter, WebSocket,WebSocketDisconnect
+from routes.websocket_connection import manager
 import base64
-from time import sleep
-from datetime import datetime
+from models.transaction_models import body_update_transaction_data_gui
 
 router=APIRouter()
-
-class ConnectionManager:
-    def __init__(self):
-        self.active_connections = []
-
-    async def connect(self, websocket: WebSocket):
-        await websocket.accept()
-        self.active_connections.append(websocket)
-
-    def disconnect(self, websocket: WebSocket):
-        self.active_connections.remove(websocket)
-
-    async def send_message(self, message: str):
-        for connection in self.active_connections:
-            await connection.send_text(message)
-
-manager = ConnectionManager()
 
 @router.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
@@ -34,7 +17,15 @@ async def websocket_endpoint(websocket: WebSocket):
     except WebSocketDisconnect:
         manager.disconnect(websocket)
 
-@router.get("/get_transaction_data/{message}")
+
+@router.post("/update_transaction_data_gui")
+async def update_transaction_data_gui(body: body_update_transaction_data_gui):
+    print(type(body.model_dump_json()))
+    await manager.send_message(body.model_dump_json())
+    return body
+
+
+'''@router.get("/get_transaction_data/{message}")
 async def send_message(message: str):
     with open(message, "rb") as image_file:
         image_data = base64.b64encode(image_file.read()).decode("utf-8")
@@ -66,9 +57,8 @@ async def send_message(message: str):
            
         },
     }
+    
     await manager.send_message(json.dumps(data_to_send))
     #await manager.send_message(f"data:image/jpeg;base64,{image_data}")
     print("data sent")
-    return {"message_sent": data_to_send}
-
-
+    return {"message_sent": data_to_send}'''

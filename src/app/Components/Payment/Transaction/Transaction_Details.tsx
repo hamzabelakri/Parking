@@ -15,7 +15,16 @@ const Transaction_Details: React.FC<Props> = ({className, data}) => {
     backgroundSize: '100% 100%',
     backgroundImage: image ? `url("${image}")` : `url('media/svg/files/blank-image.svg')`,
   }
+useEffect(() => {
+    if (image) {
+      const img = new Image();
+      img.src = image;
 
+      img.onload = () => {
+        console.log('Image size:', img.width, 'x', img.height);
+      };
+    }
+  }, [image]);
   return (
     <div className={`card ${className}`}>
       <div className='card-body'>

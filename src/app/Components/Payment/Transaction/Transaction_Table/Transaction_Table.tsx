@@ -15,7 +15,7 @@ const Transaction_Table: React.FC<Props> = ({data}) => {
           <label className='form-label fs-6 fw-bold text-gray-700'>EPAN</label>
 
           <div className='mb-5'>
-            <input type='text' className='form-control' placeholder={epan} readOnly />
+            <input type='text' className='form-control' value={epan} readOnly />
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@ const Transaction_Table: React.FC<Props> = ({data}) => {
           </label>
 
           <div className='mb-5'>
-            <input type='text' className='form-control' placeholder={licence_plate} readOnly />
+            <input type='text' className='form-control' value={licence_plate} readOnly />
           </div>
         </div>
 
@@ -36,7 +36,7 @@ const Transaction_Table: React.FC<Props> = ({data}) => {
           </label>
 
           <div className='mb-5'>
-            <input type='text' className='form-control' placeholder={card_type} readOnly />
+            <input type='text' className='form-control' value={card_type} readOnly />
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@ const Transaction_Table: React.FC<Props> = ({data}) => {
           </label>
 
           <div className='mb-5'>
-            <input type='text' className='form-control' placeholder={entry_time} readOnly />
+            <input type='text' className='form-control' value={entry_time} readOnly />
           </div>
         </div>
 
@@ -57,7 +57,7 @@ const Transaction_Table: React.FC<Props> = ({data}) => {
           </label>
 
           <div className='mb-5'>
-            <input type='text' className='form-control' placeholder={duration_stay} readOnly />
+            <input type='text' className='form-control' value={duration_stay} readOnly />
           </div>
         </div>
       </div>
