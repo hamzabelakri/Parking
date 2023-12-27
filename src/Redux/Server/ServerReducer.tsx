@@ -1,7 +1,7 @@
 import {GET_ALL_DATA, GET_ONE_SERVER, GET_SAVED_DATA, POST_ALL_DATA, SELECT_SERVER} from './Types'
 
 const initState = {data: [], selectedServer: null}
-const ServerReducer = (state = initState, action) => {
+const Server_Reducer = (state = initState, action) => {
   switch (action.type) {
     case GET_ALL_DATA:
       return {...state, data: action.payload}
@@ -18,4 +18,4 @@ const ServerReducer = (state = initState, action) => {
   }
 }
 
-export default ServerReducer
+export default Server_Reducer

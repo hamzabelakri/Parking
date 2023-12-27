@@ -2,13 +2,13 @@ import React, {useState} from 'react'
 import {ButtonsData} from './ButtonsData'
 import {useIntl} from 'react-intl'
 import BarrierSection from './BarrierSection/BarrierSection'
+import { useSelector } from 'react-redux'
 
-type Props = {
-  inkStatus
-}
-const Control_Buttons: React.FC<Props> = ({inkStatus}) => {
+const Control_Buttons: React.FC = () => {
   const [showBarrierSection, setShowBarrierSection] = useState(false)
-
+  const {ink_status} = useSelector((state: any) => state.Websocket_Reducers)
+  console.log("checkou",ink_status)
+  const status=ink_status?.ink_status
   const handleButtonClick = (icon) => {
     if (icon.title === 'Barrier') {
     }
@@ -16,7 +16,7 @@ const Control_Buttons: React.FC<Props> = ({inkStatus}) => {
     setShowBarrierSection(icon)
   }
   const intl = useIntl()
-  const dynamicButtonsData = ButtonsData(inkStatus);
+  const dynamicButtonsData = ButtonsData(status);
 
 
   return (

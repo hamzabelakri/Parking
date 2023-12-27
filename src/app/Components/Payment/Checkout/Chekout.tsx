@@ -4,14 +4,14 @@ import {useIntl} from 'react-intl'
 import ItemsList from './ItemsList/ItemsList'
 import Control_Buttons from './Control_Buttons/Control_Buttons'
 import Payment_Buttons from './Payment_Buttons/Payment_Buttons'
+import { useSelector } from 'react-redux'
 
 type Props = {
   className: string
-  data,
-  inkStatus
 }
 
-const Checkout: React.FC<Props> = ({className, data,inkStatus}) => {
+const Checkout: React.FC<Props> = ({className}) => {
+  const {data} = useSelector((state: any) => state.Websocket_Reducers)
   const {
     subtotal = 0,
     discounts = 0,
@@ -34,7 +34,7 @@ const Checkout: React.FC<Props> = ({className, data,inkStatus}) => {
       </div>
 
       <div className='card-body pt-0'>
-        <ItemsList data={data} />
+        <ItemsList />
         <div className='d-flex flex-stack bg-success rounded-3 p-6 mb-6'>
           <div className='fs-6 fw-bold text-white'>
             <span className='d-block lh-1 mb-2'>
@@ -62,7 +62,7 @@ const Checkout: React.FC<Props> = ({className, data,inkStatus}) => {
         </div>
 
         <div className='m-0'>
-          <Control_Buttons inkStatus={inkStatus} />
+          <Control_Buttons/>
 
           <h1 className='fw-bold text-gray-800 mb-5'>
             {intl.formatMessage({id: 'CHEKOUT.PAYMENT_METHOD'})}

@@ -1,11 +1,11 @@
-export const ButtonsData = (inkStatus: string) => [
+export const ButtonsData = (status) => [
   {
     title: 'CHEKOUT.BARRIER.BUTTON',
     img: 'media/buttons/Barrier.svg',
   },
   {
-    title: inkStatus === 'out' ? 'NO INK' : 'CHEKOUT.PRINT.BUTTON',
-    img: inkStatus === 'out' ? 'media/buttons/FreeRate.svg' : 'media/buttons/Print.svg',
+    title: status === 'ink_out' ? 'NO INK' : 'CHEKOUT.PRINT.BUTTON',
+    img: status === 'ink_out' ? 'media/buttons/FreeRate.svg' : 'media/buttons/Print.svg',
   },
   {
     title: 'CHEKOUT.RECEIPT.BUTTON',

@@ -3,28 +3,28 @@ import React, {useEffect, useState} from 'react'
 import {useIntl} from 'react-intl'
 import Transaction_Table from './Transaction_Table/Transaction_Table'
 import Search_Card from './SearchBar/Search_Card'
+import {useSelector} from 'react-redux'
 
 type Props = {
   className: string
-  data
 }
-
-const Transaction_Details: React.FC<Props> = ({className, data}) => {
+const Transaction_Details: React.FC<Props> = ({className}) => {
+  const {data} = useSelector((state: any) => state.Websocket_Reducers)
   const image = data?.ticket_data?.image
   const backgroundImageStyle = {
     backgroundSize: '100% 100%',
     backgroundImage: image ? `url("${image}")` : `url('media/svg/files/blank-image.svg')`,
   }
-useEffect(() => {
+/*   useEffect(() => {
     if (image) {
-      const img = new Image();
-      img.src = image;
+      const img = new Image()
+      img.src = image
 
       img.onload = () => {
-        console.log('Image size:', img.width, 'x', img.height);
-      };
+        console.log('Image size:', img.width, 'x', img.height)
+      }
     }
-  }, [image]);
+  }, [image]) */
   return (
     <div className={`card ${className}`}>
       <div className='card-body'>
@@ -42,7 +42,7 @@ useEffect(() => {
               />
             </div>
             <div className='col-7'>
-              <Transaction_Table data={data}/>
+              <Transaction_Table />
             </div>
           </div>
           <div className='separator separator mt-8'></div>

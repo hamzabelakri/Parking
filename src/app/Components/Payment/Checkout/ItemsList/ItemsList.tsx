@@ -1,10 +1,9 @@
 import React from 'react'
 import {useIntl} from 'react-intl'
+import { useSelector } from 'react-redux'
 
-type Props = {
-  data
-}
-const ItemsList: React.FC<Props> = ({data}) => {
+const ItemsList: React.FC = () => {
+  const {data} = useSelector((state: any) => state.Websocket_Reducers)
   const article_1 = data?.articles_data?.article_1 || {}
   const article_2 = data?.articles_data?.article_2 || {}
 

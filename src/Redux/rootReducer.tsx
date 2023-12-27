@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux'
-import ServerReducer from './Server/ServerReducer'
-import webSocketReducer from './WebSocket/Websocket_Reducers'
+import Websocket_Reducers from './WebSocket/Websocket_Reducers'
+import Server_Reducer from './Server/ServerReducer'
 
 const rootReducer = combineReducers({
-  ServerReducer: ServerReducer,
-  webSocketReducer:webSocketReducer
+  Server_Reducer: Server_Reducer,
+  Websocket_Reducers: Websocket_Reducers
 })
 
 export default rootReducer

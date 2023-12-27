@@ -1,19 +1,16 @@
 import React from 'react'
 import {useIntl} from 'react-intl'
+import {useSelector} from 'react-redux'
 
-type Props = {
-  data
-}
-const Transaction_Table: React.FC<Props> = ({data}) => {
-  const intl = useIntl()
+const Transaction_Table: React.FC = () => {
+  const {data} = useSelector((state: any) => state.Websocket_Reducers)
   const {epan, licence_plate, card_type, entry_time, duration_stay} = data?.ticket_data || {}
-
+  const intl = useIntl()
   return (
     <div className='mb-0'>
       <div className='row gx-10'>
         <div className='col-lg-12'>
           <label className='form-label fs-6 fw-bold text-gray-700'>EPAN</label>
-
           <div className='mb-5'>
             <input type='text' className='form-control' value={epan} readOnly />
           </div>

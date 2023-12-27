@@ -4,69 +4,15 @@ import Checkout from './Checkout/Chekout'
 import Transaction_Details from './Transaction/Transaction_Details'
 import {useEffect, useState} from 'react'
 import {toast, Toaster} from 'react-hot-toast'
+import {useDispatch} from 'react-redux'
+import {openWebSocket} from '../../../Redux/WebSocket/WebSocket_Actions'
 
 const MainPage: React.FC = () => {
   const [transaction_Data, setTransaction_Data] = useState(null)
   const [inkStatus, setInkStatus] = useState('filled')
-
-  const handleWebSocket = () => {
-    let ws = new WebSocket('ws://127.0.0.1:8000/ws')
-
-    ws.onopen = () => {
-      console.log('WebSocket connection opened')
-    }
-
-    ws.onmessage = (event) => {
-      const data = event.data
-      const parsed_data = JSON.parse(data);
-      if (parsed_data["ink_status"]) {
-    
-        setInkStatus("out")
-      } 
-      if (parsed_data["ticket_data"])  {
-        
-        setTransaction_Data(parsed_data);
-      }
-    }
-
-    ws.onclose = (event) => {
-      console.log('WebSocket connection closed:', event.reason)
-      toast.promise(
-        new Promise((resolve, reject) => {
-          setTimeout(() => {
-            handleReconnect(resolve, reject)
-          }, 5000)
-        }),
-        {
-          loading: 'WebSocket connection lost. Reconnecting...',
-          success: 'WebSocket connection restored',
-          error: 'Failed to reconnect to WebSocket',
-        }
-      )
-    }
-
-    const handleReconnect = (resolve, reject) => {
-      ws = new WebSocket('ws://127.0.0.1:8000/ws')
-      ws.onopen = () => {
-        console.log('WebSocket reconnection successful')
-
-        resolve()
-      }
-      ws.onclose = (event) => {
-        console.log('WebSocket reconnection failed:', event.reason)
-
-        reject()
-      }
-      handleWebSocket()
-    }
-
-    return () => {
-      ws.close()
-    }
-  }
-
+  const dispatch = useDispatch()
   useEffect(() => {
-    handleWebSocket()
+    dispatch(openWebSocket())
   }, [])
 
   return (
@@ -75,13 +21,13 @@ const MainPage: React.FC = () => {
         <Toaster position='top-center' reverseOrder={false} />
         <div className='col-xl-8'>
           <div>
-            <Transaction_Details data={transaction_Data} className='card-xl-stretch mb-5 mb-xl-8' />
+            <Transaction_Details className='card-xl-stretch mb-5 mb-xl-8' />
             <First_Article_Buttons className='card-xl-stretch mb-5 mb-xl-8' />
             <Second_Article_Buttons className='card-xl-stretch mb-5 mb-xl-8' />
           </div>
         </div>
         <div className='col-xl-4'>
-          <Checkout data={transaction_Data} inkStatus={inkStatus} className='card-xl-stretch mb-xl-8' />
+          <Checkout className='card-xl-stretch mb-xl-8' />
         </div>
       </div>
     </>
