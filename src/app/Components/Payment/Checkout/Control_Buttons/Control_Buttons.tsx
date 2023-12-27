@@ -3,7 +3,10 @@ import {ButtonsData} from './ButtonsData'
 import {useIntl} from 'react-intl'
 import BarrierSection from './BarrierSection/BarrierSection'
 
-const Control_Buttons: React.FC = () => {
+type Props = {
+  inkStatus
+}
+const Control_Buttons: React.FC<Props> = ({inkStatus}) => {
   const [showBarrierSection, setShowBarrierSection] = useState(false)
 
   const handleButtonClick = (icon) => {
@@ -13,6 +16,8 @@ const Control_Buttons: React.FC = () => {
     setShowBarrierSection(icon)
   }
   const intl = useIntl()
+  const dynamicButtonsData = ButtonsData(inkStatus);
+
 
   return (
     <>
@@ -22,7 +27,7 @@ const Control_Buttons: React.FC = () => {
           data-kt-buttons='true'
           data-kt-buttons-target='[data-kt-button]'
         >
-          {ButtonsData.map((data, index: number) => (
+          {dynamicButtonsData.map((data, index: number) => (
             <label
               key={index}
               data-bs-target='#kt_accordion_1_body_1'
@@ -32,7 +37,7 @@ const Control_Buttons: React.FC = () => {
             >
               <input className='btn-check' type='radio' name='method' defaultValue={0} />
 
-              <img src={data.img} />
+        <img src={data.img} />
 
               <span className='fs-7 fw-bold d-block'>{intl.formatMessage({id: data.title})}</span>
             </label>

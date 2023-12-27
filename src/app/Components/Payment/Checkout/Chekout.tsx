@@ -7,10 +7,11 @@ import Payment_Buttons from './Payment_Buttons/Payment_Buttons'
 
 type Props = {
   className: string
-  data
+  data,
+  inkStatus
 }
 
-const Checkout: React.FC<Props> = ({className, data}) => {
+const Checkout: React.FC<Props> = ({className, data,inkStatus}) => {
   const {
     subtotal = 0,
     discounts = 0,
@@ -61,7 +62,7 @@ const Checkout: React.FC<Props> = ({className, data}) => {
         </div>
 
         <div className='m-0'>
-          <Control_Buttons />
+          <Control_Buttons inkStatus={inkStatus} />
 
           <h1 className='fw-bold text-gray-800 mb-5'>
             {intl.formatMessage({id: 'CHEKOUT.PAYMENT_METHOD'})}

@@ -1,5 +1,5 @@
 import json
-from fastapi import APIRouter, WebSocket,WebSocketDisconnect
+from fastapi import APIRouter, WebSocket,WebSocketDisconnect, HTTPException
 from routes.websocket_connection import manager
 import base64
 from models.transaction_models import body_update_transaction_data_gui
@@ -23,6 +23,18 @@ async def update_transaction_data_gui(body: body_update_transaction_data_gui):
     print(type(body.model_dump_json()))
     await manager.send_message(body.model_dump_json())
     return body
+
+@router.get("/test_ink_status")
+async def test_ink_status():
+
+    try:
+        message = {"ink_status": "ink_out"}
+        await manager.send_message(json.dumps(message))
+        return {"message": "Test ink status message sent"}
+    except WebSocketDisconnect:
+        raise HTTPException(status_code=500, detail="WebSocket is not connected")
+
+
 
 
 '''@router.get("/get_transaction_data/{message}")

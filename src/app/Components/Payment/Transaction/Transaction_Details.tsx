@@ -10,7 +10,7 @@ type Props = {
 }
 
 const Transaction_Details: React.FC<Props> = ({className, data}) => {
-  const image = data?.ticket_data.image
+  const image = data?.ticket_data?.image
   const backgroundImageStyle = {
     backgroundSize: '100% 100%',
     backgroundImage: image ? `url("${image}")` : `url('media/svg/files/blank-image.svg')`,
