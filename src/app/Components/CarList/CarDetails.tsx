@@ -36,7 +36,7 @@ export const rowsData = [
     entryTime: '11/11/23 10:23:20',
   },  {
     imageUrl:
-      'media/car-plates/license_plate_1693739922.jpg',
+      'media/car-plates/license_plate_1695456847.jpg',
 
     epan: '102445788',
     licensePlate: 'FV64XST',

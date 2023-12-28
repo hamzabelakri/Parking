@@ -19,7 +19,7 @@ const Search_Card: React.FC = () => {
                   </label>
                 </div>
                 <div className='col-7'>
-                  <input type='password' className='form-control' placeholder='FV...' />
+                  <input type='text' className='form-control' placeholder='FV...' />
                 </div>
               </div>
               <div className='row col  justify-content-center'>
