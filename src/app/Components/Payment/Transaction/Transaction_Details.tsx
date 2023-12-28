@@ -11,34 +11,20 @@ type Props = {
 const Transaction_Details: React.FC<Props> = ({className}) => {
   const {data} = useSelector((state: any) => state.Websocket_Reducers)
   const image = data?.ticket_data?.image
-  const backgroundImageStyle = {
-    backgroundSize: '100% 100%',
-    backgroundImage: image ? `url("${image}")` : `url('media/svg/files/blank-image.svg')`,
-  }
-/*   useEffect(() => {
-    if (image) {
-      const img = new Image()
-      img.src = image
 
-      img.onload = () => {
-        console.log('Image size:', img.width, 'x', img.height)
-      }
-    }
-  }, [image]) */
   return (
     <div className={`card ${className}`}>
       <div className='card-body'>
         <div className='container'>
           <div className='row'>
             <div className='col'>
-              {/* <img
-              id='kt_contact_map'
-              className='img-fluid object-fit-cover h-100 rounded mb-2 mb-lg-0'
-              src='https://images.unsplash.com/photo-1627936354732-ffbe552799d8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njd8fGJtdyUyMGNhcnxlbnwwfHwwfHx8MA%3D%3D'
-            /> */}
               <div
-                className='bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-400px min-h-sm-100 h-100'
-                style={backgroundImageStyle}
+                className='bgi-position-center h-100 bgi-no-repeat bgi-size-contain'
+                style={{
+                  backgroundImage: image
+                    ? `url("${image}")`
+                    : `url('media/svg/files/blank-image.svg')`,
+                }}
               />
             </div>
             <div className='col-7'>

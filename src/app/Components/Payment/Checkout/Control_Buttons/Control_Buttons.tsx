@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux'
 const Control_Buttons: React.FC = () => {
   const [showBarrierSection, setShowBarrierSection] = useState(false)
   const {ink_status} = useSelector((state: any) => state.Websocket_Reducers)
-  console.log("checkou",ink_status)
   const status=ink_status?.ink_status
+  
   const handleButtonClick = (icon) => {
     if (icon.title === 'Barrier') {
     }
