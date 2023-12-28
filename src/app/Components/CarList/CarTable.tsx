@@ -21,7 +21,7 @@ const CarTable: React.FC = () => {
           className='card-body p-0 tab-pane fade show active'
           role='tabpanel'
         >
-          <div className='table-responsive'>
+          <div className='table-responsive hover-scroll mh-950px'>
             <table className='table align-middle table-row-bordered table-row-solid gy-4 gs-9'>
               <thead className='border-gray-200 fs-5 fw-semibold bg-lighten'>
                 <tr>
