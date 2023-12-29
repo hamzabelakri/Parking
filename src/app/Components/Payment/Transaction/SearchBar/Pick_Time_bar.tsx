@@ -10,7 +10,7 @@ export const Pick_Time_bar: React.FC = () => {
   return (
     <>
       <Flatpickr
-        value={dateState.date}
+        value={[dateState.startDate, dateState.endDate]}
         onChange={([startDate, endDate]) => {
           setDateState({startDate, endDate})
         }}

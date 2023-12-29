@@ -22,7 +22,7 @@ const CarTable: React.FC = () => {
           role='tabpanel'
         >
           <div className='table-responsive hover-scroll mh-950px'>
-            <table className='table align-middle table-row-bordered table-row-solid gy-4 gs-9'>
+            <table className='table align-middle table-row-bordered table-row-solid table-hover gy-4 gs-9'>
               <thead className='border-gray-200 fs-5 fw-semibold bg-lighten'>
                 <tr>
                   <th className='min-w-125px '>EPAN</th>
