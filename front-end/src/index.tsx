@@ -18,10 +18,10 @@ import './_metronic/assets/keenicons/solid/style.css'
 import './_metronic/assets/sass/style.scss'
 import './_metronic/assets/sass/plugins.scss'
 import './_metronic/assets/sass/style.react.scss'
-import {AppRoutes} from './app/routing/AppRoutes'
-import {AuthProvider, setupAxios} from './app/modules/auth'
+import {AppRoutes} from './app/routing/App_Routes'
 import { Provider } from 'react-redux'
-import store from './Redux/Store'
+import store from './redux/Store'
+import { AuthProvider, setupAxios } from './app/modules/auth'
 /**
  * Creates `axios-mock-adapter` instance for provided `axios` instance, add
  * basic Metronic mocks and returns it.

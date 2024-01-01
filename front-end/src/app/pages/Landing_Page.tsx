@@ -1,9 +1,9 @@
 import React from 'react'
 import {Link, Outlet} from 'react-router-dom'
 import {toAbsoluteUrl} from '../../_metronic/helpers'
-import AuthModal from '../Components/Auth/Modals/AuthModal'
+import AuthModal from '../components/Auth/Modals/AuthModal'
 
-const LandingPage: React.FC = () => {
+const Landing_Page: React.FC = () => {
   return (
     <div>
       <AuthModal />
@@ -92,4 +92,4 @@ const LandingPage: React.FC = () => {
   )
 }
 
-export default LandingPage
+export default Landing_Page

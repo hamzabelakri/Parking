@@ -7,11 +7,13 @@
 
 import {FC} from 'react'
 import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom'
-import {PrivateRoutes} from './PrivateRoutes'
-import {ErrorsPage} from '../modules/errors/ErrorsPage'
-import {Logout, useAuth} from '../modules/auth'
+import {PrivateRoutes} from './Private_Routes'
+
 import {App} from '../App'
-import AuthPage from '../pages/LandingPage'
+import AuthPage from '../pages/Landing_Page'
+import { ErrorsPage } from '../modules/errors/ErrorsPage'
+import { Logout, useAuth } from '../modules/auth'
+
 
 
 /**

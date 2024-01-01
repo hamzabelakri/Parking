@@ -1,7 +1,7 @@
 from fastapi.middleware.cors import CORSMiddleware
 import fastapi
 import uvicorn
-from config.config import RELOAD, SERVER_HOST, SERVER_PORT, SERVER_WORKERS, UVICORN_LOG_LEVEL, ALLOWED_ORIGINS
+from config.config import RELOAD, SERVER_HOST, SERVER_PORT, SERVER_WORKERS, UVICORN_LOG_LEVEL, ALLOWED_ORIGINS, ALLOWED_CREDENTIALS, ALLOWED_METHODS, LLOWED_HEADERS
 from utils.startup import init
 from api.user.user import user_router
 from api.report.report_endpoint import report_router
@@ -17,9 +17,9 @@ def initialize_backend_application() -> fastapi.FastAPI:
     app.include_router(data_query)
     app.add_middleware(CORSMiddleware,
                        allow_origins=ALLOWED_ORIGINS,
-                       # allow_credentials=settings.IS_ALLOWED_CREDENTIALS,
-                       # allow_methods=settings.ALLOWED_METHODS,
-                       # allow_headers=settings.ALLOWED_HEADERS,
+                       allow_credentials=ALLOWED_CREDENTIALS,
+                       allow_methods=ALLOWED_METHODS,
+                       allow_headers=LLOWED_HEADERS,
                        )
 
     # app.add_event_handler(

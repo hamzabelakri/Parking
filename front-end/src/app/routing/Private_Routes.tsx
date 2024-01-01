@@ -4,9 +4,9 @@ import {MasterLayout} from '../../_metronic/layout/MasterLayout'
 import TopBarProgress from 'react-topbar-progress-indicator'
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
-import ShiftPage from '../pages/ShiftPage'
-import ConfigPage from '../pages/ConfigPage'
-import PaymentPage from '../pages/PaymentPage'
+import ShiftPage from '../pages/Shift_Page'
+import ConfigPage from '../pages/Config_Page'
+import PaymentPage from '../pages/Payment_Page'
 
 const PrivateRoutes = () => {
 

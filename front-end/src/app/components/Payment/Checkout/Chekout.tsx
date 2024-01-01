@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import {useIntl} from 'react-intl'
-import ItemsList from './ItemsList/ItemsList'
+import ItemsList from './Items_List/Items_List'
 import Control_Buttons from './Control_Buttons/Control_Buttons'
 import Payment_Buttons from './Payment_Buttons/Payment_Buttons'
 import { useSelector } from 'react-redux'

@@ -4,14 +4,14 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Container} from 'react-bootstrap'
 import {useIntl} from 'react-intl'
 import {Toaster} from 'react-hot-toast'
-import {initialValues, serverFormSchema} from '../Components/Types'
-import {useAuth} from '../modules/auth'
-import { get_All_Data, get_One_Server, post_All_Data } from '../../Redux/Config/Config_Action'
+import {initialValues, serverFormSchema} from '../components/Types'
+import { get_All_Data, get_One_Server, post_All_Data } from '../../redux/Config/Config_Action'
+import { useAuth } from '../modules/auth'
 
-const ConfigPage: React.FC = () => {
+const Config_Page: React.FC = () => {
   const dispatch = useDispatch()
-  const {data} = useSelector((state: any) => state.ServerReducer)
-  const {oneServerData} = useSelector((state: any) => state.ServerReducer)
+  const {data} = useSelector((state: any) => state.Config_Reducer)
+  const {oneServerData} = useSelector((state: any) => state.Config_Reducer)
   //console.log(oneServerData)
   const intl = useIntl()
   const [loading, setLoading] = useState(false)
@@ -204,4 +204,4 @@ const ConfigPage: React.FC = () => {
   )
 }
 
-export default ConfigPage
+export default Config_Page

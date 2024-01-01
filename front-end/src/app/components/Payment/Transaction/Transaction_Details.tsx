@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from 'react'
 import {useIntl} from 'react-intl'
 import Transaction_Table from './Transaction_Table/Transaction_Table'
-import Search_Card from './SearchBar/Search_Card'
+import Search_Card from './Search_Bar/Search_Card'
 import {useSelector} from 'react-redux'
 
 type Props = {

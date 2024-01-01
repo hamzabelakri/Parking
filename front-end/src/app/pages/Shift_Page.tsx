@@ -1,9 +1,9 @@
 import React from 'react'
 import { useIntl } from 'react-intl'
 import { PageTitle } from '../../_metronic/layout/core'
-import Shift from '../Components/Shift/Shift'
+import Shift from '../components/Shift/Shift'
 
-const ShiftPage: React.FC = () => {
+const Shift_Page: React.FC = () => {
   const intl = useIntl()
 
   return (
@@ -14,4 +14,4 @@ const ShiftPage: React.FC = () => {
   )
 }
 
-export default ShiftPage
+export default Shift_Page

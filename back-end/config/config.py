@@ -37,5 +37,8 @@ DATABASE_NAME = config.get('DATABASE', 'DATABASE_NAME', fallback='my_db')
 ALLOWED_ORIGINS = str(config.get('SECURITY',
                                  'ALLOWED_ORIGINS', fallback='http://*.*')).split(",")
 
+ALLOWED_CREDENTIALS=True
+ALLOWED_METHODS=["*"]
+LLOWED_HEADERS=["*"]
 
 del config

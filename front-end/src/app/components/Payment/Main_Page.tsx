@@ -2,14 +2,12 @@ import First_Article_Buttons from './Transaction/Article_Buttons/First_Article_B
 import Second_Article_Buttons from './Transaction/Article_Buttons/Second_Article_Buttons/Second_Article_Buttons'
 import Checkout from './Checkout/Chekout'
 import Transaction_Details from './Transaction/Transaction_Details'
-import {useEffect, useState} from 'react'
-import {toast, Toaster} from 'react-hot-toast'
+import {useEffect} from 'react'
+import {Toaster} from 'react-hot-toast'
 import {useDispatch} from 'react-redux'
-import {openWebSocket} from '../../../Redux/WebSocket/WebSocket_Actions'
+import {openWebSocket} from '../../../redux/WebSocket/WebSocket_Actions'
 
-const MainPage: React.FC = () => {
-  const [transaction_Data, setTransaction_Data] = useState(null)
-  const [inkStatus, setInkStatus] = useState('filled')
+const Main_Page: React.FC = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(openWebSocket())
@@ -34,4 +32,4 @@ const MainPage: React.FC = () => {
   )
 }
 
-export default MainPage
+export default Main_Page

@@ -1,7 +1,10 @@
 import React from 'react'
-import {rowsData} from './CarDetails'
+import {rowsData} from './Car_Details'
 import Search_Card from './Search_Card'
-const CarTable: React.FC = () => {
+import { useSelector } from 'react-redux';
+const Car_Table: React.FC = () => {
+  const { data } = useSelector((state: any) => state.Transaction_Reducers);
+console.log("car_table",data)
   return (
     <div className='card'>
       <div className='modal-header'>
@@ -24,6 +27,7 @@ const CarTable: React.FC = () => {
             <table className='table table-hover align-middle table-row-bordered table-row-solid gy-4 gs-9'>
               <thead className='border-gray-200 fs-5 fw-semibold bg-lighten'>
                 <tr>
+                  <th className='min-w-125px '>Image</th>
                   <th className='min-w-125px '>EPAN</th>
                   <th className='min-w-125px '>Licence Plate</th>
                   <th className='min-w-125px'>Card Type</th>
@@ -32,14 +36,16 @@ const CarTable: React.FC = () => {
               </thead>
 
               <tbody className='fs-6 fw-semibold text-gray-600 '>
-                {rowsData.map((rowData, index) => (
+           
+                {data.map((item, index) => (
                   <tr key={index} className='' role='button'>
                     <td className='symbol symbol-70px w-100 ps-9'>
-                      <img src={rowData.imageUrl} alt='' className='w-100 hover-scale object-fit-contain' />
+                      <img src={item.ticket_data?.image} alt='' className='w-100 hover-scale object-fit-contain' />
                     </td>
-                    <td className=''>{rowData.epan}</td>
-                    <td>{rowData.licensePlate}</td>
-                    <td className='text-success'>{rowData.entryTime}</td>
+                    <td>{item.ticket_data?.epan}</td>
+                    <td>{item.ticket_data?.licence_plate}</td>
+                    <td>{item.ticket_data?.card_type}</td>
+                    <td className='text-success'>{item.ticket_data?.entry_time}</td>
                   </tr>
                 ))}
               </tbody>
@@ -52,4 +58,4 @@ const CarTable: React.FC = () => {
   )
 }
 
-export default CarTable
+export default Car_Table

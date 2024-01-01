@@ -1,15 +1,15 @@
 import React from 'react'
 import {useIntl} from 'react-intl'
-import CarTable from '../../../CarList/CarTable'
 import {Pick_Time_bar} from './Pick_Time_bar'
 import { useDispatch } from 'react-redux'
-import { get_All_Data } from '../../../../../Redux/Transaction/Transaction_Action'
+import { get_Transaction_Data } from '../../../../../redux/Transaction/Transaction_Action'
+import Car_Table from '../../../Car_List/Car_Table'
 
 const Search_Card: React.FC = () => {
   const dispatch=useDispatch()
   const intl = useIntl()
 const handleCick=(event) => {
-  dispatch(get_All_Data())
+  dispatch(get_Transaction_Data())
 }
 
   return (
@@ -54,7 +54,7 @@ const handleCick=(event) => {
         <div className='modal fade" tabIndex={-1}' id='kt_modal_1'>
           <div className='modal-dialog modal-dialog-centered mw-900px'>
             <div className='modal-content'>
-              <CarTable />
+              <Car_Table />
             </div>
           </div>
         </div>

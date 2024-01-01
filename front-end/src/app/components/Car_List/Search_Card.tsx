@@ -1,9 +1,9 @@
 import React from 'react'
 import {useIntl} from 'react-intl'
-import { Pick_Time_bar } from '../Payment/Transaction/SearchBar/Pick_Time_bar'
+import {Pick_Time_bar} from '../Payment/Transaction/Search_Bar/Pick_Time_bar'
 
 const Search_Card: React.FC = () => {
-  const intl = useIntl()
+const intl = useIntl()
 
   return (
     <>
@@ -44,7 +44,6 @@ const Search_Card: React.FC = () => {
             </div>
           </div>
         </div>
-        
       </div>
     </>
   )

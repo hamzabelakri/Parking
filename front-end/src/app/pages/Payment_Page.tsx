@@ -2,19 +2,19 @@
 import {FC} from 'react'
 import {useIntl} from 'react-intl'
 import {PageTitle} from '../../_metronic/layout/core'
-import MainPage from '../Components/Payment/MainPage'
-import {useAuth} from '../modules/auth'
+import Main_Page from '../components/Payment/Main_Page'
+import { useAuth } from '../modules/auth'
 
-const PaymentPage: FC = () => {
+const Payment_Page: FC = () => {
   const intl = useIntl()
   const {currentUser} = useAuth()
 
   return (
     <>
       {/* <PageTitle breadcrumbs={[]}>{intl.formatMessage({id: 'MENU.PAYMENT'})}</PageTitle> */}
-      <MainPage />
+      <Main_Page />
     </>
   )
 }
 
-export default PaymentPage
+export default Payment_Page
