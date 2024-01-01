@@ -25,6 +25,6 @@ class Articles_Data(DynamicDocument):
     article_2 = ListField(ReferenceField(Article), required=True)
     transaction_bill = ListField(ReferenceField(Transaction_Bill), required=True)
 
-class Transaction_Document(DynamicDocument):
-    ticket_data = ListField(ReferenceField(Ticket_Data), required=True)
-    articles_data = ListField(ReferenceField(Articles_Data), required=True)
+class Transaction_Document(Document):
+    ticket_data = ReferenceField(Ticket_Data, required=True)
+    articles_data = ReferenceField(Articles_Data, required=True)

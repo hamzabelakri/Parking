@@ -2,9 +2,15 @@ import React from 'react'
 import {useIntl} from 'react-intl'
 import CarTable from '../../../CarList/CarTable'
 import {Pick_Time_bar} from './Pick_Time_bar'
+import { useDispatch } from 'react-redux'
+import { get_All_Data } from '../../../../../Redux/Transaction/Transaction_Action'
 
 const Search_Card: React.FC = () => {
+  const dispatch=useDispatch()
   const intl = useIntl()
+const handleCick=(event) => {
+  dispatch(get_All_Data())
+}
 
   return (
     <>
@@ -38,7 +44,7 @@ const Search_Card: React.FC = () => {
                 data-bs-toggle='modal'
                 data-bs-target='#kt_modal_1'
               >
-                <button type='submit' className='btn btn-primary '>
+                <button type='submit' className='btn btn-primary ' onClick={handleCick}>
                   {intl.formatMessage({id: 'SEARCH.BUTTON'})}
                 </button>
               </div>

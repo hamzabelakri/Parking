@@ -5,8 +5,8 @@ import {Container} from 'react-bootstrap'
 import {useIntl} from 'react-intl'
 import {Toaster} from 'react-hot-toast'
 import {initialValues, serverFormSchema} from '../Components/Types'
-import {getAllData, getOneServer, postAllData} from '../../Redux/Server/ServerAction'
 import {useAuth} from '../modules/auth'
+import { get_All_Data, get_One_Server, post_All_Data } from '../../Redux/Config/Config_Action'
 
 const ConfigPage: React.FC = () => {
   const dispatch = useDispatch()
@@ -22,12 +22,12 @@ const ConfigPage: React.FC = () => {
     onSubmit: (values) => {
       formik.setErrors({port: ''})
       formik.setTouched({port: false})
-      dispatch(postAllData(formik.values))
+      dispatch(post_All_Data(formik.values))
     },
   })
 
   const handleClick = (event) => {
-    dispatch(getOneServer({ip: formik.values.ip, port: formik.values.port}))
+    dispatch(get_One_Server({ip: formik.values.ip, port: formik.values.port}))
     event.preventDefault()
   }
 
@@ -37,7 +37,7 @@ const ConfigPage: React.FC = () => {
   }
 
   useEffect(() => {
-    dispatch(getAllData())
+    dispatch(get_All_Data())
   }, [dispatch])
 
   useEffect(() => {

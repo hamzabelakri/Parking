@@ -2,7 +2,7 @@ import {GET_ALL_DATA, SELECT_SERVER, POST_ALL_DATA, GET_ONE_SERVER, GET_SAVED_DA
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-export const getAllData: any = () => async (dispatch) => {
+export const get_All_Data: any = () => async (dispatch) => {
   try {
     const response = await axios.get(`http://127.0.0.1:8000/local/config`)
     // console.log(response.data)
@@ -13,7 +13,7 @@ export const getAllData: any = () => async (dispatch) => {
   }
 }
 
-export const getOneServer: any = (input) => async (dispatch) => {
+export const get_One_Server: any = (input) => async (dispatch) => {
   try {
     const url = `http://${input.ip}:${input.port}/lrgeometry`
 
@@ -25,7 +25,7 @@ export const getOneServer: any = (input) => async (dispatch) => {
   }
 }
 
-export const postAllData: any = (data) => async (dispatch) => {
+export const post_All_Data: any = (data) => async (dispatch) => {
   try {
     const response = await axios.post('http://127.0.0.1:8000/', data)
     //console.log(response.data.start)
@@ -37,7 +37,7 @@ export const postAllData: any = (data) => async (dispatch) => {
   }
 }
 
-export const setSelectedServer: any = (selectedServer) => async (dispatch) => {
+export const set_Selected_Server: any = (selectedServer) => async (dispatch) => {
   try {
     dispatch({type: SELECT_SERVER, payload: selectedServer})
     console.log(selectedServer)
