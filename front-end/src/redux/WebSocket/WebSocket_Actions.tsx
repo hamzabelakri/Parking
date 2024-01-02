@@ -13,7 +13,7 @@ export const openWebSocket: any = () => async (dispatch) => {
   ws.onmessage = (event) => {
     const data = event.data
     const parsed_data = JSON.parse(data)
-    console.log('from actions', parsed_data)
+    //console.log('from actions', parsed_data)
     dispatch({type: GET_ALL_DATA, payload: parsed_data})
   }
 

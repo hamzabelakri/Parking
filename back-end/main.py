@@ -4,17 +4,17 @@ import uvicorn
 from config.config import RELOAD, SERVER_HOST, SERVER_PORT, SERVER_WORKERS, UVICORN_LOG_LEVEL, ALLOWED_ORIGINS, ALLOWED_CREDENTIALS, ALLOWED_METHODS, LLOWED_HEADERS
 from utils.startup import init
 from api.user.user import user_router
-from api.report.report_endpoint import report_router
-from api.transaction.transaction_endpoint import transaction_router
-from api.data_query.data_query_endpoints import data_query
+from api.report.report_api import report_router
+from api.websocket.websocket_api import websocket_router
+from api.transaction.transaction_api import transaction_router
 
 
 def initialize_backend_application() -> fastapi.FastAPI:
     app = fastapi.FastAPI()  # type: ignore
     app.include_router(user_router)
     app.include_router(report_router)
+    app.include_router(websocket_router)
     app.include_router(transaction_router)
-    app.include_router(data_query)
     app.add_middleware(CORSMiddleware,
                        allow_origins=ALLOWED_ORIGINS,
                        allow_credentials=ALLOWED_CREDENTIALS,

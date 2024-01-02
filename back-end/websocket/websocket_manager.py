@@ -1,8 +1,4 @@
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
-
-
-router=APIRouter()
-
+from fastapi import WebSocket, WebSocketDisconnect
 
 class ConnectionManager:
     def __init__(self):

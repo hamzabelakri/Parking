@@ -22,7 +22,7 @@ def xx():
 @report_router.get("/shift_report", response_model=list[shift_report_row_response_model])
 def xxx(userid: int):
     try:
-        documents = Report_document.objects(user=userid)
+        documents = Report_document.objects(user=str(userid))
         logger.info(f'is={userid} found :{documents.count()} document')
         logger.debug(f'is={userid} found :{documents}')
         retlist = [shift_report_row_response_model(

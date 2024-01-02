@@ -1,13 +1,13 @@
 import json
 from fastapi import APIRouter, WebSocket,WebSocketDisconnect, HTTPException
-from websocket.websocket_connection import manager
+from websocket.websocket_manager import manager
 import base64
 from models.transaction_models import body_update_transaction_data_gui
 import random,os
 
-transaction_router=APIRouter()
+websocket_router=APIRouter()
 
-@transaction_router.websocket("/ws")
+@websocket_router.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await manager.connect(websocket)
     try:
@@ -19,13 +19,13 @@ async def websocket_endpoint(websocket: WebSocket):
         manager.disconnect(websocket)
 
 
-@transaction_router.post("/update_transaction_data_gui")
+@websocket_router.post("/update_transaction_data_gui")
 async def update_transaction_data_gui(body: body_update_transaction_data_gui):
     print(type(body.model_dump_json()))
     await manager.send_message(body.model_dump_json())
     return body
 
-@transaction_router.post("/update_transaction_data_gui2")
+@websocket_router.post("/update_transaction_data_gui2")
 async def update_transaction_data_gui(body: body_update_transaction_data_gui):
     random_file=random.choice(os.listdir("./car-plates"))
     with open(f'./car-plates/{random_file}', "rb") as image_file:
@@ -37,7 +37,7 @@ async def update_transaction_data_gui(body: body_update_transaction_data_gui):
     return {'sent successfully'}
     
 
-@transaction_router.get("/test_ink_status")
+@websocket_router.get("/test_ink_status")
 async def test_ink_status():
 
     try:

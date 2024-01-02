@@ -5,17 +5,15 @@ from database.models.report import Query_document
 from database.models.transaction import Transaction_Document
 import base64
 import random,os
-data_query = APIRouter()
 
+transaction_router = APIRouter()
 
-
-
-@data_query.get("/transaction", response_model=list[body_update_transaction_data_gui])
+@transaction_router.get("/transaction", response_model=list[body_update_transaction_data_gui])
 def get_transaction_data():
     try:
         documents = Transaction_Document.objects()
      
-        transaction_list = [Query_document(**document.to_mongo()) for document in documents]
+        transaction_list = [body_update_transaction_data_gui(**document.to_mongo()) for document in documents]
     except Exception as Ex:
         raise HTTPException(status=500, details=f' error {Ex} ')
         # print('An exception occurred')
@@ -23,7 +21,7 @@ def get_transaction_data():
     return transaction_list
 
 
-@data_query.post("/transaction")
+@transaction_router.post("/transaction")
 def add_transaction_data(RequestBody: body_update_transaction_data_gui, request: Request):
     try:
         # Create Query_document directly from Item model
@@ -38,6 +36,5 @@ def add_transaction_data(RequestBody: body_update_transaction_data_gui, request:
     except Exception as ex:
         # Handle exceptions, log, or return an error response
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
-
 
 

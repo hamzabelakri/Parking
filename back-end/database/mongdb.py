@@ -1,6 +1,4 @@
 from mongoengine import connect, DoesNotExist, errors, ListField, ReferenceField, Document, DynamicDocument, StringField, IntField
-
-
 from config.config import DB_URL, DB_PORT, DATABASE_NAME
 
 
@@ -18,10 +16,10 @@ class MongoDBHandler:
 
     def connect_to_database(self):
         try:
-            self.connection = connect(self.db_name,host=self.host, port=self.port, alias='default')
-            print("Connected to MongoDB successfully!")
+            self.connection = connect(self.db_name,host=self.host, port=self.port, alias='default', serverSelectionTimeoutMS=3000)
+            
         except errors.ConnectionError as e:
-            print(f"Error connecting to MongoDB: {e}")
+            print(f"Error inti to MongoDB: {e}")
 
     def disconnect_from_database(self):
         if self.connection:
@@ -32,9 +30,15 @@ class MongoDBHandler:
         self.disconnect_from_database()
         self.connect_to_database()
 
+try:
+    M1 = MongoDBHandler()
+    M1.connect_to_database()
+    M1.connection.get_database(DATABASE_NAME).list_collection_names()
+    print("Connected to MongoDB successfully!")
+except Exception as e:
+    print(f"Error connecting to MongoDB: {e}")
 
-M1 = MongoDBHandler()
-M1.connect_to_database()
+
 
 # # Example Usage:
 # from datetime import datetime
