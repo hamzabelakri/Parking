@@ -23,19 +23,27 @@ def get_transaction_data():
     return transaction_list
 
 
+
+
+import re
+
 @transaction_router.get("/transaction/filter", response_model=list[Ticket_Body_Model])
 def get_transaction_data(licence_plate: str = Query(None, alias="licence_plate")):
     try:
-        query = {"licence_plate": licence_plate} if licence_plate else {}
-        
-        documents = Entry_Ticket_Mongo_Document.objects(**query)
-        
-        transaction_list = [Ticket_Body_Model(**document.to_mongo()) for document in documents]
-        
+        if licence_plate:
+            query = {"licence_plate__regex": f"^{re.escape(licence_plate)}"}
+            documents = Entry_Ticket_Mongo_Document.objects(**query)
+            print(documents.count())
+            transaction_list = [Ticket_Body_Model(**document.to_mongo()) for document in documents]
+        else:
+            transaction_list = []
+            raise HTTPException(status_code=400, detail='No specific licence_plate provided')
     except Exception as ex:
-        raise HTTPException(status=500, detail=f'Error: {ex}')
+        raise HTTPException(status_code=500, detail=f'Error: {ex}')
 
     return transaction_list
+
+
 
 
 @transaction_router.get("/transaction/{transaction_id}", response_model=Ticket_Body_Model)
@@ -51,7 +59,8 @@ def get_one_transaction_data(transaction_id: str):
         else:
             
             raise HTTPException(status_code=404, detail=f'Transaction with ID {transaction_id} not found')
-
+    except HTTPException as http_ex:
+        raise http_ex
     except Exception as ex:
         
         raise HTTPException(status_code=500, detail=f'Error: {ex}')

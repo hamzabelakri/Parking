@@ -2,7 +2,7 @@ import React from 'react'
 import {useIntl} from 'react-intl'
 import {Pick_Time_bar} from './Pick_Time_bar'
 import {useDispatch} from 'react-redux'
-import {get_Filtered_Data, get_Transaction_Data} from '../../../../../redux/Transaction/Transaction_Action'
+import {fetch_Filtered_Transaction_Data, fetch_All_Transaction_Data} from '../../../../../redux/Transaction/Transaction_Action'
 import Car_Table from '../../../Car_List/Car_Table'
 import {useFormik} from 'formik'
 import {search_inputs, initialValues} from './Settings'
@@ -11,7 +11,7 @@ const Search_Card: React.FC = () => {
   const dispatch = useDispatch()
   const intl = useIntl()
   const handleCick = (event) => {
-    dispatch(get_Transaction_Data())
+    dispatch(fetch_All_Transaction_Data())
   }
 
   const formik = useFormik({
@@ -19,7 +19,7 @@ const Search_Card: React.FC = () => {
     validationSchema: search_inputs(intl),
 
     onSubmit: (values) => {
-      dispatch(get_Filtered_Data(formik.values))
+      dispatch(fetch_Filtered_Transaction_Data(formik.values))
     },
   })
   return (

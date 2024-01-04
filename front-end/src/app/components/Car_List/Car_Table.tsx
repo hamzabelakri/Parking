@@ -1,18 +1,28 @@
 import React from 'react'
 import {rowsData} from './Car_Details'
 import Search_Card from './Search_Card'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import {clear_Filtered_Transaction_Data} from '../../../redux/Transaction/Transaction_Action'
 const Car_Table: React.FC = () => {
   const {data} = useSelector((state: any) => state.Transaction_Reducers)
-  const { filtered_data } = useSelector((state: any) => state.Transaction_Reducers);
+  const {filtered_data} = useSelector((state: any) => state.Transaction_Reducers)
+  const dispatch = useDispatch()
 
   console.log('car_table', filtered_data)
+
+  const handleCloseModal = () => {
+    dispatch(clear_Filtered_Transaction_Data())
+  }
   return (
     <div className='card'>
       <div className='modal-header'>
         <h2>Search LBN</h2>
 
-        <div className='btn btn-sm btn-icon btn-active-color-primary' data-bs-dismiss='modal'>
+        <div
+          className='btn btn-sm btn-icon btn-active-color-primary'
+          data-bs-dismiss='modal'
+          onClick={handleCloseModal}
+        >
           <i className='ki-duotone ki-cross fs-1'>
             <span className='path1' />
             <span className='path2' />
