@@ -2,6 +2,9 @@ from fastapi import HTTPException, Request, status, APIRouter
 from config.log_config import logger
 from models.transaction_model import Ticket_Body_Model
 from api.transaction.transaction_model import Entry_Ticket_Mongo_Document
+
+from datetime import timedelta,datetime
+import re
 import base64
 import random,os
 import string
@@ -22,26 +25,29 @@ def get_transaction_data():
     
     return transaction_list
 
-
-
-
-import re
-
-@transaction_router.get("/transaction/filter", response_model=list[Ticket_Body_Model])
-def get_transaction_data(licence_plate: str = Query(None, alias="licence_plate")):
+@transaction_router.get("/transaction/", response_model=list[Ticket_Body_Model])
+def get_filtered_transaction_data(
+    licence_plate: str = Query(None, alias="licence_plate"),
+    start_date: datetime = None,
+    end_date: datetime = None
+):
     try:
+        query_params = {}
+
         if licence_plate:
-            query = {"licence_plate__regex": f"^{re.escape(licence_plate)}"}
-            documents = Entry_Ticket_Mongo_Document.objects(**query)
-            print(documents.count())
-            transaction_list = [Ticket_Body_Model(**document.to_mongo()) for document in documents]
-        else:
-            transaction_list = []
-            raise HTTPException(status_code=400, detail='No specific licence_plate provided')
+            query_params["licence_plate__regex"] = f"^{re.escape(licence_plate)}"
+
+        if start_date is not None and end_date is not None:
+            query_params["created_at__gte"] = start_date
+            query_params["created_at__lte"] = end_date
+
+        documents = Entry_Ticket_Mongo_Document.objects(**query_params)
+        print(documents.count())
+        transaction_list = [Ticket_Body_Model(**document.to_mongo()) for document in documents]
+        
+        return transaction_list
     except Exception as ex:
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
-
-    return transaction_list
 
 
 
@@ -70,22 +76,24 @@ def get_one_transaction_data(transaction_id: str):
 @transaction_router.post("/transaction")
 def add_transaction_data(RequestBody: Ticket_Body_Model, request: Request):
     try:
-        
-       
-        random_file=random.choice(os.listdir("./car-plates"))
+        random_file = random.choice(os.listdir("./car-plates"))
         with open(f'./car-plates/{random_file}', "rb") as image_file:
-         image_data = base64.b64encode(image_file.read()).decode("utf-8")
-        print("selected img : ",random_file)
-        RequestBody.image=f'data:image/jpeg;base64,{image_data}'
+            image_data = base64.b64encode(image_file.read()).decode("utf-8")
+        print("selected img : ", random_file)
+        RequestBody.image = f'data:image/jpeg;base64,{image_data}'
         random_epan = ''.join(random.choices(string.ascii_uppercase + string.digits, k=16))
         random_plate = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
-        RequestBody.epan=random_epan
-        RequestBody.licence_plate=random_plate
+        end_date = datetime.now()
+        start_date = end_date - timedelta(days=10)
+        random_date = start_date + timedelta(days=random.randint(0, 10))
+        print(random_date)
+        RequestBody.epan = random_epan
+        RequestBody.licence_plate = random_plate
+        RequestBody.entry_time = random_date
         New_Document = Entry_Ticket_Mongo_Document(**RequestBody.model_dump())
         New_Document.save()
         return 'saved successfully'
     except Exception as ex:
-        
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
 
 
