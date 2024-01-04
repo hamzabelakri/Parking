@@ -1,7 +1,7 @@
 from fastapi import HTTPException, Request, status, APIRouter
 from config.log_config import logger
 from models.report_models import shift_report_row_response_model, shift_report_body_request_model
-from database.models.report import Report_document, Order, Item
+from api.report.report_model import Report_document, Order, Item
 
 report_router = APIRouter(prefix='/report')
 

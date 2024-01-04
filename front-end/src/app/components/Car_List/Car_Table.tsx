@@ -31,6 +31,7 @@ console.log("car_table",data)
                   <th className='min-w-125px '>EPAN</th>
                   <th className='min-w-125px '>Licence Plate</th>
                   <th className='min-w-125px'>Card Type</th>
+                  <th className='min-w-125px'>Entry Unit</th>
                   <th className='min-w-125px'>Entry Time</th>
                 </tr>
               </thead>

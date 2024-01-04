@@ -147,5 +147,12 @@
   "SHIFT.TABLE.HEADER.ARTICLE_ID":"العنصر ID",
   "SHIFT.TABLE.HEADER.PRICE":"السعر",
   "SHIFT.TABLE.HEADER.CARTE_TYPE":"نوع البطاقة",
-  "SHIFT.TABLE.HEADER.DURATION":"المدة"
+  "SHIFT.TABLE.HEADER.DURATION":"المدة",
+
+  "---------------------------------------------": "Search Card",
+
+  "LICENCE_PLATE.VALIDATION.REQUIRED":"الرجاء إدخال القيمة"
+
 }
+
+

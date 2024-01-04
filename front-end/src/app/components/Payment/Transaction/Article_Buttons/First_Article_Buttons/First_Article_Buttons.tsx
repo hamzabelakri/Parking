@@ -13,12 +13,12 @@ const First_Article_Buttons: React.FC<Props> = ({className}) => {
   return (
     <div className={`card ${className}`}>
       <div className='card-body'>
-        <div className='nav d-flex justify-content-between gap-3'>
+        <div className='nav d-flex justify-content-center gap-10'>
           {buttonsData.map((button) => (
-            <div className='mb-3 me-0' key={button.id}>
+            <div className='me-0' key={button.id}>
               <button
                 className=' btn btn-outline btn-flex flex-column flex-stack pt-9 pb-7  page-bg show rounded-4'
-                style={{width: 138, height: 150}}
+                style={{width: 148, height: 150}}
               >
                 <div className='mb-3'>
                   <img src={button.img} className='w-50px' alt='' />

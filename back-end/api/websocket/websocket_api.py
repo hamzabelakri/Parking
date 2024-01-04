@@ -2,7 +2,7 @@ import json
 from fastapi import APIRouter, WebSocket,WebSocketDisconnect, HTTPException
 from websocket.websocket_manager import manager
 import base64
-from models.transaction_models import body_update_transaction_data_gui
+from models.websocket_models import body_update_transaction_data_gui
 import random,os
 
 websocket_router=APIRouter()

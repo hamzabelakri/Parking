@@ -146,6 +146,10 @@
   "SHIFT.TABLE.HEADER.ARTICLE_ID":"Article ID",
   "SHIFT.TABLE.HEADER.PRICE":"Price",
   "SHIFT.TABLE.HEADER.CARTE_TYPE":"Carte Type",
-  "SHIFT.TABLE.HEADER.DURATION":"Duration"
+  "SHIFT.TABLE.HEADER.DURATION":"Duration",
+
+  "---------------------------------------------": "Search Card",
+
+  "LICENCE_PLATE.VALIDATION.REQUIRED":"licence plate is required"
 
 }
