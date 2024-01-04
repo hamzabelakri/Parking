@@ -1,18 +1,21 @@
 from fastapi import HTTPException, Request, status, APIRouter
 from config.log_config import logger
-from models.websocket_models import body_update_transaction_data_gui, Item
-from api.transaction.transaction_model import Transaction_Document
+from models.transaction_model import Ticket_Body_Model
+from api.transaction.transaction_model import Entry_Ticket_Mongo_Document
 import base64
 import random,os
+import string
+from fastapi import Query
+
 
 transaction_router = APIRouter()
 
-@transaction_router.get("/transaction", response_model=list[body_update_transaction_data_gui])
+@transaction_router.get("/transaction", response_model=list[Ticket_Body_Model])
 def get_transaction_data():
     try:
-        documents = Transaction_Document.objects()
+        documents = Entry_Ticket_Mongo_Document.objects()
      
-        transaction_list = [body_update_transaction_data_gui(**document.to_mongo()) for document in documents]
+        transaction_list = [Ticket_Body_Model(**document.to_mongo()) for document in documents]
     except Exception as Ex:
         raise HTTPException(status=500, details=f' error {Ex} ')
         
@@ -20,15 +23,30 @@ def get_transaction_data():
     return transaction_list
 
 
-@transaction_router.get("/transaction/{transaction_id}", response_model=body_update_transaction_data_gui)
+@transaction_router.get("/transaction/filter", response_model=list[Ticket_Body_Model])
+def get_transaction_data(licence_plate: str = Query(None, alias="licence_plate")):
+    try:
+        query = {"licence_plate": licence_plate} if licence_plate else {}
+        
+        documents = Entry_Ticket_Mongo_Document.objects(**query)
+        
+        transaction_list = [Ticket_Body_Model(**document.to_mongo()) for document in documents]
+        
+    except Exception as ex:
+        raise HTTPException(status=500, detail=f'Error: {ex}')
+
+    return transaction_list
+
+
+@transaction_router.get("/transaction/{transaction_id}", response_model=Ticket_Body_Model)
 def get_one_transaction_data(transaction_id: str):
     try:
         
-        document = Transaction_Document.objects(id=transaction_id).first()
+        document = Entry_Ticket_Mongo_Document.objects(id=transaction_id).first()
 
         if document:
             
-            response_model_instance = body_update_transaction_data_gui(**document.to_mongo())
+            response_model_instance = Ticket_Body_Model(**document.to_mongo())
             return response_model_instance
         else:
             
@@ -41,15 +59,20 @@ def get_one_transaction_data(transaction_id: str):
 
 
 @transaction_router.post("/transaction")
-def add_transaction_data(RequestBody: body_update_transaction_data_gui, request: Request):
+def add_transaction_data(RequestBody: Ticket_Body_Model, request: Request):
     try:
         
-        New_Document = Transaction_Document(**RequestBody.model_dump())
+       
         random_file=random.choice(os.listdir("./car-plates"))
         with open(f'./car-plates/{random_file}', "rb") as image_file:
          image_data = base64.b64encode(image_file.read()).decode("utf-8")
         print("selected img : ",random_file)
-        RequestBody.ticket_data.image=f'data:image/jpeg;base64,{image_data}'
+        RequestBody.image=f'data:image/jpeg;base64,{image_data}'
+        random_epan = ''.join(random.choices(string.ascii_uppercase + string.digits, k=16))
+        random_plate = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
+        RequestBody.epan=random_epan
+        RequestBody.licence_plate=random_plate
+        New_Document = Entry_Ticket_Mongo_Document(**RequestBody.model_dump())
         New_Document.save()
         return 'saved successfully'
     except Exception as ex:
@@ -58,10 +81,10 @@ def add_transaction_data(RequestBody: body_update_transaction_data_gui, request:
 
 
 @transaction_router.put("/transaction/{transaction_id}")
-def update_transaction_data(transaction_id: str, request_body: body_update_transaction_data_gui):
+def update_transaction_data(transaction_id: str, request_body: Ticket_Body_Model):
     try:
         
-        existing_document = Transaction_Document.objects(id=transaction_id).first()
+        existing_document = Entry_Ticket_Mongo_Document.objects(id=transaction_id).first()
 
         if existing_document:
             
@@ -75,11 +98,12 @@ def update_transaction_data(transaction_id: str, request_body: body_update_trans
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
 
 
+
 @transaction_router.delete("/transaction/{transaction_id}")
 def delete_transaction_data(transaction_id:str):
     try:
         
-        deleted_document = Transaction_Document.objects(id=transaction_id).delete()
+        deleted_document = Entry_Ticket_Mongo_Document.objects(id=transaction_id).delete()
         
         if deleted_document:
             return f'Transaction with ID {transaction_id} deleted successfully'

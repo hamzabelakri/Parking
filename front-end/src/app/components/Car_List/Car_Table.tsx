@@ -1,10 +1,12 @@
 import React from 'react'
 import {rowsData} from './Car_Details'
 import Search_Card from './Search_Card'
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux'
 const Car_Table: React.FC = () => {
-  const { data } = useSelector((state: any) => state.Transaction_Reducers);
-console.log("car_table",data)
+  const {data} = useSelector((state: any) => state.Transaction_Reducers)
+  const { filtered_data } = useSelector((state: any) => state.Transaction_Reducers);
+
+  console.log('car_table', filtered_data)
   return (
     <div className='card'>
       <div className='modal-header'>
@@ -29,24 +31,28 @@ console.log("car_table",data)
                 <tr>
                   <th className='min-w-125px '>Image</th>
                   <th className='min-w-125px '>EPAN</th>
-                  <th className='min-w-125px '>Licence Plate</th>
-                  <th className='min-w-125px'>Card Type</th>
-                  <th className='min-w-125px'>Entry Unit</th>
-                  <th className='min-w-125px'>Entry Time</th>
+                  <th className='min-w-125px '>Licence_Plate</th>
+                  <th className='min-w-125px'>Card_Type</th>
+                  <th className='min-w-125px'>Entry_Unit</th>
+                  <th className='min-w-125px'>Entry_Time</th>
                 </tr>
               </thead>
 
               <tbody className='fs-6 fw-semibold text-gray-600 '>
-           
-                {data.map((item, index) => (
+                {filtered_data.map((item, index) => (
                   <tr key={index} className='' role='button'>
                     <td className='symbol symbol-70px w-100 ps-9'>
-                      <img src={item.ticket_data?.image} alt='' className='w-100 hover-scale object-fit-contain' />
+                      <img
+                        src={item?.image}
+                        alt=''
+                        className='w-100 hover-scale object-fit-contain'
+                      />
                     </td>
-                    <td>{item.ticket_data?.epan}</td>
-                    <td>{item.ticket_data?.licence_plate}</td>
-                    <td>{item.ticket_data?.card_type}</td>
-                    <td className='text-success'>{item.ticket_data?.entry_time}</td>
+                    <td>{item?.epan}</td>
+                    <td>{item?.licence_plate}</td>
+                    <td>{item?.card_type}</td>
+                    <td>{item?.entry_unit}</td>
+                    <td className='text-success'>{item?.entry_time}</td>
                   </tr>
                 ))}
               </tbody>
@@ -54,7 +60,7 @@ console.log("car_table",data)
           </div>
         </div>
       </div>
-     <Search_Card/> 
+      <Search_Card />
     </div>
   )
 }

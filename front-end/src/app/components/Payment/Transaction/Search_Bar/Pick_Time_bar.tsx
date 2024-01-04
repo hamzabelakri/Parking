@@ -16,6 +16,9 @@ export const Pick_Time_bar: React.FC = () => {
         }}
         options={{
           mode: 'range',
+          maxDate:new Date(Date.now()),
+          enableTime: true,
+          time_24hr: true
         }}
         className='form-control'
         placeholder='Pick date'

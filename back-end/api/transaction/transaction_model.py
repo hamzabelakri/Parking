@@ -1,16 +1,17 @@
 from mongoengine import ListField, ReferenceField, Document, DynamicDocument, StringField, IntField, DateTimeField
 from datetime import datetime
 
-class Ticket_Data(DynamicDocument):
+class Entry_Ticket_Mongo_Document(DynamicDocument):
     epan = StringField(required=True)
     licence_plate = StringField(required=True)
     created_at = DateTimeField(default=datetime.now)
-    entry_time = StringField(required=True)
-    card_type = StringField(required=True)
-    duration_stay = StringField(required=True)
-    image = StringField(required=True)
+    entry_time = StringField()
+    entry_unit = StringField()
+    card_type = StringField()
+    duration_stay = StringField()
+    image = StringField()
     
-class Article(DynamicDocument):
+""" class Article(DynamicDocument):
     name = StringField(required=True)
     price = IntField(required=True)    
 
@@ -26,5 +27,5 @@ class Articles_Data(DynamicDocument):
     transaction_bill = ListField(ReferenceField(Transaction_Bill), required=True)
 
 class Transaction_Document(Document):
-    ticket_data = ReferenceField(Ticket_Data, required=True)
-    articles_data = ReferenceField(Articles_Data, required=True)
+    ticket_data = ReferenceField(Ticket_Mongo_Document, required=True)
+    articles_data = ReferenceField(Articles_Data, required=True) """
