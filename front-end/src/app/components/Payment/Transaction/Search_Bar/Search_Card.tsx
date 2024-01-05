@@ -1,15 +1,11 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {useIntl} from 'react-intl'
 import {Pick_Time_bar} from './Pick_Time_bar'
 import {useDispatch} from 'react-redux'
-import {
-  fetch_Filtered_Transaction_Data,
-  fetch_All_Transaction_Data,
-} from '../../../../../redux/Transaction/Transaction_Action'
+import {fetch_Filtered_Transaction_Data, fetch_All_Transaction_Data} from '../../../../../redux/Transaction/Transaction_Action'
 import Car_Table from '../../../Car_List/Car_Table'
 import {useFormik} from 'formik'
 import {search_inputs, initialValues} from './Settings'
-import Flatpickr from 'react-flatpickr'
 
 const Search_Card: React.FC = () => {
   const dispatch = useDispatch()
@@ -26,14 +22,6 @@ const Search_Card: React.FC = () => {
       dispatch(fetch_Filtered_Transaction_Data(formik.values))
     },
   })
-  const handleDateChange = (selectedDates: Date[]) => {
-    console.table(selectedDates);
-    formik.setFieldValue('time_travel', selectedDates[0])
-  }
-
-  useEffect(() => {
-    console.log('Form values:', formik.values)
-  }, [formik.values])
   return (
     <>
       <div className='card'>
@@ -67,24 +55,7 @@ const Search_Card: React.FC = () => {
                   </label>
                 </div>
                 <div className='col-7'>
-                  <Flatpickr
-                    options={{
-                      mode: 'range',
-                      maxDate: new Date(Date.now()),
-                      dateFormat: 'Y-m-d H:i:S',
-                      enableTime: true,
-                      time_24hr: true,
-                      altFormat: "Y-m-d H:i:S",
-                    }}
-                    className='form-control'
-                    placeholder='Pick date'
-                    onChange={handleDateChange}
-                    value={[formik.values.time_travel]}
-                  />{formik.touched.time_travel && formik.errors.time_travel && (
-                    <div className='fv-plugins-message-container'>
-                      <div className='fv-help-block'>{formik.errors.time_travel}</div>
-                    </div>
-                  )}
+                  <Pick_Time_bar />
                 </div>
               </div>
               <div

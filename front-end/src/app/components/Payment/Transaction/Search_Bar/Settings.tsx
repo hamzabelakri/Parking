@@ -1,4 +1,3 @@
-// front-end/src/app/components/Payment/Transaction/Search_Bar/Settings.tsx
 
 import * as Yup from 'yup';
 import { IntlShape } from 'react-intl';
