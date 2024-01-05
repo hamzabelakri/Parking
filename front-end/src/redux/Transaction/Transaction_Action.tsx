@@ -17,7 +17,7 @@ export const fetch_All_Transaction_Data: any = () => async (dispatch) => {
 export const fetch_Filtered_Transaction_Data: any = (filterData) => async (dispatch) => {
   try {
     const response = await axios.get(`${url}transaction/`, { params: filterData })
-    //console.log("from action",response.data)
+    console.log("from action",filterData)
     dispatch({type: GET_FILTERED_DATA, payload: response.data})
   } catch (error) {
     toast.error('Failed to get data')

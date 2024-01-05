@@ -6,7 +6,7 @@ from api.report.report_model import Report_document, Order, Item
 report_router = APIRouter(prefix='/report')
 
 
-@report_router.get("/version")
+@report_router.get("/version",tags=["TEST_API"])
 def xx():
     # I1 = Item(name="zvo", price=5000)
     # I1.save()
@@ -19,8 +19,8 @@ def xx():
     return 'mydict'
 
 
-@report_router.get("/shift_report", response_model=list[shift_report_row_response_model])
-def xxx(userid: int):
+@report_router.get("/shift_report", response_model=list[shift_report_row_response_model],tags=["TEST_API"])
+def shift_report(userid: int):
     try:
         documents = Report_document.objects(user=str(userid))
         logger.info(f'is={userid} found :{documents.count()} document')
@@ -34,7 +34,7 @@ def xxx(userid: int):
     return retlist
 
 
-@report_router.post("/shift_report")
+@report_router.post("/shift_report",tags=["TEST_API"])
 def apcds(RequestBody: shift_report_body_request_model, request: Request):
     R1 = Report_document(user=str(RequestBody.userid),
                          shift=RequestBody.shiftid,

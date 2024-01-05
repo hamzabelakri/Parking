@@ -150,6 +150,7 @@
 
   "---------------------------------------------": "Search Card",
 
-  "LICENCE_PLATE.VALIDATION.REQUIRED":"licence plate is required"
+  "LICENCE_PLATE.VALIDATION.REQUIRED":"licence plate is required",
+  "TIME_INTERVAL.VALIDATION.REQUIRED":"time interval is required"
 
 }

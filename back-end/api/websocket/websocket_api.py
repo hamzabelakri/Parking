@@ -19,13 +19,13 @@ async def websocket_endpoint(websocket: WebSocket):
         manager.disconnect(websocket)
 
 
-@websocket_router.post("/update_transaction_data_gui")
+@websocket_router.post("/update_transaction_data_gui",tags=["WEBSOCKET_API"])
 async def update_transaction_data_gui(body: body_update_transaction_data_gui):
     print(type(body.model_dump_json()))
     await manager.send_message(body.model_dump_json())
     return body
 
-@websocket_router.post("/update_transaction_data_gui2")
+@websocket_router.post("/update_transaction_data_gui2",tags=["WEBSOCKET_API"])
 async def update_transaction_data_gui(body: body_update_transaction_data_gui):
     random_file=random.choice(os.listdir("./car-plates"))
     with open(f'./car-plates/{random_file}', "rb") as image_file:
@@ -37,7 +37,7 @@ async def update_transaction_data_gui(body: body_update_transaction_data_gui):
     return {'sent successfully'}
     
 
-@websocket_router.get("/test_ink_status")
+@websocket_router.get("/test_ink_status",tags=["WEBSOCKET_API"])
 async def test_ink_status():
 
     try:

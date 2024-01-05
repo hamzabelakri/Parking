@@ -9,11 +9,11 @@ import base64
 import random,os
 import string
 from fastapi import Query
-
+from utils.funcdatetime import random_datetime_in_range
 
 transaction_router = APIRouter()
 
-@transaction_router.get("/transaction", response_model=list[Ticket_Body_Model])
+@transaction_router.get("/transaction", response_model=list[Ticket_Body_Model],tags=["TRANSACTION_API"])
 def get_transaction_data():
     try:
         documents = Entry_Ticket_Mongo_Document.objects()
@@ -25,23 +25,25 @@ def get_transaction_data():
     
     return transaction_list
 
-@transaction_router.get("/transaction/", response_model=list[Ticket_Body_Model])
+@transaction_router.get("/transaction/", response_model=list[Ticket_Body_Model],tags=["TRANSACTION_API"])
 def get_filtered_transaction_data(
     licence_plate: str = Query(None, alias="licence_plate"),
     start_date: datetime = None,
     end_date: datetime = None
 ):
     try:
+        print(start_date)
+        print(end_date)
         query_params = {}
 
         if licence_plate:
             query_params["licence_plate__regex"] = f"^{re.escape(licence_plate)}"
 
         if start_date is not None and end_date is not None:
-            query_params["created_at__gte"] = start_date
-            query_params["created_at__lte"] = end_date
+            query_params["entry_time__gte"] = start_date
+            query_params["entry_time__lte"] = end_date
 
-        documents = Entry_Ticket_Mongo_Document.objects(**query_params)
+        documents = Entry_Ticket_Mongo_Document.objects(**query_params).order_by("+entry_time")
         print(documents.count())
         transaction_list = [Ticket_Body_Model(**document.to_mongo()) for document in documents]
         
@@ -52,7 +54,7 @@ def get_filtered_transaction_data(
 
 
 
-@transaction_router.get("/transaction/{transaction_id}", response_model=Ticket_Body_Model)
+@transaction_router.get("/transaction/{transaction_id}", response_model=Ticket_Body_Model,tags=["TRANSACTION_API"])
 def get_one_transaction_data(transaction_id: str):
     try:
         
@@ -73,7 +75,7 @@ def get_one_transaction_data(transaction_id: str):
 
 
 
-@transaction_router.post("/transaction")
+@transaction_router.post("/transaction",tags=["TEST_API"])
 def add_transaction_data(RequestBody: Ticket_Body_Model, request: Request):
     try:
         random_file = random.choice(os.listdir("./car-plates"))
@@ -83,13 +85,9 @@ def add_transaction_data(RequestBody: Ticket_Body_Model, request: Request):
         RequestBody.image = f'data:image/jpeg;base64,{image_data}'
         random_epan = ''.join(random.choices(string.ascii_uppercase + string.digits, k=16))
         random_plate = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
-        end_date = datetime.now()
-        start_date = end_date - timedelta(days=10)
-        random_date = start_date + timedelta(days=random.randint(0, 10))
-        print(random_date)
         RequestBody.epan = random_epan
         RequestBody.licence_plate = random_plate
-        RequestBody.entry_time = random_date
+        RequestBody.entry_time = random_datetime_in_range("01/01/2023 00", "01/04/2024 04") 
         New_Document = Entry_Ticket_Mongo_Document(**RequestBody.model_dump())
         New_Document.save()
         return 'saved successfully'
@@ -97,7 +95,7 @@ def add_transaction_data(RequestBody: Ticket_Body_Model, request: Request):
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
 
 
-@transaction_router.put("/transaction/{transaction_id}")
+@transaction_router.put("/transaction/{transaction_id}",tags=["TRANSACTION_API"])
 def update_transaction_data(transaction_id: str, request_body: Ticket_Body_Model):
     try:
         
@@ -116,7 +114,7 @@ def update_transaction_data(transaction_id: str, request_body: Ticket_Body_Model
 
 
 
-@transaction_router.delete("/transaction/{transaction_id}")
+@transaction_router.delete("/transaction/{transaction_id}",tags=["TRANSACTION_API"])
 def delete_transaction_data(transaction_id:str):
     try:
         
