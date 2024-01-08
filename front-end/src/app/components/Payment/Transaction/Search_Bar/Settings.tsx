@@ -12,6 +12,6 @@ export const search_Validation = (intl: IntlShape) => {
 
 export const initialValues = {
   licence_plate: '',
-  start_Date: null,
+  start_Date: new Date().toISOString(),
   end_Date: null,
 };

@@ -9,7 +9,7 @@ import base64
 import random,os
 import string
 from fastapi import Query
-from utils.funcdatetime import random_datetime_in_range
+from utils.datetime_generator import random_datetime_in_range
 
 transaction_router = APIRouter()
 
@@ -40,6 +40,7 @@ def get_filtered_transaction_data(
             query_params["licence_plate__regex"] = f"^{re.escape(licence_plate)}"
 
         if start_date is not None and end_date is not None:
+            
             query_params["entry_time__gte"] = start_date
             query_params["entry_time__lte"] = end_date
 

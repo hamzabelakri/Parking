@@ -2,10 +2,7 @@ import React, {useEffect} from 'react'
 import {useIntl} from 'react-intl'
 import {Pick_Time_bar} from './Pick_Time_bar'
 import {useDispatch} from 'react-redux'
-import {
-  fetch_Filtered_Transaction_Data,
-  fetch_All_Transaction_Data,
-} from '../../../../../redux/Transaction/Transaction_Action'
+import {fetch_Filtered_Transaction_Data} from '../../../../../redux/Transaction/Transaction_Action'
 import Car_Table from '../../../Car_List/Car_Table'
 import {useFormik} from 'formik'
 import {search_Validation, initialValues} from './Settings'
@@ -24,13 +21,22 @@ const Search_Card: React.FC = () => {
       dispatch(fetch_Filtered_Transaction_Data(formik.values))
     },
   })
+
   const handleDateChange = (selectedDates: Date[]) => {
     if (selectedDates && selectedDates[0] && selectedDates[1]) {
-      formik.setFieldValue('start_Date', selectedDates[0].toISOString());
-      formik.setFieldValue('end_Date', selectedDates[1].toISOString());
+      const startDate = selectedDates[0]
+      let endDate = selectedDates[1]
+
+      if (startDate.toDateString() === endDate.toDateString()) {
+        startDate.setHours(0, 0, 0, 0)
+        endDate = new Date()
+      }
+
+      formik.setFieldValue('start_Date', startDate.toISOString())
+      formik.setFieldValue('end_Date', endDate.toISOString())
     }
   }
-  
+
   useEffect(() => {
     console.log('Form values:', formik.values)
   }, [formik.values])
@@ -49,12 +55,14 @@ const Search_Card: React.FC = () => {
                 <div className='col-7'>
                   <input
                     type='text'
-                    
                     className={clsx('form-control bg-transparent', {
                       'is-invalid': formik.touched.licence_plate && formik.errors.licence_plate,
                     })}
                     placeholder='FV...'
                     {...formik.getFieldProps('licence_plate')}
+                    onChange={(e) =>
+                      formik.setFieldValue('licence_plate', e.target.value.toUpperCase())
+                    }
                   />
                 </div>
               </div>
@@ -69,10 +77,10 @@ const Search_Card: React.FC = () => {
                     options={{
                       mode: 'range',
                       maxDate: new Date(Date.now()),
-                      dateFormat: 'Y-m-d H:i',
+                      //dateFormat: 'Y-m-d H:i',
                       enableTime: true,
                       time_24hr: true,
-                      altFormat: 'Y-m-d H:i',
+                      //altFormat: 'Y-m-d H:i',
                     }}
                     className={clsx('form-control bg-transparent', {
                       'is-invalid':
