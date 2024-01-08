@@ -2,14 +2,16 @@
 import * as Yup from 'yup';
 import { IntlShape } from 'react-intl';
 
-export const search_inputs = (intl: IntlShape) => {
+export const search_Validation = (intl: IntlShape) => {
   return Yup.object().shape({
-    licence_plate: Yup.string().required(intl.formatMessage({ id: 'LICENCE_PLATE.VALIDATION.REQUIRED' })),
-    time_travel: Yup.date().nullable().required(intl.formatMessage({ id: 'TIME_INTERVAL.VALIDATION.REQUIRED' })),
+    licence_plate: Yup.string().required(),
+    start_Date: Yup.date().required(),
+    end_Date: Yup.date().required(),
   });
 };
 
 export const initialValues = {
   licence_plate: '',
-  time_travel: null,
+  start_Date: null,
+  end_Date: null,
 };

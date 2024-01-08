@@ -10,7 +10,6 @@ type Props = {
 }
 const Transaction_Details: React.FC<Props> = ({className}) => {
   const {data} = useSelector((state: any) => state.Websocket_Reducers)
-  console.log("trans",data)
   const image = data?.ticket_data?.image
   
   return (

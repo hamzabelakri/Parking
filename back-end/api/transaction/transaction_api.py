@@ -28,8 +28,8 @@ def get_transaction_data():
 @transaction_router.get("/transaction/", response_model=list[Ticket_Body_Model],tags=["TRANSACTION_API"])
 def get_filtered_transaction_data(
     licence_plate: str = Query(None, alias="licence_plate"),
-    start_date: datetime = None,
-    end_date: datetime = None
+    start_date: datetime = Query(None, alias="start_Date"),
+    end_date: datetime = Query(None, alias="end_Date"),
 ):
     try:
         print(start_date)

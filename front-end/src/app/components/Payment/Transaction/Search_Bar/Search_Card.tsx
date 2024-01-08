@@ -1,27 +1,39 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {useIntl} from 'react-intl'
 import {Pick_Time_bar} from './Pick_Time_bar'
 import {useDispatch} from 'react-redux'
-import {fetch_Filtered_Transaction_Data, fetch_All_Transaction_Data} from '../../../../../redux/Transaction/Transaction_Action'
+import {
+  fetch_Filtered_Transaction_Data,
+  fetch_All_Transaction_Data,
+} from '../../../../../redux/Transaction/Transaction_Action'
 import Car_Table from '../../../Car_List/Car_Table'
 import {useFormik} from 'formik'
-import {search_inputs, initialValues} from './Settings'
+import {search_Validation, initialValues} from './Settings'
+import Flatpickr from 'react-flatpickr'
+import clsx from 'clsx'
 
 const Search_Card: React.FC = () => {
   const dispatch = useDispatch()
   const intl = useIntl()
-  const handleCick = (event) => {
-    dispatch(fetch_All_Transaction_Data())
-  }
 
   const formik = useFormik({
     initialValues,
-    validationSchema: search_inputs(intl),
+    validationSchema: search_Validation(intl),
 
     onSubmit: (values) => {
       dispatch(fetch_Filtered_Transaction_Data(formik.values))
     },
   })
+  const handleDateChange = (selectedDates: Date[]) => {
+    if (selectedDates && selectedDates[0] && selectedDates[1]) {
+      formik.setFieldValue('start_Date', selectedDates[0].toISOString());
+      formik.setFieldValue('end_Date', selectedDates[1].toISOString());
+    }
+  }
+  
+  useEffect(() => {
+    console.log('Form values:', formik.values)
+  }, [formik.values])
   return (
     <>
       <div className='card'>
@@ -37,25 +49,39 @@ const Search_Card: React.FC = () => {
                 <div className='col-7'>
                   <input
                     type='text'
-                    className='form-control'
+                    
+                    className={clsx('form-control bg-transparent', {
+                      'is-invalid': formik.touched.licence_plate && formik.errors.licence_plate,
+                    })}
                     placeholder='FV...'
                     {...formik.getFieldProps('licence_plate')}
                   />
-                  {formik.touched.licence_plate && formik.errors.licence_plate && (
-                    <div className='fv-plugins-message-container'>
-                      <div className='fv-help-block'>{formik.errors.licence_plate}</div>
-                    </div>
-                  )}
                 </div>
               </div>
-              <div className='row col  justify-content-center'>
+              <div className='row col justify-content-center'>
                 <div className='col-auto'>
                   <label className='col-form-label'>
                     {intl.formatMessage({id: 'INPUT.TIMEINTERVAL'})}
                   </label>
                 </div>
                 <div className='col-7'>
-                  <Pick_Time_bar />
+                  <Flatpickr
+                    options={{
+                      mode: 'range',
+                      maxDate: new Date(Date.now()),
+                      dateFormat: 'Y-m-d H:i',
+                      enableTime: true,
+                      time_24hr: true,
+                      altFormat: 'Y-m-d H:i',
+                    }}
+                    className={clsx('form-control bg-transparent', {
+                      'is-invalid':
+                        (formik.touched.start_Date && formik.errors.start_Date) ||
+                        (formik.touched.end_Date && formik.errors.end_Date),
+                    })}
+                    placeholder='Pick date'
+                    onChange={handleDateChange}
+                  />
                 </div>
               </div>
               <div

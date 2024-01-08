@@ -4,11 +4,10 @@ import Search_Card from './Search_Card'
 import {useDispatch, useSelector} from 'react-redux'
 import {clear_Filtered_Transaction_Data} from '../../../redux/Transaction/Transaction_Action'
 const Car_Table: React.FC = () => {
-  const {data} = useSelector((state: any) => state.Transaction_Reducers)
   const {filtered_data} = useSelector((state: any) => state.Transaction_Reducers)
   const dispatch = useDispatch()
 
-  console.log('car_table', filtered_data)
+  //console.log('car_table', filtered_data)
 
   const handleCloseModal = () => {
     dispatch(clear_Filtered_Transaction_Data())
