@@ -1,9 +1,9 @@
 // src/Redux/WebSocket/WebSocket_Actions.tsx
-import {OPEN_WEBSOCKET, GET_ALL_DATA} from './Types'
+import {GET_ALL_DATA, CLEAR_ALL_DATA} from './Types'
 import toast from 'react-hot-toast'
 
-export const openWebSocket: any = () => async (dispatch) => {
-  const url='ws://127.0.0.1:8000/ws'
+export const open_Web_Socket: any = () => async (dispatch) => {
+  const url = 'ws://127.0.0.1:8000/ws'
   let ws = new WebSocket(url)
 
   ws.onopen = () => {
@@ -45,10 +45,14 @@ export const openWebSocket: any = () => async (dispatch) => {
 
       reject()
     }
-    dispatch(openWebSocket())
+    dispatch(open_Web_Socket())
   }
 
   return () => {
     ws.close()
   }
+}
+
+export const clear_All_Data: any = () => (dispatch) => {
+  dispatch({type: CLEAR_ALL_DATA})
 }

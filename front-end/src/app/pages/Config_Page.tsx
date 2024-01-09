@@ -78,7 +78,7 @@ const Config_Page: React.FC = () => {
               <div className='row mb-6'>
                 <label className='col-lg-4 col-form-label required fw-bold fs-6'>
                   {' '}
-                  {intl.formatMessage({id: 'CONFIG.SERVERSETTING'})}
+                  {intl.formatMessage({id: 'CONFIG.SERVER_SETTING'})}
                 </label>
 
                 <div className='col-lg-8'>
@@ -123,7 +123,7 @@ const Config_Page: React.FC = () => {
 
               <div className='row mb-6 '>
                 <label className='col-lg-4 col-form-label required fw-bold fs-6'>
-                  {intl.formatMessage({id: 'CONFIG.SERVERSELECT'})}
+                  {intl.formatMessage({id: 'CONFIG.SERVER_SELECT'})}
                 </label>
 
                 <div className='col-lg-6 fv-row'>
@@ -131,7 +131,7 @@ const Config_Page: React.FC = () => {
                     className='form-select  form-select-lg'
                     {...formik.getFieldProps('selectedZR')}
                   >
-                    <option value=''>{intl.formatMessage({id: 'CONFIG.ZROPTION'})}</option>
+                    <option value=''>{intl.formatMessage({id: 'CONFIG.ZR_OPTION'})}</option>
                     {oneServerData &&
                       oneServerData.map((item) => (
                         <option key={item.id} value={item.value}>
@@ -149,7 +149,7 @@ const Config_Page: React.FC = () => {
 
               <div className='row mb-6'>
                 <label className='col-lg-4 col-form-label required fw-bold fs-6'>
-                  {intl.formatMessage({id: 'CONFIG.POSSELECT'})}
+                  {intl.formatMessage({id: 'CONFIG.POS_SELECT'})}
                 </label>
 
                 <div className='col-lg-6 fv-row'>
@@ -157,7 +157,7 @@ const Config_Page: React.FC = () => {
                     className='form-select  form-select-lg'
                     {...formik.getFieldProps('selectedPos')}
                   >
-                    <option value=''>{intl.formatMessage({id: 'CONFIG.POSOPTION'})}</option>
+                    <option value=''>{intl.formatMessage({id: 'CONFIG.POS_OPTION'})}</option>
                     {oneServerData &&
                       oneServerData
                         .find((item) => item.name === formik.values.selectedZR)
@@ -188,7 +188,7 @@ const Config_Page: React.FC = () => {
                 disabled={loading || !formik.isValid}
               >
                 {!loading ? (
-                  intl.formatMessage({id: 'CONFIG.SAVECHANGES'})
+                  intl.formatMessage({id: 'CONFIG.SAVE_CHANGES'})
                 ) : (
                   <span className='indicator-progress' style={{display: 'block'}}>
                     {intl.formatMessage({id: 'AUTH.LOGIN.WAIT'})}

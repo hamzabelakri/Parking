@@ -78,11 +78,11 @@
 
   "------------------------------------------": "Server-Configuration",
 
-  "CONFIG.SERVERSETTING": "Server Setting",
+  "CONFIG.SERVER_SETTING": "Server Setting",
 
   "CONFIG.SERVER_SELECT": " Server",
   "CONFIG.ZR_OPTION": "select a ZR",
-  "CONFIG.PO_SOPTION": "select a Pos",
+  "CONFIG.POS_OPTION": "select a Pos",
   "CONFIG.POS_SELECT": " POS",
   "CONFIG.PORT": "Port ",
   "CONFIG.ZRIP": "ZR IP",

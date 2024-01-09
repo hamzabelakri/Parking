@@ -1,13 +1,11 @@
 import React, {useEffect} from 'react'
 import {useIntl} from 'react-intl'
-import {Pick_Time_bar} from './Pick_Time_bar'
 import {useDispatch} from 'react-redux'
-import {fetch_Filtered_Transaction_Data} from '../../../../../redux/Transaction/Transaction_Action'
-import Car_Table from '../../../Parking_Details/Parking_Table'
 import {useFormik} from 'formik'
-import {search_Validation, initialValues} from './Settings'
 import Flatpickr from 'react-flatpickr'
 import clsx from 'clsx'
+import { fetch_Filtered_Transaction_Data } from '../../../redux/Transaction/Transaction_Action'
+import { search_Validation, initialValues } from './Settings'
 
 const Search_Card: React.FC = () => {
   const dispatch = useDispatch()
@@ -76,7 +74,7 @@ const Search_Card: React.FC = () => {
                   <Flatpickr
                     options={{
                       mode: 'range',
-                      maxDate: new Date(Date.now()),
+                      
                       //dateFormat: 'Y-m-d H:i',
                       enableTime: true,
                       time_24hr: true,
@@ -105,13 +103,7 @@ const Search_Card: React.FC = () => {
             </div>
           </div>
         </form>
-        <div className='modal fade" tabIndex={-1}' id='kt_modal_1'>
-          <div className='modal-dialog modal-dialog-centered mw-900px'>
-            <div className='modal-content'>
-              <Car_Table />
-            </div>
-          </div>
-        </div>
+        
       </div>
     </>
   )

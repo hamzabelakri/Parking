@@ -78,16 +78,16 @@
 
   "------------------------------------------": "CUSTOM INPUTS",
 
-  "CONFIG.SERVERSETTING": "اعدادات الخادم",
-  "CONFIG.SERVERSELECT": " الخادم",
-  "CONFIG.ZROPTION": "اختر ZR",
-  "CONFIG.POSOPTION": "اختر Pos",
-  "CONFIG.POSSELECT": " POS",
+  "CONFIG.SERVER_SETTING": "اعدادات الخادم",
+  "CONFIG.SERVER_SELECT": " الخادم",
+  "CONFIG.ZR_OPTION": "اختر ZR",
+  "CONFIG.POS_OPTION": "اختر Pos",
+  "CONFIG.POS_SELECT": " POS",
   "CONFIG.PORT": "Port ",
   "CONFIG.ZRIP": "ZR IP",
   "CONFIG.CONNECT": "اتصال",
   "CONFIG.CONFIGURATION": "إعدادات",
-  "CONFIG.SAVECHANGES": "حفظ التغييرات",
+  "CONFIG.SAVE_CHANGES": "حفظ التغييرات",
   "CONFIG.DISCARD": "إلغاء",
 
 

@@ -7,6 +7,7 @@ from api.user.user import user_router
 from api.report.report_api import report_router
 from api.websocket.websocket_api import websocket_router
 from api.transaction.transaction_api import transaction_router
+from api.config.config_api import config_router
 
 
 def initialize_backend_application() -> fastapi.FastAPI:
@@ -15,6 +16,7 @@ def initialize_backend_application() -> fastapi.FastAPI:
     app.include_router(report_router)
     app.include_router(websocket_router)
     app.include_router(transaction_router)
+    app.include_router(config_router)
     app.add_middleware(CORSMiddleware,
                        allow_origins=ALLOWED_ORIGINS,
                        allow_credentials=ALLOWED_CREDENTIALS,

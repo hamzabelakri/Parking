@@ -4,7 +4,8 @@ import {useIntl} from 'react-intl'
 import ItemsList from './Items_List/Items_List'
 import Control_Buttons from './Control_Buttons/Control_Buttons'
 import Payment_Buttons from './Payment_Buttons/Payment_Buttons'
-import { useSelector } from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import {clear_All_Data} from '../../../../redux/WebSocket/WebSocket_Actions'
 
 type Props = {
   className: string
@@ -12,6 +13,7 @@ type Props = {
 
 const Checkout: React.FC<Props> = ({className}) => {
   const {data} = useSelector((state: any) => state.Websocket_Reducers)
+  const dispatch = useDispatch()
   const {
     subtotal = 0,
     discounts = 0,
@@ -19,6 +21,9 @@ const Checkout: React.FC<Props> = ({className}) => {
     total = 0,
   } = data?.articles_data?.transaction_bill || {}
   const intl = useIntl()
+  const handleClick = (e) => {
+    dispatch(clear_All_Data())
+  }
   return (
     <div className={`card card-flush ${className}`}>
       <div className='card-header pt-5'>
@@ -27,7 +32,7 @@ const Checkout: React.FC<Props> = ({className}) => {
         </h3>
 
         <div className='card-toolbar'>
-          <a href='#' className='btn btn-light-primary fs-4 fw-bold py-4'>
+          <a href='#' className='btn btn-light-primary fs-4 fw-bold py-4' onClick={handleClick}>
             {intl.formatMessage({id: 'CHEKOUT.CLEAR.BUTTON'})}
           </a>
         </div>
@@ -62,7 +67,7 @@ const Checkout: React.FC<Props> = ({className}) => {
         </div>
 
         <div className='m-0'>
-          <Control_Buttons/>
+          <Control_Buttons />
 
           <h1 className='fw-bold text-gray-800 mb-5'>
             {intl.formatMessage({id: 'CHEKOUT.PAYMENT_METHOD'})}

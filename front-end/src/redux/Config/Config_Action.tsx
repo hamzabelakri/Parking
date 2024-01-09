@@ -27,10 +27,10 @@ export const get_One_Server: any = (input) => async (dispatch) => {
 
 export const post_All_Data: any = (data) => async (dispatch) => {
   try {
-    const response = await axios.post('http://127.0.0.1:8000/', data)
+    const response = await axios.post('http://127.0.0.1:8000/local/config', data)
     //console.log(response.data.start)
     dispatch({type: POST_ALL_DATA, payload: response.data})
-    toast.success(response.data.start)
+    toast.success(response.data)
   } catch (error) {
     toast.error('Failed')
     // console.log(error)

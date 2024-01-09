@@ -1,6 +1,5 @@
 
 import * as Yup from 'yup';
-import { IntlShape } from 'react-intl';
 
 export const search_Validation = () => {
   return Yup.object().shape({
