@@ -1,0 +1,1 @@
+export const STAFF_REGISTER = 'STAFF_REGISTER'

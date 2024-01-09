@@ -1,7 +1,6 @@
 from fastapi import HTTPException, Query, APIRouter
-config_router = APIRouter()
 
-
+config_router = APIRouter(tags=["CONFIG_API"])
 
 
 @config_router.get('/lrgeometry')

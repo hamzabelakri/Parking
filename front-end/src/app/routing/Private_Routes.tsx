@@ -4,20 +4,20 @@ import {MasterLayout} from '../../_metronic/layout/MasterLayout'
 import TopBarProgress from 'react-topbar-progress-indicator'
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
-import ShiftPage from '../pages/Shift_Page'
-import ConfigPage from '../pages/Config_Page'
-import PaymentPage from '../pages/Payment_Page'
+import Shift_Page from '../pages/Shift_Page'
+import Config_Page from '../pages/Config_Page'
+import Payment_Page from '../pages/Payment_Page'
 
-const PrivateRoutes = () => {
+const Private_Routes = () => {
 
   return (
     <Routes>
       <Route element={<MasterLayout />}>
         <Route path='/' element={<Navigate to='/payment' />} />
         {/* Pages */}
-        <Route path='payment' element={<PaymentPage />} />
-        <Route path='config' element={<ConfigPage />} />
-        <Route path='shift' element={<ShiftPage />} />
+        <Route path='payment' element={<Payment_Page />} />
+        <Route path='config' element={<Config_Page />} />
+        <Route path='shift' element={<Shift_Page />} />
         <Route path='*' element={<Navigate to='/error/404' />} />
  
       </Route>
@@ -37,4 +37,4 @@ const SuspensedView: FC<WithChildren> = ({children}) => {
   return <Suspense fallback={<TopBarProgress />}>{children}</Suspense>
 }
 
-export {PrivateRoutes}
+export {Private_Routes}

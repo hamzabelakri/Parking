@@ -7,7 +7,7 @@
 
 import {FC} from 'react'
 import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom'
-import {PrivateRoutes} from './Private_Routes'
+import {Private_Routes} from './Private_Routes'
 
 import {App} from '../App'
 import AuthPage from '../pages/Landing_Page'
@@ -23,7 +23,7 @@ import { Logout, useAuth } from '../modules/auth'
  */
 const {PUBLIC_URL} = process.env
 
-const AppRoutes: FC = () => {
+const App_Routes: FC = () => {
   const {currentUser} = useAuth()
   //console.log(currentUser)
   return (
@@ -34,7 +34,7 @@ const AppRoutes: FC = () => {
           <Route path='logout' element={<Logout />} />
       {currentUser? 
             <>
-              <Route path='/*' element={<PrivateRoutes />} />
+              <Route path='/*' element={<Private_Routes />} />
               <Route index element={<Navigate to='/payment' />} />
             </> : 
             <>
@@ -49,4 +49,4 @@ const AppRoutes: FC = () => {
   )
 }
 
-export {AppRoutes}
+export {App_Routes}

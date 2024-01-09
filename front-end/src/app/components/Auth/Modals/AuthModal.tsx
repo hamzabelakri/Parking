@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Modal from 'react-bootstrap/Modal'
-import UserLoginForm from '../UserLoginForm';
-import AdminLoginForm from '../AdminLoginForm';
+import Staff_Login from '../Staff/Staff_Login';
+import Admin_Login from '../Admin/Admin_Login';
 
 
 
@@ -11,7 +11,7 @@ const AuthModal: React.FC = () => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  const openAdminAuth = () => {
+  const open_Admin_Auth = () => {
     setCurrentComponent('adminAuth');
   };
   useEffect(() => {
@@ -22,9 +22,9 @@ const AuthModal: React.FC = () => {
       <Modal centered show={show} backdrop="static" onHide={handleClose} keyboard={false} >
       <Modal.Body>
           {currentComponent === 'login' ? (
-            <UserLoginForm closeModal={setShow}  openAdminAuth={openAdminAuth}/>
+            <Staff_Login closeModal={setShow}  open_Admin_Auth={open_Admin_Auth}/>
           ) : (
-            <AdminLoginForm closeModal={setShow} />
+            <Admin_Login closeModal={setShow} />
           )}
         </Modal.Body>
       </Modal>

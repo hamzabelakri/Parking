@@ -3,44 +3,19 @@ import {useState} from 'react'
 import * as Yup from 'yup'
 import clsx from 'clsx'
 import {useFormik} from 'formik'
-
+import {loginSchema,initialValues} from './Form_Settings'
 import 'react-toastify/dist/ReactToastify.css'
 import {Link, useNavigate} from 'react-router-dom'
 import {useIntl} from 'react-intl'
 import toast, {Toaster} from 'react-hot-toast'
-import { useAuth } from '../../modules/auth'
-import { getUserByToken, login } from '../../modules/auth/core/_requests'
-
-
-
-const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
-  password: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Password is required'),
-})
-
-const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo',
-}
-
-/*
-  Formik+YUP+Typescript:
-  https://jaredpalmer.com/formik/docs/tutorial#getfieldprops
-  https://medium.com/@maurice.de.beijer/yup-validation-and-typescript-and-formik-6c342578a20e
-*/
+import { useAuth } from '../../../modules/auth'
+import { getUserByToken, login } from '../../../modules/auth/core/_requests'
 
 type Props = {
   closeModal: (value: boolean) => void
 }
 
-const AdminLoginForm: React.FC<Props> = ({closeModal}) => {
+const Admin_Login: React.FC<Props> = ({closeModal}) => {
   const [loading, setLoading] = useState(false)
   const [incorrectLogin, setIncorrectLogin] = useState(false)
   const navigate = useNavigate()
@@ -78,8 +53,8 @@ const AdminLoginForm: React.FC<Props> = ({closeModal}) => {
       <div className='text-center'>
         <h1 className='text-dark fw-bolder mb-3'>
           {intl.formatMessage({id: 'AUTH.ADMINLOGIN.TITLE'})}
-        </h1>
-      </div>
+        </h1> 
+      </div> 
 
       <div className='fv-row'>
         <label className='form-label fs-6 fw-bolder text-dark'></label>
@@ -147,9 +122,9 @@ const AdminLoginForm: React.FC<Props> = ({closeModal}) => {
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
             </span>
           )}
-        </button>
-      </div>
+        </button> 
+      </div> 
     </form>
   )
 }
-export default AdminLoginForm
+export default Admin_Login

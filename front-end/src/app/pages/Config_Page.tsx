@@ -19,7 +19,9 @@ const Config_Page: React.FC = () => {
     initialValues,
     validationSchema: serverFormSchema(intl),
 
-    onSubmit: (values) => {
+    onSubmit: (values, setSubmitting) => {
+      setLoading(true)
+
       formik.setErrors({port: ''})
       formik.setTouched({port: false})
       dispatch(post_All_Data(formik.values))
