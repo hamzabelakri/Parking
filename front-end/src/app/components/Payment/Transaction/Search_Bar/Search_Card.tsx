@@ -37,9 +37,9 @@ const Search_Card: React.FC = () => {
     }
   }
 
-  useEffect(() => {
+/*   useEffect(() => {
     console.log('Form values:', formik.values)
-  }, [formik.values])
+  }, [formik.values]) */
   return (
     <>
       <div className='card'>

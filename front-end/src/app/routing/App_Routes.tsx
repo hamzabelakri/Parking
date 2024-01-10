@@ -8,41 +8,30 @@
 import {FC} from 'react'
 import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom'
 import {Private_Routes} from './Private_Routes'
-
 import {App} from '../App'
-import AuthPage from '../pages/Landing_Page'
-import { ErrorsPage } from '../modules/errors/ErrorsPage'
-import { Logout, useAuth } from '../modules/auth'
+import Landing_Page from '../pages/Landing_Page'
+import {ErrorsPage} from '../modules/errors/ErrorsPage'
+import {useSelector} from 'react-redux'
 
-
-
-/**
- * Base URL of the website.
- *
- * @see https://facebook.github.io/create-react-app/docs/using-the-public-folder
- */
 const {PUBLIC_URL} = process.env
 
 const App_Routes: FC = () => {
-  const {currentUser} = useAuth()
-  //console.log(currentUser)
+  const {connected_staff} = useSelector((state: any) => state.Auth_Reducer)
+  console.log(connected_staff)
   return (
     <BrowserRouter basename={PUBLIC_URL}>
       <Routes>
         <Route element={<App />}>
           <Route path='error/*' element={<ErrorsPage />} />
-          <Route path='logout' element={<Logout />} />
-      {currentUser? 
+
+          {connected_staff ? (
+            <Route path='/*' element={<Private_Routes />} />
+          ) : (
             <>
-              <Route path='/*' element={<Private_Routes />} />
-              <Route index element={<Navigate to='/payment' />} />
-            </> : 
-            <>
-           <Route path='auth/*' element={<AuthPage />} />
-            <Route path='*' element={<Navigate to='/auth' />} />
-          </>
-}
-   
+              <Route path='auth/*' element={<Landing_Page />} />
+              <Route path='*' element={<Navigate to='/auth' />} />
+            </>
+          )}
         </Route>
       </Routes>
     </BrowserRouter>

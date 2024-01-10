@@ -13,13 +13,14 @@ const Private_Routes = () => {
   return (
     <Routes>
       <Route element={<MasterLayout />}>
-        <Route path='/' element={<Navigate to='/payment' />} />
+      <Route path='auth/*' element={<Navigate to='/payment' />} />
         {/* Pages */}
         <Route path='payment' element={<Payment_Page />} />
         <Route path='config' element={<Config_Page />} />
         <Route path='shift' element={<Shift_Page />} />
+
+        {/* Page Not Found */}
         <Route path='*' element={<Navigate to='/error/404' />} />
- 
       </Route>
     </Routes>
   )

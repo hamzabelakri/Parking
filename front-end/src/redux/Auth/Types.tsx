@@ -1,1 +1,2 @@
 export const STAFF_REGISTER = 'STAFF_REGISTER'
+export const STAFF_LOGOUT = 'STAFF_LOGOUT'

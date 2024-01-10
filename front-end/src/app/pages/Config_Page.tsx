@@ -5,11 +5,14 @@ import {Container} from 'react-bootstrap'
 import {useIntl} from 'react-intl'
 import {Toaster} from 'react-hot-toast'
 import {initialValues, serverFormSchema} from '../components/Types'
-import { get_All_Data, get_One_Server, post_All_Data } from '../../redux/Config/Config_Action'
-import { useAuth } from '../modules/auth'
+import {get_All_Data, get_One_Server, post_All_Data} from '../../redux/Config/Config_Action'
+import {useAuth} from '../modules/auth'
+import {staff_Logout} from '../../redux/Auth/Auth_Action'
+import {useNavigate} from 'react-router-dom'
 
 const Config_Page: React.FC = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const {data} = useSelector((state: any) => state.Config_Reducer)
   const {oneServerData} = useSelector((state: any) => state.Config_Reducer)
   //console.log(oneServerData)
@@ -34,8 +37,7 @@ const Config_Page: React.FC = () => {
   }
 
   const handleDiscard = () => {
-    formik.resetForm()
-    formik.setErrors({})
+    dispatch(staff_Logout(navigate))
   }
 
   useEffect(() => {
@@ -51,7 +53,6 @@ const Config_Page: React.FC = () => {
       //console.log(selectedZR)
     }
   }, [data])
-
 
   const {currentUser, logout} = useAuth()
 
@@ -181,7 +182,10 @@ const Config_Page: React.FC = () => {
             {/* // ---------------------- Submit Button ------------------------------------ // */}
 
             <div className='card-footer d-flex justify-content-center py-6 px-9'>
-              <button className='btn btn-light btn-active-light-primary me-2' onClick={logout}>
+              <button
+                className='btn btn-light btn-active-light-primary me-2'
+                onClick={handleDiscard}
+              >
                 {intl.formatMessage({id: 'CONFIG.DISCARD'})}
               </button>
               <button

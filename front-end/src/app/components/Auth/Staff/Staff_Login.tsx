@@ -1,49 +1,30 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {useState} from 'react'
-import * as Yup from 'yup'
 import clsx from 'clsx'
 import {useFormik} from 'formik'
-import toast, { Toaster } from 'react-hot-toast';
-import { useIntl } from 'react-intl'
-import { useNavigate } from 'react-router-dom'
-import {loginSchema,initialValues} from './Form_Settings'
+import toast, {Toaster} from 'react-hot-toast'
+import {useIntl} from 'react-intl'
+import {useNavigate} from 'react-router-dom'
+import {loginSchema, initialValues} from './Form_Settings'
 import UserSession from '../../Session/UserSession'
-import { useAuth } from '../../../modules/auth';
-import { getUserByToken, login } from '../../../modules/auth/core/_requests';
+import {useAuth} from '../../../modules/auth'
+import {useDispatch} from 'react-redux'
+import {staff_Login} from '../../../../redux/Auth/Auth_Action'
 
 interface UserLoginFormProps {
-  closeModal: (value: boolean) => void;
-  open_Admin_Auth: () => void;
+  closeModal: (value: boolean) => void
+  open_Admin_Auth: () => void
 }
 
- const Staff_Login:React.FC<UserLoginFormProps>=({closeModal, open_Admin_Auth}) =>{
+const Staff_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Auth}) => {
   const [loading, setLoading] = useState(false)
-  const [incorrectLogin, setIncorrectLogin] = useState(false)
 
-  const {saveAuth, setCurrentUser} = useAuth()
-  const navigate = useNavigate()
-
+  const dispatch = useDispatch()
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
-    onSubmit: async (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
-      try {
-        const {data: auth} = await login(values.email, values.password)
-        saveAuth(auth)
-        const {data: user} = await getUserByToken(auth.api_token)
-        setCurrentUser(user)
-        closeModal(false)
-        navigate('/payment')
-      } catch (error) {
-        console.error(error)
-        saveAuth(undefined)
-        setStatus('The login details are incorrect')
-        setSubmitting(false)
-        setLoading(false)
-        setIncorrectLogin(true)
-        toast.error('Wrong Email or Password')
-      }
+    onSubmit: (values) => {
+      dispatch(staff_Login(formik.values))
     },
   })
   const intl = useIntl()
@@ -51,7 +32,9 @@ interface UserLoginFormProps {
     <form className='' onSubmit={formik.handleSubmit} noValidate id='kt_login_signin_form'>
       <Toaster />
       <div className='d-flex justify-content-between'>
-        <h1 className='text-dark fw-bolder mb-3'>{intl.formatMessage({id: 'AUTH.LOGIN.BUTTON'})}</h1>
+        <h1 className='text-dark fw-bolder mb-3'>
+          {intl.formatMessage({id: 'AUTH.LOGIN.BUTTON'})}
+        </h1>
         <i className='bi bi-gear fs-2x text-center cursor-pointer' onClick={open_Admin_Auth}></i>
       </div>
 
@@ -109,7 +92,11 @@ interface UserLoginFormProps {
           className='btn btn-primary'
           disabled={formik.isSubmitting || !formik.isValid}
         >
-          {!loading && <span className='indicator-label'>{intl.formatMessage({id: 'AUTH.LOGIN.CONTINUE'})}</span>}
+          {!loading && (
+            <span className='indicator-label'>
+              {intl.formatMessage({id: 'AUTH.LOGIN.CONTINUE'})}
+            </span>
+          )}
           {loading && (
             <span className='indicator-progress' style={{display: 'block'}}>
               {intl.formatMessage({id: 'AUTH.LOGIN.WAIT'})}
