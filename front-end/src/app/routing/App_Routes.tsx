@@ -25,7 +25,10 @@ const App_Routes: FC = () => {
           <Route path='error/*' element={<ErrorsPage />} />
 
           {connected_staff ? (
-            <Route path='/*' element={<Private_Routes />} />
+            <>
+              <Route path='/*' element={<Private_Routes />} />
+              <Route index element={<Navigate to='/payment' />} />
+            </>
           ) : (
             <>
               <Route path='auth/*' element={<Landing_Page />} />

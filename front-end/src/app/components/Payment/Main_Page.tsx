@@ -16,7 +16,7 @@ const Main_Page: React.FC = () => {
   return (
     <>
       <div className='row g-5 g-xl-8'>
-        <Toaster position='top-center' reverseOrder={false} />
+        <Toaster position='top-center' />
         <div className='col-xl-8'>
           <div>
             <Transaction_Details className='card-xl-stretch mb-5 mb-xl-8' />
