@@ -1,6 +1,6 @@
-from mongoengine import  DynamicDocument, StringField, EmailField, ListField, ReferenceField
+from mongoengine import DynamicDocument, StringField, ListField
 
 class Shift_Mongo_Document(DynamicDocument):
-    staff = ReferenceField('Staff_Mongo_Document', required=True)  
-    transaction= ListField()
-    events=ListField()
+    
+    transaction = ListField()
+    events = ListField()

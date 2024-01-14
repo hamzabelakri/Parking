@@ -2,7 +2,8 @@ from fastapi import HTTPException, Request, status, APIRouter
 from config.log_config import logger
 from models.staff_model import Staff_Body_Model
 from api.auth.auth_model import Staff_Mongo_Document
-from api.shift.shift_model import Shift_Mongo_Document
+from api.shift.shift_model import  Shift_Mongo_Document
+from models.shift_model import Shift_Body_Model
 from datetime import datetime
 
 auth_router = APIRouter(prefix='/auth', tags=["AUTH_API"])
@@ -25,10 +26,18 @@ def sign_in_staff(request: Request, staff_data: Staff_Body_Model):
 
         if not staff:
             raise HTTPException(status_code=401, detail='Invalid email or password')
-        shift_document = Shift_Mongo_Document(staff=staff,transaction=[], events=[])
-        shift_document.save()
+        
+        create_shift_document()
+
         return staff
     except HTTPException as http_ex:
         raise http_ex
     except Exception as ex:
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
+    
+def create_shift_document():
+    shift_document = Shift_Mongo_Document( transaction=[], events=[])
+    shift_document.save()
+
+
+
