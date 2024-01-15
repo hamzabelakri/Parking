@@ -92,12 +92,11 @@ const Staff_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Auth}
           className='btn btn-primary'
           disabled={formik.isSubmitting || !formik.isValid}
         >
-          {!loading && (
+          {!loading ? (
             <span className='indicator-label'>
               {intl.formatMessage({id: 'AUTH.LOGIN.CONTINUE'})}
             </span>
-          )}
-          {loading && (
+          ) : (
             <span className='indicator-progress' style={{display: 'block'}}>
               {intl.formatMessage({id: 'AUTH.LOGIN.WAIT'})}
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>

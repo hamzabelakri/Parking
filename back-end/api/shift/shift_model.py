@@ -1,6 +1,8 @@
-from mongoengine import DynamicDocument, StringField, ListField
+from mongoengine import DynamicDocument, StringField, ListField, DateTimeField
 
 class Shift_Mongo_Document(DynamicDocument):
-    
-    transaction = ListField()
+    start_time = DateTimeField(required=True)
+    end_time = DateTimeField()
+    transactions = ListField()
     events = ListField()
+    

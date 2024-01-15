@@ -22,11 +22,14 @@ def create_staff(user_data: Staff_Body_Model):
 @auth_router.post("/sign-in/", response_model=Staff_Body_Model)
 def sign_in_staff(request: Request, staff_data: Staff_Body_Model):
     try:
-        staff = Staff_Mongo_Document.objects(email=staff_data.email, password=staff_data.password).first()
+        email=staff_data.email
+        password=staff_data.password
+        staff = Staff_Mongo_Document.objects(email=email).first()
 
         if not staff:
+            raise HTTPException(status_code=401, detail='Staff not found')
+        if not (email and password):
             raise HTTPException(status_code=401, detail='Invalid email or password')
-        
         create_shift_document()
 
         return staff
@@ -36,8 +39,8 @@ def sign_in_staff(request: Request, staff_data: Staff_Body_Model):
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
     
 def create_shift_document():
-    shift_document = Shift_Mongo_Document( transaction=[], events=[])
-    shift_document.save()
 
+    shift_document = Shift_Mongo_Document(start_time=datetime.now(), end_time=None, transactions=[], events=[])
+    shift_document.save()
 
 

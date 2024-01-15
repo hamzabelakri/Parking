@@ -8,7 +8,7 @@ export const staff_Login:any = (credentials) => async (dispatch) => {
   try {
     const response = await axios.post(`${url}sign-in`, credentials)
     dispatch({type: STAFF_REGISTER, payload: response.data})
-    console.log("from action",response.data)
+    //console.log("from action",response.data)
     
     toast.success("welcome")
   } catch (error:any) {
