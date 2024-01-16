@@ -11,8 +11,9 @@ shift_router = APIRouter(tags=["SHIFT_API"])
 def get_all_shifts():
     try:
         documents = Shift_Mongo_Document.objects()
+        print(documents[0].id)
         logger.info(f"Total shifts: {len(documents)}")
-        shifts = [Shift_Body_Model(**document.to_mongo()) for document in documents]
+        shifts = [Shift_Body_Model(id=str(document.id), **document.to_mongo()) for document in documents]
         return shifts
     except Exception as Ex:
         raise HTTPException(status_code=500, detail=f'Error: {Ex}')
@@ -24,8 +25,9 @@ def get_shift_by_id(shift_id: str):
         document = Shift_Mongo_Document.objects(id=ObjectId(shift_id)).first()
         if not document:
             raise HTTPException(status_code=404, detail='shift not found')
-        staff = Shift_Body_Model(**document.to_mongo())
-        return staff
+        shift = Shift_Body_Model(id=str(document.id), **document.to_mongo())
+        print(str(document.id))
+        return shift
     except HTTPException as http_ex:
         raise http_ex
     except Exception as ex:

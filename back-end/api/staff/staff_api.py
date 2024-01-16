@@ -12,7 +12,7 @@ def get_all_staff():
     try:
         documents = Staff_Mongo_Document.objects()
         logger.info(f"Number of staffs: {documents.count()}")
-        staff_list = [Staff_Body_Model(**document.to_mongo()) for document in documents]
+        staff_list = [Staff_Body_Model(id=str(document.id), **document.to_mongo()) for document in documents]
     except Exception as Ex:
         raise HTTPException(status=500, details=f' error {Ex} ')
     return staff_list
@@ -25,8 +25,7 @@ def get_staff_by_id(staff_id: str):
 
         if not document:
             raise HTTPException(status_code=404, detail='Staff not found')
-
-        staff = Staff_Body_Model(**document.to_mongo())
+        staff = Staff_Body_Model(id=str(document.id), **document.to_mongo())
         return staff
     except HTTPException as http_ex:
         raise http_ex

@@ -1,15 +1,21 @@
 import React from 'react'
 import {ButtonsData} from '../BarrierSection/ButtonsData'
 import {useIntl} from 'react-intl'
+import { useDispatch } from 'react-redux'
+import { add_event_to_shift } from '../../../../../../redux/Transaction/Transaction_Action'
 
 const BarrierSection: React.FC = () => {
   const intl = useIntl()
-
+const dispatch=useDispatch()
   interface Icon {
     img: string
     title: string
   }
-
+  const shift_id='65a5458a508567c39949a5b6'
+  
+  const handleClick = () =>{
+    dispatch(add_event_to_shift())
+  }
   const renderIconRow = (icons: Icon[]) => (
     <div className='row'>
       {icons.map((icon: Icon, index: number) => (
@@ -17,6 +23,7 @@ const BarrierSection: React.FC = () => {
           <label
             className='btn btn-outline btn-active-color-primary btn-active-light-primary border border-1 border-primary w-100 p-4'
             data-kt-button='true'
+            onClick={handleClick}
           >
             
             <img src={icon.img} alt='' className='icon-img' />
