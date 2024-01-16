@@ -2,16 +2,16 @@ import React, {useState} from 'react'
 import {ButtonsData} from './ButtonsData'
 import {useIntl} from 'react-intl'
 import { useDispatch, useSelector } from 'react-redux'
-import { add_transaction_to_shift } from '../../../../../redux/Transaction/Transaction_Action'
+import { add_Transaction_To_Shift } from '../../../../../redux/Shift/Shift_Action'
 
 const Payment_Buttons: React.FC = () => {
   const dispatch=useDispatch()
   const intl = useIntl()
-  const shift_id='65a5458a508567c39949a5b6'
+  const {shifts} = useSelector((state: any) => state.Shift_Reducers)
+  const shift_id=shifts[0].id
   const {filtered_data} = useSelector((state: any) => state.Transaction_Reducers)
-  console.log(filtered_data)
-  const handleClick = (state: any) =>{
-    dispatch(add_transaction_to_shift(filtered_data,shift_id))
+  const handleClick = () =>{
+    dispatch(add_Transaction_To_Shift(filtered_data,shift_id))
   }
   return (
     <>

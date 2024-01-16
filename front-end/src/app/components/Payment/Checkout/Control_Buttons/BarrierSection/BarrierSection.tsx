@@ -1,21 +1,24 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {ButtonsData} from '../BarrierSection/ButtonsData'
 import {useIntl} from 'react-intl'
-import { useDispatch } from 'react-redux'
-import { add_event_to_shift } from '../../../../../../redux/Transaction/Transaction_Action'
+import {useDispatch, useSelector} from 'react-redux'
+import {add_Event_To_Shift, fetch_All_Shifts} from '../../../../../../redux/Shift/Shift_Action'
 
 const BarrierSection: React.FC = () => {
   const intl = useIntl()
-const dispatch=useDispatch()
-  interface Icon {
-    img: string
-    title: string
+  const dispatch = useDispatch()
+  interface Icon {img: string, title: string}
+  const {shifts} = useSelector((state: any) => state.Shift_Reducers)
+  const shift_id = shifts[0].id
+  const handleClick = () => {
+    const event = 'close'
+    dispatch(add_Event_To_Shift(event, shift_id))
   }
-  const shift_id='65a5458a508567c39949a5b6'
-  
-  const handleClick = () =>{
-    dispatch(add_event_to_shift())
-  }
+
+  useEffect(() => {
+    dispatch(fetch_All_Shifts())
+  }, [])
+
   const renderIconRow = (icons: Icon[]) => (
     <div className='row'>
       {icons.map((icon: Icon, index: number) => (
@@ -25,7 +28,6 @@ const dispatch=useDispatch()
             data-kt-button='true'
             onClick={handleClick}
           >
-            
             <img src={icon.img} alt='' className='icon-img' />
             <span className='fs-8 fw-bold'>{intl.formatMessage({id: icon.title})}</span>
           </label>

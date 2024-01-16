@@ -1,7 +1,7 @@
 
 from fastapi import HTTPException, APIRouter
 from config.log_config import logger
-from models.shift_model import Shift_Body_Model
+from models.shift_model import Shift_Body_Model,Shift_Transaction_Body_Model,Shift_Event_Body_Model,Shift_List_Transaction_Body_Model,Shift_List_Events_Body_Model
 from api.shift.shift_model import Shift_Mongo_Document
 from bson import ObjectId 
 
@@ -26,7 +26,6 @@ def get_shift_by_id(shift_id: str):
         if not document:
             raise HTTPException(status_code=404, detail='shift not found')
         shift = Shift_Body_Model(id=str(document.id), **document.to_mongo())
-        print(str(document.id))
         return shift
     except HTTPException as http_ex:
         raise http_ex
@@ -34,32 +33,35 @@ def get_shift_by_id(shift_id: str):
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
     
 
-@shift_router.post("/shift/add-transaction/{shift_id}")
-def add_transaction_to_shift(shift_id: str, transaction_data: str):
+@shift_router.put("/shift/add-transaction/{shift_id}", response_model=Shift_List_Transaction_Body_Model)
+def add_transaction_to_shift(shift_id: str, transaction_body: Shift_Transaction_Body_Model):
     try:
-        shift = Shift_Mongo_Document.objects(id=shift_id).first()
-        if not shift:
-            raise HTTPException(status_code=404, detail=f'Shift with id {shift_id} not found')
-        shift.transactions.append(transaction_data)
-        shift.save()
-        logger.info(f"Transaction added to shift {shift_id}")
-        return {"detail": "Transaction added successfully"}
+        document = Shift_Mongo_Document.objects(id=shift_id).first()
+        if not document:
+            raise HTTPException(status_code=404, detail=f'Shift not found')
+        document.transactions.append(transaction_body.transaction)
+        document.save()
+        transactions = Shift_List_Transaction_Body_Model(transactions=list((document.transactions)))
+        logger.info(f"Transaction added")
+        return transactions
     except HTTPException as http_ex:
         raise http_ex
-    except Exception as ex:
-        raise HTTPException(status_code=500, detail=f'Error: {ex}')
+    except Exception as Ex:
+        raise HTTPException(status_code=500, detail=f'Error: {Ex}')
+
   
     
-@shift_router.post("/shift/add-event/{shift_id}")
-def add_transaction_to_shift(shift_id: str, event_data: str):
+@shift_router.put("/shift/add-event/{shift_id}",response_model=Shift_List_Events_Body_Model)
+def add_event_to_shift(shift_id: str, event_body: Shift_Event_Body_Model):
     try:
-        shift = Shift_Mongo_Document.objects(id=shift_id).first()
-        if not shift:
-            raise HTTPException(status_code=404, detail=f'Shift with id {shift_id} not found')
-        shift.events.append(event_data)
-        shift.save()
-        logger.info(f"Event added to shift {shift_id}")
-        return {"detail": "Event added successfully"}
+        document = Shift_Mongo_Document.objects(id=shift_id).first()
+        if not document:
+            raise HTTPException(status_code=404, detail=f'Shift not found')
+        document.events.append(event_body.event)
+        document.save()
+        events = Shift_List_Events_Body_Model(events=list((document.events)))
+        logger.info(f"Event added")
+        return events
     except HTTPException as http_ex:
         raise http_ex
     except Exception as ex:
