@@ -8,19 +8,19 @@ from datetime import datetime
 auth_router = APIRouter(prefix='/auth', tags=["AUTH_API"])
 
 @auth_router.post("/sign-up/", response_model=Staff_Register_Model)
-def create_staff(user_data: Staff_Register_Model):
+def create_staff(sign_up_body: Staff_Register_Model):
     try:
-        user = Staff_Mongo_Document(**user_data.model_dump())
+        user = Staff_Mongo_Document(**sign_up_body.model_dump())
         user.save()
     except Exception as ex:
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
     return user
 
 @auth_router.post("/sign-in/", response_model=Staff_Login_Model)
-def sign_in_staff(login_body: Staff_Login_Model):
+def sign_in_staff(sign_in_body: Staff_Login_Model):
     try:
-        email=login_body.email
-        password=login_body.password
+        email=sign_in_body.email
+        password=sign_in_body.password
         staff = Staff_Mongo_Document.objects(email=email).first()
         if not staff:
             raise HTTPException(status_code=401, detail='Staff not found')
@@ -35,19 +35,19 @@ def sign_in_staff(login_body: Staff_Login_Model):
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
     
 def create_shift_document(email: str):
-    shift_document = Shift_Mongo_Document(start_time=datetime.now(), end_time=None, transactions=[], events=[],  email=email)
+    shift_document = Shift_Mongo_Document(start_shift=datetime.now(), end_shift=None, transactions=[], events=[],  email=email)
     shift_document.save()
 
 @auth_router.post("/sign-out/", response_model=Staff_Logout_Model)
-def sign_out_staff(logout_body: Staff_Logout_Model):
+def sign_out_staff(sign_out_body: Staff_Logout_Model):
     try:
-        email=logout_body.email
+        email=sign_out_body.email
         staff = Staff_Mongo_Document.objects(email=email).first()
         if not staff:
             raise HTTPException(status_code=404, detail='Staff not found')
-        shift_document = Shift_Mongo_Document.objects(email=email, end_time=None).first()
+        shift_document = Shift_Mongo_Document.objects(email=email, end_shift=None).first()
         if shift_document:
-            shift_document.end_time = datetime.now()
+            shift_document.end_shift = datetime.now()
             shift_document.save()
         return shift_document
     except HTTPException as http_ex:

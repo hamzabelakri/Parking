@@ -1,23 +1,22 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {ButtonsData} from '../BarrierSection/ButtonsData'
 import {useIntl} from 'react-intl'
 import {useDispatch, useSelector} from 'react-redux'
-import {add_Event_To_Shift, fetch_All_Shifts} from '../../../../../../redux/Shift/Shift_Action'
+import {add_Event_To_Shift} from '../../../../../../redux/Shift/Shift_Action'
 
 const BarrierSection: React.FC = () => {
   const intl = useIntl()
   const dispatch = useDispatch()
-  interface Icon {img: string, title: string}
+  interface Icon {
+    img: string
+    title: string
+  }
   const {shifts} = useSelector((state: any) => state.Shift_Reducers)
-  const shift_id = shifts[0].id
+  const shift_id = shifts?.at(-1)?.id 
   const handleClick = () => {
     const event = 'close'
     dispatch(add_Event_To_Shift(event, shift_id))
   }
-
-  useEffect(() => {
-    dispatch(fetch_All_Shifts())
-  }, [])
 
   const renderIconRow = (icons: Icon[]) => (
     <div className='row'>

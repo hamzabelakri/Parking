@@ -10,7 +10,7 @@ export const fetch_All_Transaction_Data: any = () => async (dispatch) => {
     //console.log("from action",response.data)
     dispatch({type: GET_TRANSACTION_DATA, payload: response.data})
   } catch (error) {
-    toast.error('Failed to get data')
+    toast.error('Failed to get transactons')
     console.log(error)
   }
 }
@@ -21,7 +21,7 @@ export const fetch_Filtered_Transaction_Data: any = (filterData) => async (dispa
     const response = await axios.get(`${url}transaction/`, {params: filterData})
     dispatch({type: GET_FILTERED_DATA, payload: response.data})
   } catch (error) {
-    toast.error('Failed to get data')
+    toast.error('Failed to get transacton')
     console.log(error)
   }
 }

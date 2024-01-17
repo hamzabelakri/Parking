@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useIntl} from 'react-intl'
 import ItemsList from './Items_List/Items_List'
 import Control_Buttons from './Control_Buttons/Control_Buttons'
 import Payment_Buttons from './Payment_Buttons/Payment_Buttons'
 import {useDispatch, useSelector} from 'react-redux'
 import {clear_All_Data} from '../../../../redux/WebSocket/WebSocket_Actions'
+import { fetch_All_Shifts } from '../../../../redux/Shift/Shift_Action'
 
 type Props = {
   className: string
@@ -24,6 +25,9 @@ const Checkout: React.FC<Props> = ({className}) => {
   const handleClick = (e) => {
     dispatch(clear_All_Data())
   }
+  useEffect(() => {
+    dispatch(fetch_All_Shifts())
+  }, [])
   return (
     <div className={`card card-flush ${className}`}>
       <div className='card-header pt-5'>

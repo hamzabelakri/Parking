@@ -8,11 +8,11 @@ const Websocket_Reducers = (state = initState, action) => {
       return {...state, ws: action.payload}
     case GET_ALL_DATA:
       if (action.payload['ink_status']) {
-        console.log('reducer_ink', action.payload)
+        //console.log('reducer_ink', action.payload)
         return {...state, ink_status: action.payload}
       }
       if (action.payload['ticket_data']) {
-        console.log('reducer_ticket', action.payload)
+        //console.log('reducer_ticket', action.payload)
         return {...state, data: action.payload}
       }
       return state

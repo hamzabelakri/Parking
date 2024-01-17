@@ -16,8 +16,13 @@ export const staff_Login:any = (credentials) => async (dispatch) => {
   }
 }
 
-export const staff_Logout:any = (navigate) => async (dispatch) =>{
+export const staff_Logout:any = (email, navigate) => async (dispatch) =>{
     
-    dispatch ({ type: STAFF_LOGOUT })
+   try {
+    const response = await axios.post(`${url}sign-out`, {email: email})
+    dispatch({type: STAFF_LOGOUT, payload: response.data})
     navigate("/auth");
+   } catch (error) {
+    console.log(error)
+   }
   };

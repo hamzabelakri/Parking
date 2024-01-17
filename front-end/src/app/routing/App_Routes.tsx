@@ -17,7 +17,7 @@ const {PUBLIC_URL} = process.env
 
 const App_Routes: FC = () => {
   const {connected_staff} = useSelector((state: any) => state.Auth_Reducer)
-  console.log(connected_staff)
+  //console.log(connected_staff)
   return (
     <BrowserRouter basename={PUBLIC_URL}>
       <Routes>
