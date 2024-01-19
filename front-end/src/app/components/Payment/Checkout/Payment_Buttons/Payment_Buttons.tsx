@@ -17,6 +17,12 @@ const Payment_Buttons: React.FC = () => {
   const handleClick = () => {
     dispatch(add_Transaction_To_Shift(payload, shift_id))
   }
+  const [selectedButton, setSelectedButton] = useState<number | null>(null);
+
+  const handleButtonClick = (index: number) => {
+    setSelectedButton(index);
+  };
+
   return (
     <>
       <div className='card shadow-sm'>
@@ -28,19 +34,20 @@ const Payment_Buttons: React.FC = () => {
           {ButtonsData.map((data, index: number) => (
             <label
               key={index}
-              className='btn bg-light btn-color-gray-600 btn-active-text-gray-800 border border-1 border-primary border-active-primary btn-active-light-primary w-100 px-4 py-2'
+              className={`btn btn-color-gray-600 btn-active-text-gray-800 w-100 px-4 py-2 ${selectedButton === index
+                ? 'border-2 border-blue-500 btn-outline '
+                : 'border-1'
+                }`}
+              style={{
+                backgroundColor: selectedButton === index ? '#EEF6FF' : '#F1F1F2',
+                color: selectedButton === index ? '#3E97FF' : '',
+                border: selectedButton === index ? '1px solid #3E97FF' : '1.58px solid #D8D8E5',
+              }}
+              onClick={() => handleButtonClick(index)}
             >
-              <input
-                className='btn-check'
-                type='radio'
-                name='method'
-                defaultValue={0}
-                onClick={handleClick}
-              />
-
+              <input className='btn-check' type='radio' name='method' defaultValue={0} />
               {data.img}
-
-              <span className='fs-7 fw-bold d-block'>{intl.formatMessage({id: data.title})}</span>
+              <span className='fs-7 fw-bold d-block'>{intl.formatMessage({ id: data.title })}</span>
             </label>
           ))}
         </div>

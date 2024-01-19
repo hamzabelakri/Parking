@@ -1,7 +1,7 @@
 from fastapi import HTTPException, Request, status, APIRouter
 from config.log_config import logger
-from models.transaction_model import Ticket_Body_Model
-from api.transaction.transaction_model import Entry_Ticket_Mongo_Document
+from models.transaction_base_model import Ticket_Body_Model
+from api.transaction.transaction_mongo_model import Entry_Ticket_Mongo_Document
 
 from datetime import timedelta,datetime
 import re

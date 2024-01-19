@@ -70,7 +70,7 @@ const Search_Card: React.FC = () => {
                     {intl.formatMessage({id: 'INPUT.TIMEINTERVAL'})}
                   </label>
                 </div>
-                <div className='col-7'>
+                <div className='col-8'>
                   <Flatpickr
                     options={{
                       mode: 'range',

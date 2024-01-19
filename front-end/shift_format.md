@@ -17,10 +17,7 @@
                 {article_id:
                 ammount_payed:
                 payment_type},
-                {article_id:
-                    ammount_payed:
-                payment_type:}
-
+               
             ]
         },
         {

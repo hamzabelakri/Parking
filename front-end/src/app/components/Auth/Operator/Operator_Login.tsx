@@ -16,7 +16,7 @@ interface UserLoginFormProps {
   open_Admin_Auth: () => void
 }
 
-const Staff_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Auth}) => {
+const Operator_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Auth}) => {
   const [loading, setLoading] = useState(false)
 
   const dispatch = useDispatch()
@@ -110,4 +110,4 @@ const Staff_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Auth}
     </form>
   )
 }
-export default Staff_Login
+export default Operator_Login

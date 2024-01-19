@@ -24,4 +24,19 @@ export const buttonsData = [
       img: 'media/buttons/Empty.svg',
       title: 'CONTROL.BUTTON.ARTICLE',
     },
+    {
+      id: 6,
+      img: 'media/buttons/Empty.svg',
+      title: 'CONTROL.BUTTON.ARTICLE',
+    },
+    {
+      id: 7,
+      img: 'media/buttons/Empty.svg',
+      title: 'CONTROL.BUTTON.ARTICLE',
+    },
+    {
+      id: 8,
+      img: 'media/buttons/Empty.svg',
+      title: 'CONTROL.BUTTON.ARTICLE',
+    },
   ]

@@ -40,6 +40,7 @@
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "socicon": "3.0.5",
+    "swiper": "^11.0.5",
     "tiny-slider": "^2.9.4",
     "webpack-rtl-plugin": "^2.0.0",
     "yup": "^1.0.0"

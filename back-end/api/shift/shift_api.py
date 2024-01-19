@@ -1,8 +1,8 @@
 
 from fastapi import HTTPException, APIRouter
 from config.log_config import logger
-from models.shift_model import Shift_Body_Model,Shift_Transaction_Body_Model,Shift_Event_Body_Model,Shift_List_Transaction_Body_Model,Shift_List_Events_Body_Model
-from api.shift.shift_model import Shift_Mongo_Document
+from models.shift_base_model import Shift_Body_Model,Shift_Transaction_Body_Model,Shift_Event_Body_Model,Shift_List_Transaction_Body_Model,Shift_List_Events_Body_Model
+from api.shift.shift_mongo_model import Shift_Mongo_Document
 from bson import ObjectId 
 
 shift_router = APIRouter(tags=["SHIFT_API"])
@@ -11,7 +11,6 @@ shift_router = APIRouter(tags=["SHIFT_API"])
 def get_all_shifts():
     try:
         documents = Shift_Mongo_Document.objects()
-        print(documents[0].id)
         logger.info(f"Total shifts: {len(documents)}")
         shifts = [Shift_Body_Model(id=str(document.id), **document.to_mongo()) for document in documents]
         return shifts
@@ -39,7 +38,7 @@ def add_transaction_to_shift(shift_id: str, transaction_body: Shift_Transaction_
         document = Shift_Mongo_Document.objects(id=shift_id).first()
         if not document:
             raise HTTPException(status_code=404, detail=f'Shift not found')
-        document.transactions.append(transaction_body.transaction)
+        document.transactions.append(transaction_body)
         document.save()
         transactions = Shift_List_Transaction_Body_Model(transactions=list((document.transactions)))
         logger.info(f"Transaction added")

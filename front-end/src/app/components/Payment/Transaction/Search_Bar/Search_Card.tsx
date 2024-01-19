@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import {useIntl} from 'react-intl'
-import {Pick_Time_bar} from './Pick_Time_bar'
 import {useDispatch} from 'react-redux'
 import {fetch_Filtered_Transaction_Data} from '../../../../../redux/Transaction/Transaction_Action'
 import Car_Table from '../../../Parking_Details/Parking_Table'
@@ -37,18 +36,18 @@ const Search_Card: React.FC = () => {
     }
   }
 
-/*   useEffect(() => {
+  /*   useEffect(() => {
     console.log('Form values:', formik.values)
   }, [formik.values]) */
   return (
     <>
-      <div className='card'>
-        <form className='card-body' onSubmit={formik.handleSubmit}>
-          <div className='container'>
+      <div className='card' style={{boxShadow: '0px 0px 10px 0px #0000001A'}}>
+        <form className='card-body' onSubmit={formik.handleSubmit} style={{padding: '2rem 1rem'}}>
+          <div className='container '>
             <div className='row '>
-              <div className='row col  justify-content-center'>
+              <div className='row col  '>
                 <div className='col-auto'>
-                  <label className='col-form-label'>
+                  <label className='col-form-label' style={{fontSize: '15px', fontWeight: '600'}}>
                     {intl.formatMessage({id: 'INPUT.LICENCEPLATE'})}
                   </label>
                 </div>
@@ -66,13 +65,13 @@ const Search_Card: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className='row col justify-content-center'>
+              <div className='row col'>
                 <div className='col-auto'>
-                  <label className='col-form-label'>
+                  <label className='col-form-label' style={{fontSize: '15px', fontWeight: '600'}}>
                     {intl.formatMessage({id: 'INPUT.TIMEINTERVAL'})}
                   </label>
                 </div>
-                <div className='col-7'>
+                <div className='col-8'>
                   <Flatpickr
                     options={{
                       mode: 'range',
@@ -93,10 +92,11 @@ const Search_Card: React.FC = () => {
                 </div>
               </div>
               <div
-                className='col-2  d-flex justify-content-end'
+                className=''
                 data-kt-button='true'
                 data-bs-toggle='modal'
                 data-bs-target='#kt_modal_1'
+                style={{width: 'auto'}}
               >
                 <button type='submit' className='btn btn-primary'>
                   {intl.formatMessage({id: 'SEARCH.BUTTON'})}
