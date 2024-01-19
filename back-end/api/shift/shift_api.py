@@ -38,7 +38,7 @@ def add_transaction_to_shift(shift_id: str, transaction_body: Shift_Transaction_
         document = Shift_Mongo_Document.objects(id=shift_id).first()
         if not document:
             raise HTTPException(status_code=404, detail=f'Shift not found')
-        document.transactions.append(transaction_body)
+        document.transactions.append(transaction_body.model_dump())
         document.save()
         transactions = Shift_List_Transaction_Body_Model(transactions=list((document.transactions)))
         logger.info(f"Transaction added")

@@ -32,9 +32,9 @@ const BarrierSection: React.FC = () => {
             className={`btn w-100 p-4 d-flex justify-content-center align-items-center gap-3 ${clickedButton === startIndex + index ? 'clicked' : ''
               }`}
             style={{
-              boxSizing: 'border-box', // Ensure the box-sizing property is set
+              boxSizing: 'border-box', 
               border: clickedButton === startIndex + index ? '3px solid #3E97FF' : '1px solid #D8D8E5',
-              // transition: 'border-width 0.3s ease-in-out',
+             
             }}
             onClick={() => handleButtonClick(startIndex + index)}
           >

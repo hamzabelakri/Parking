@@ -32,7 +32,7 @@ class Shift_Transaction_Body_Model(BaseModel):
     duration_stay: str
     card_type: str
     image: None
-    payments: List[Payment_Model]
+    payments: Payment_Model
 
 class Shift_List_Transaction_Body_Model(BaseModel):
     transactions: List
