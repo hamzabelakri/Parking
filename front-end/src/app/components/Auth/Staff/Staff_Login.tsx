@@ -16,7 +16,7 @@ interface UserLoginFormProps {
   open_Admin_Auth: () => void
 }
 
-const Operator_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Auth}) => {
+const Staff_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Auth}) => {
   const [loading, setLoading] = useState(false)
 
   const dispatch = useDispatch()
@@ -92,11 +92,12 @@ const Operator_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Au
           className='btn btn-primary'
           disabled={formik.isSubmitting || !formik.isValid}
         >
-          {!loading ? (
+          {!loading && (
             <span className='indicator-label'>
               {intl.formatMessage({id: 'AUTH.LOGIN.CONTINUE'})}
             </span>
-          ) : (
+          )}
+          {loading && (
             <span className='indicator-progress' style={{display: 'block'}}>
               {intl.formatMessage({id: 'AUTH.LOGIN.WAIT'})}
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
@@ -110,4 +111,4 @@ const Operator_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Au
     </form>
   )
 }
-export default Operator_Login
+export default Staff_Login

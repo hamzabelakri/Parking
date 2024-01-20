@@ -2,6 +2,10 @@ import {useEffect, useState} from 'react'
 import {useIntl} from 'react-intl'
 
 const ShiftReportTable: React.FC = () => {
+  const [data, setData] = useState<Item[]>([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [fetchError, setFetchError] = useState(false)
+
   interface Item {
     ArticleID: number
     lpn: string
@@ -10,19 +14,25 @@ const ShiftReportTable: React.FC = () => {
     duration: string
   }
 
-  const [data, setData] = useState<Item[]>([])
-
   useEffect(() => {
     fetchData()
   }, [])
 
   const fetchData = async () => {
+    setIsLoading(true)
     try {
-      const response = await fetch('http://127.0.0.1:5001/shift_report')
-      const jsonData = await response.json()
-      setData(jsonData)
+      const response = await fetch('http://127.0.0.1:8000/shift_report')
+      if (!response.ok) {
+        setFetchError(true)
+      } else {
+        const jsonData = await response.json()
+        setData(jsonData)
+      }
     } catch (error) {
       console.error('Error fetching data:', error)
+      setFetchError(true) // Set fetch error flag on error
+    } finally {
+      setIsLoading(false) // Always set loading to false after fetch
     }
   }
 
@@ -66,15 +76,29 @@ const ShiftReportTable: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody className='fw-semibold text-gray-600'>
-                  {data.map((item) => (
-                    <tr key={item.ArticleID}>
-                      <td>{item.ArticleID}</td>
-                      <td>{item.lpn}</td>
-                      <td className='text-success'>${item.price}</td>
-                      <td>{item.carteType}</td>
-                      <td>{item.duration}</td>
+                  {fetchError ? (
+                    <tr>
+                      <td colSpan={5} className='text-center'>Error fetching data.</td>
                     </tr>
-                  ))}
+                  ) : isLoading ? (
+                    <tr>
+                      <td colSpan={5} className='text-center'>Data is Loading...</td>
+                    </tr>
+                  ) : data.length === 0 ? (
+                    <tr>
+                      <td colSpan={5} className='text-center'>No data found.</td>
+                    </tr>
+                  ) : (
+                    data.map((item) => (
+                      <tr key={item.ArticleID}>
+                        <td>{item.ArticleID}</td>
+                        <td>{item.lpn}</td>
+                        <td className='text-success'>${item.price}</td>
+                        <td>{item.carteType}</td>
+                        <td>{item.duration}</td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </table>
             </div>

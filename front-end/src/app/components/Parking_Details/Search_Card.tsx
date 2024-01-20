@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react'
-import {useIntl} from 'react-intl'
-import {useDispatch} from 'react-redux'
-import {useFormik} from 'formik'
+import React, { useEffect } from 'react'
+import { useIntl } from 'react-intl'
+import { useDispatch } from 'react-redux'
+import { useFormik } from 'formik'
 import Flatpickr from 'react-flatpickr'
 import clsx from 'clsx'
 import { fetch_Filtered_Transaction_Data } from '../../../redux/Transaction/Transaction_Action'
@@ -35,19 +35,19 @@ const Search_Card: React.FC = () => {
     }
   }
 
-/*   useEffect(() => {
-    console.log('Form values:', formik.values)
-  }, [formik.values]) */
+  /*   useEffect(() => {
+      console.log('Form values:', formik.values)
+    }, [formik.values]) */
   return (
     <>
-      <div className='card'>
+      <div className='card' >
         <form className='card-body' onSubmit={formik.handleSubmit}>
           <div className='container'>
             <div className='row '>
               <div className='row col  justify-content-center'>
                 <div className='col-auto'>
-                  <label className='col-form-label'>
-                    {intl.formatMessage({id: 'INPUT.LICENCEPLATE'})}
+                  <label className='col-form-label' >
+                    {intl.formatMessage({ id: 'INPUT.LICENCEPLATE' })}
                   </label>
                 </div>
                 <div className='col-7'>
@@ -67,14 +67,14 @@ const Search_Card: React.FC = () => {
               <div className='row col justify-content-center'>
                 <div className='col-auto'>
                   <label className='col-form-label'>
-                    {intl.formatMessage({id: 'INPUT.TIMEINTERVAL'})}
+                    {intl.formatMessage({ id: 'INPUT.TIMEINTERVAL' })}
                   </label>
                 </div>
-                <div className='col-8'>
+                <div className='col-7'>
                   <Flatpickr
                     options={{
                       mode: 'range',
-                      
+
                       //dateFormat: 'Y-m-d H:i',
                       enableTime: true,
                       time_24hr: true,
@@ -97,13 +97,13 @@ const Search_Card: React.FC = () => {
                 data-bs-target='#kt_modal_1'
               >
                 <button type='submit' className='btn btn-primary'>
-                  {intl.formatMessage({id: 'SEARCH.BUTTON'})}
+                  {intl.formatMessage({ id: 'SEARCH.BUTTON' })}
                 </button>
               </div>
             </div>
           </div>
         </form>
-        
+
       </div>
     </>
   )

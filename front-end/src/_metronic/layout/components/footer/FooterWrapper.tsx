@@ -1,15 +1,16 @@
 import clsx from 'clsx'
-import {useLayout} from '../../core'
-import {Footer} from './Footer'
+import { useLayout } from '../../core'
+import { Footer } from './Footer'
 
 const FooterWrapper = () => {
-  const {config} = useLayout()
+  const { config } = useLayout()
   if (!config.app?.footer?.display) {
     return null
   }
 
   return (
-    <div className='app-footer' id='kt_app_footer'>
+    <div className='app-footer' id='kt_app_footer' >
+      
       {config.app.footer.containerClass ? (
         <div
           className={clsx(
@@ -27,4 +28,4 @@ const FooterWrapper = () => {
   )
 }
 
-export {FooterWrapper}
+export { FooterWrapper }

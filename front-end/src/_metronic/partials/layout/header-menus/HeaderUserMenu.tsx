@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {FC} from 'react'
 import {Link} from 'react-router-dom'
-import {useAuth} from '../../../../app/modules/auth'
 import {Languages} from './Languages'
 import {toAbsoluteUrl} from '../../../helpers'
 import {useIntl} from 'react-intl'
@@ -23,11 +22,11 @@ const HeaderUserMenu: FC = () => {
 
           <div className='d-flex flex-column'>
             <div className='fw-bolder d-flex align-items-center fs-5'>
-              {staff?.name} 
+            {staff?.name} 
               <span className='badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2'>Active</span>
             </div>
             <a href='#' className='fw-bold text-muted text-hover-primary fs-7'>
-              {staff?.email}
+            {staff?.email}
             </a>
           </div>
         </div>
@@ -126,7 +125,7 @@ const HeaderUserMenu: FC = () => {
         </Link>
       </div>
 
-     {/*  <div className='menu-item px-5'>
+      {/* <div className='menu-item px-5'>
         <a onClick={logout} className='menu-link px-5'>
           {intl.formatMessage({id: 'HEADER.MENU.SIGNOUT'})}
         </a>

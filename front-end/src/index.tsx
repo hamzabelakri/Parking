@@ -18,7 +18,7 @@ import './_metronic/assets/keenicons/solid/style.css'
 import './_metronic/assets/sass/style.scss'
 import './_metronic/assets/sass/plugins.scss'
 import './_metronic/assets/sass/style.react.scss'
-import {App_Routes} from './app/routing/App_Routes'
+import {AppRoutes} from './app/routing/App_Routes'
 import { Provider } from 'react-redux'
 import store from './redux/Store'
 import { AuthProvider, setupAxios } from './app/modules/auth'
@@ -44,7 +44,7 @@ if (container) {
       <MetronicI18nProvider>
       <Provider store={store}>
         <AuthProvider>
-          <App_Routes />
+          <AppRoutes />
         </AuthProvider>
         </Provider>
       </MetronicI18nProvider>
