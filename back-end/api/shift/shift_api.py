@@ -65,3 +65,12 @@ def add_event_to_shift(shift_id: str, event_body: Shift_Event_Body_Model):
         raise http_ex
     except Exception as ex:
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
+
+@shift_router.delete("/shift/")
+def delete_all_shifts():
+    try:
+        Shift_Mongo_Document.objects().delete()
+        logger.info("All shifts deleted")
+        return {"message": "All shifts deleted successfully"}
+    except Exception as ex:
+        raise HTTPException(status_code=500, detail=f'Error: {ex}')

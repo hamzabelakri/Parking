@@ -1,12 +1,12 @@
-import {STAFF_REGISTER, STAFF_LOGOUT} from './Types'
+import {OPERATOR_REGISTER, OPERATOR_LOGOUT} from './Types'
 
-const initState = {staff: null, connected_staff: false}
+const initState = {operator: null, connected_operator: false}
 const Auth_Reducer = (state = initState, action) => {
   switch (action.type) {
-    case STAFF_REGISTER:
-      return {...state, staff: action.payload, connected_staff: true}
-    case STAFF_LOGOUT:
-      return {...state, staff: null, connected_staff: false}
+    case OPERATOR_REGISTER:
+      return {...state, operator: action.payload, connected_operator: true}
+    case OPERATOR_LOGOUT:
+      return {...state, operator: null, connected_operator: false}
     default:
       return state
   }

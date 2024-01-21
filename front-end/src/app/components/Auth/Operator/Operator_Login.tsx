@@ -4,19 +4,17 @@ import clsx from 'clsx'
 import {useFormik} from 'formik'
 import toast, {Toaster} from 'react-hot-toast'
 import {useIntl} from 'react-intl'
-import {useNavigate} from 'react-router-dom'
 import {loginSchema, initialValues} from './Form_Settings'
 import UserSession from '../../Session/UserSession'
-import {useAuth} from '../../../modules/auth'
 import {useDispatch} from 'react-redux'
-import {staff_Login} from '../../../../redux/Auth/Auth_Action'
+import { operator_Login } from '../../../../redux/Auth/Auth_Action'
 
 interface UserLoginFormProps {
   closeModal: (value: boolean) => void
   open_Admin_Auth: () => void
 }
 
-const Staff_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Auth}) => {
+const Operator_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Auth}) => {
   const [loading, setLoading] = useState(false)
 
   const dispatch = useDispatch()
@@ -24,7 +22,7 @@ const Staff_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Auth}
     initialValues,
     validationSchema: loginSchema,
     onSubmit: (values) => {
-      dispatch(staff_Login(formik.values))
+      dispatch(operator_Login(formik.values))
     },
   })
   const intl = useIntl()
@@ -111,4 +109,4 @@ const Staff_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Auth}
     </form>
   )
 }
-export default Staff_Login
+export default Operator_Login

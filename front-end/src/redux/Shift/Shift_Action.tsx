@@ -16,10 +16,8 @@ export const fetch_All_Shifts: any = () => async (dispatch) => {
 
 export const add_Transaction_To_Shift: any = (shift_transaction, shift_id) => async (dispatch) => {
   try {
-    console.log('adding transaction',shift_transaction)
-    const response = await axios.put(`${url}shift/add-transaction/${shift_id}`, {
-      transaction: shift_transaction
-    })
+    //console.log('adding transaction',shift_transaction)
+    const response = await axios.put(`${url}shift/add-transaction/${shift_id}`,shift_transaction)
     dispatch({type: ADD_TRANSACTION_TO_SHIFT, payload: response.data})
   } catch (error) {
     toast.error('Failed to add transaction')

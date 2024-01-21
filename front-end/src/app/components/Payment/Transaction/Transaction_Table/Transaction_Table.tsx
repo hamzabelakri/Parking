@@ -12,7 +12,7 @@ const Transaction_Table: React.FC = () => {
         <div className='col-lg-12'>
           <label className='form-label fs-6 fw-bold text-gray-700'>EPAN</label>
           <div className='mb-5'>
-            <input type='text' className='form-control' value={epan} readOnly />
+            <input type='text' className='form-control ' value={epan} readOnly />
           </div>
         </div>
       </div>

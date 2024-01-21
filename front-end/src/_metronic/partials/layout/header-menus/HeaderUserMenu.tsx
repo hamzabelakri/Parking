@@ -7,7 +7,7 @@ import {useIntl} from 'react-intl'
 import { useSelector } from 'react-redux'
 
 const HeaderUserMenu: FC = () => {
-  const {staff} = useSelector((state: any) => state.Auth_Reducer)
+  const {operator} = useSelector((state: any) => state.Auth_Reducer)
   const intl = useIntl()
   return (
     <div
@@ -22,11 +22,11 @@ const HeaderUserMenu: FC = () => {
 
           <div className='d-flex flex-column'>
             <div className='fw-bolder d-flex align-items-center fs-5'>
-            {staff?.name} 
+            {operator?.name} 
               <span className='badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2'>Active</span>
             </div>
             <a href='#' className='fw-bold text-muted text-hover-primary fs-7'>
-            {staff?.email}
+            {operator?.email}
             </a>
           </div>
         </div>

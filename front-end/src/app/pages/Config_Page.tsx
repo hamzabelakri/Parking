@@ -6,9 +6,8 @@ import {useIntl} from 'react-intl'
 import {Toaster} from 'react-hot-toast'
 import {initialValues, serverFormSchema} from '../components/Types'
 import {get_All_Data, get_One_Server, post_All_Data} from '../../redux/Config/Config_Action'
-import {useAuth} from '../modules/auth'
-import {staff_Logout} from '../../redux/Auth/Auth_Action'
 import {useNavigate} from 'react-router-dom'
+import { operator_Logout } from '../../redux/Auth/Auth_Action'
 
 const Config_Page: React.FC = () => {
   const dispatch = useDispatch()
@@ -37,7 +36,7 @@ const Config_Page: React.FC = () => {
   }
 
   const handleDiscard = () => {
-    dispatch(staff_Logout(navigate))
+    dispatch(operator_Logout(navigate))
   }
 
   useEffect(() => {
@@ -53,8 +52,6 @@ const Config_Page: React.FC = () => {
       //console.log(selectedZR)
     }
   }, [data])
-
-  const {currentUser, logout} = useAuth()
 
   return (
     <Container className='w-900px'>
