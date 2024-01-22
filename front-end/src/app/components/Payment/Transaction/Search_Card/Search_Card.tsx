@@ -2,11 +2,11 @@ import React, {useEffect} from 'react'
 import {useIntl} from 'react-intl'
 import {useDispatch} from 'react-redux'
 import {fetch_Filtered_Transaction_Data} from '../../../../../redux/Transaction/Transaction_Action'
-import Car_Table from '../../../Parking_Details/Parking_Table'
 import {useFormik} from 'formik'
 import {search_Validation, initialValues} from './Settings'
 import Flatpickr from 'react-flatpickr'
 import clsx from 'clsx'
+import Parking_Table from '../../../Parking_Details/Parking_Table'
 
 const Search_Card: React.FC = () => {
   const dispatch = useDispatch()
@@ -42,12 +42,12 @@ const Search_Card: React.FC = () => {
   return (
     <>
       <div className='card' style={{boxShadow: '0px 0px 10px 0px #0000001A'}}>
-        <form className='card-body' onSubmit={formik.handleSubmit} style={{padding: '2rem 1rem'}}>
+        <form className='card-body ' onSubmit={formik.handleSubmit} style={{padding: '2rem 1rem'}}>
           <div className='container '>
             <div className='row '>
               <div className='row col  '>
                 <div className='col-auto'>
-                  <label className='col-form-label' style={{fontSize: '15px', fontWeight: '600'}}>
+                  <label className='col-form-label fs-5 fw-bold'>
                     {intl.formatMessage({id: 'INPUT.LICENCEPLATE'})}
                   </label>
                 </div>
@@ -67,7 +67,7 @@ const Search_Card: React.FC = () => {
               </div>
               <div className='row col'>
                 <div className='col-auto'>
-                  <label className='col-form-label' style={{fontSize: '15px', fontWeight: '600'}}>
+                  <label className='col-form-label fs-5 fw-bold'>
                     {intl.formatMessage({id: 'INPUT.TIMEINTERVAL'})}
                   </label>
                 </div>
@@ -105,10 +105,10 @@ const Search_Card: React.FC = () => {
             </div>
           </div>
         </form>
-        <div className='modal fade" tabIndex={-1}' id='kt_modal_1'>
+        <div className='modal fade' tabIndex={-1} id='kt_modal_1'>
           <div className='modal-dialog modal-dialog-centered mw-900px'>
             <div className='modal-content'>
-              <Car_Table />
+              <Parking_Table />
             </div>
           </div>
         </div>

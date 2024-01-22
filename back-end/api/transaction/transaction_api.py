@@ -46,7 +46,7 @@ def get_filtered_transaction_data(
 
         documents = Entry_Ticket_Mongo_Document.objects(**query_params).order_by("+entry_time")
         print(documents.count())
-        transaction_list = [Ticket_Body_Model(**document.to_mongo()) for document in documents]
+        transaction_list = [Ticket_Body_Model(id=str(document.id),**document.to_mongo()) for document in documents]
         
         return transaction_list
     except Exception as ex:
@@ -63,7 +63,7 @@ def get_one_transaction_data(transaction_id: str):
 
         if document:
             
-            response_model_instance = Ticket_Body_Model(**document.to_mongo())
+            response_model_instance = Ticket_Body_Model(id=str(document.id), **document.to_mongo())
             return response_model_instance
         else:
             
@@ -91,7 +91,8 @@ def add_transaction_data(RequestBody: Ticket_Body_Model, request: Request):
         RequestBody.entry_time = random_datetime_in_range("01/01/2023 00", "01/04/2024 04") 
         New_Document = Entry_Ticket_Mongo_Document(**RequestBody.model_dump())
         New_Document.save()
-        return 'saved successfully'
+        response_model_instance = Ticket_Body_Model(**New_Document.to_mongo())
+        return response_model_instance
     except Exception as ex:
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
 

@@ -24,7 +24,7 @@ const First_Article_Buttons: React.FC<Props> = ({className, prefix}) => {
   return (
     <div className={`card ${className}`}>
       <div
-        className='card-body position-relative '
+        className='card-body position-relative'
         style={{margin: '0 20px', padding: '2rem 4rem'}}
       >
         <div

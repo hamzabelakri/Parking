@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
-import { useIntl } from 'react-intl'
-import { useDispatch } from 'react-redux'
-import { useFormik } from 'formik'
+import React, {useEffect} from 'react'
+import {useIntl} from 'react-intl'
+import {useDispatch} from 'react-redux'
+import {useFormik} from 'formik'
 import Flatpickr from 'react-flatpickr'
 import clsx from 'clsx'
-import { fetch_Filtered_Transaction_Data } from '../../../redux/Transaction/Transaction_Action'
-import { search_Validation, initialValues } from './Settings'
+import {fetch_Filtered_Transaction_Data} from '../../../redux/Transaction/Transaction_Action'
+import {search_Validation, initialValues} from './Settings'
 
 const Search_Card: React.FC = () => {
   const dispatch = useDispatch()
@@ -40,14 +40,14 @@ const Search_Card: React.FC = () => {
     }, [formik.values]) */
   return (
     <>
-      <div className='card' >
+      <div className='card'>
         <form className='card-body' onSubmit={formik.handleSubmit}>
           <div className='container'>
             <div className='row '>
               <div className='row col  justify-content-center'>
                 <div className='col-auto'>
-                  <label className='col-form-label' >
-                    {intl.formatMessage({ id: 'INPUT.LICENCEPLATE' })}
+                  <label className='col-form-label'>
+                    {intl.formatMessage({id: 'INPUT.LICENCEPLATE'})}
                   </label>
                 </div>
                 <div className='col-7'>
@@ -67,7 +67,7 @@ const Search_Card: React.FC = () => {
               <div className='row col justify-content-center'>
                 <div className='col-auto'>
                   <label className='col-form-label'>
-                    {intl.formatMessage({ id: 'INPUT.TIMEINTERVAL' })}
+                    {intl.formatMessage({id: 'INPUT.TIMEINTERVAL'})}
                   </label>
                 </div>
                 <div className='col-7'>
@@ -90,20 +90,14 @@ const Search_Card: React.FC = () => {
                   />
                 </div>
               </div>
-              <div
-                className='col-2  d-flex justify-content-end'
-                data-kt-button='true'
-                data-bs-toggle='modal'
-                data-bs-target='#kt_modal_1'
-              >
+              <div className='col-2  d-flex justify-content-end'>
                 <button type='submit' className='btn btn-primary'>
-                  {intl.formatMessage({ id: 'SEARCH.BUTTON' })}
+                  {intl.formatMessage({id: 'SEARCH.BUTTON'})}
                 </button>
               </div>
             </div>
           </div>
         </form>
-
       </div>
     </>
   )

@@ -2,11 +2,12 @@ from pydantic import BaseModel
 from datetime import datetime
 
 class Ticket_Body_Model(BaseModel):
+    image : str = "data:image/jpeg;base64,"
     epan : str
     licence_plate : str
-    entry_time : datetime
-    entry_unit : str
     card_type : str
+    entry_unit : str
+    entry_time : datetime
     duration_stay : str
-    image : str = "data:image/jpeg;base64,"
+    
 
