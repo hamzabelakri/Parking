@@ -29,7 +29,7 @@ const Transaction_Details: React.FC<Props> = ({className}) => {
             </div>
           </div>
           <div className='separator separator mt-8'></div>
-          <div className='mb-4 mt-6'>
+          <div className='mt-6'>
             <Search_Card />
           </div>
         </div>

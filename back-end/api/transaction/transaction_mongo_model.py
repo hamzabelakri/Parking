@@ -1,4 +1,4 @@
-from mongoengine import ListField, ReferenceField, Document, DynamicDocument, StringField, IntField, DateTimeField
+from mongoengine import ListField, ReferenceField, BooleanField, DynamicDocument, StringField, IntField, DateTimeField
 from datetime import datetime
 
 class Entry_Ticket_Mongo_Document(DynamicDocument):
@@ -10,4 +10,6 @@ class Entry_Ticket_Mongo_Document(DynamicDocument):
     card_type = StringField()
     duration_stay = StringField()
     image = StringField()
-
+    zr_shift_id=IntField()
+    shift_sync_zr = BooleanField()
+    shift_sync_back_office = BooleanField()

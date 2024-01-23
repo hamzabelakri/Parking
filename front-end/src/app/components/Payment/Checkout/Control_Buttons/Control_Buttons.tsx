@@ -38,7 +38,7 @@ const Control_Buttons: React.FC = () => {
             >
               <input className='btn-check' type='radio' name='method' defaultValue={0} />
 
-              <img src={data.img} alt='imagee' />
+              <img src={data.img} alt='image' />
 
               <span className='fw-bold d-block' style={{fontSize: '16px'}}>
                 {intl.formatMessage({id: data.title})}

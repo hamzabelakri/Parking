@@ -3,13 +3,13 @@ import {useState} from 'react'
 import * as Yup from 'yup'
 import clsx from 'clsx'
 import {useFormik} from 'formik'
-import {loginSchema,initialValues} from './Form_Settings'
+import {loginSchema, initialValues} from './Form_Settings'
 import 'react-toastify/dist/ReactToastify.css'
 import {Link, useNavigate} from 'react-router-dom'
 import {useIntl} from 'react-intl'
 import toast, {Toaster} from 'react-hot-toast'
-import { useAuth } from '../../../modules/auth'
-import { getUserByToken, login } from '../../../modules/auth/core/_requests'
+import {useAuth} from '../../../modules/auth'
+import {getUserByToken, login} from '../../../modules/auth/core/_requests'
 
 type Props = {
   closeModal: (value: boolean) => void
@@ -49,12 +49,12 @@ const Admin_Login: React.FC<Props> = ({closeModal}) => {
   return (
     <form className='' onSubmit={formik.handleSubmit} noValidate id='kt_login_signin_form'>
       <Toaster />
-      {/* begin::Heading */}
+
       <div className='text-center'>
         <h1 className='text-dark fw-bolder mb-3'>
           {intl.formatMessage({id: 'AUTH.ADMINLOGIN.TITLE'})}
-        </h1> 
-      </div> 
+        </h1>
+      </div>
 
       <div className='fv-row'>
         <label className='form-label fs-6 fw-bolder text-dark'></label>
@@ -103,7 +103,6 @@ const Admin_Login: React.FC<Props> = ({closeModal}) => {
           </div>
         )}
       </div>
-
       <div className='d-grid'>
         <button
           type='submit'
@@ -122,8 +121,8 @@ const Admin_Login: React.FC<Props> = ({closeModal}) => {
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
             </span>
           )}
-        </button> 
-      </div> 
+        </button>
+      </div>
     </form>
   )
 }

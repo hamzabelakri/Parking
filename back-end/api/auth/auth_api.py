@@ -1,4 +1,4 @@
-from fastapi import HTTPException, Request, status, APIRouter
+from fastapi import HTTPException, APIRouter
 from config.log_config import logger
 from models.operator_base_model import Operator_Register_Model,Operator_Login_Model,Operator_Logout_Model
 from api.auth.auth_mongo_model import Operator_Mongo_Document

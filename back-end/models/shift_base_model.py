@@ -1,5 +1,5 @@
-from pydantic import BaseModel,EmailStr
-from typing import List, Any
+from pydantic import BaseModel
+from typing import List
 from bson import ObjectId
 from datetime import datetime
 

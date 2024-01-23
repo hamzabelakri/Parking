@@ -18,7 +18,7 @@ def get_transaction_data():
     try:
         documents = Entry_Ticket_Mongo_Document.objects()
      
-        transaction_list = [Ticket_Body_Model(**document.to_mongo()) for document in documents]
+        transaction_list = [Ticket_Body_Model(id=str(document.id), **document.to_mongo()) for document in documents]
     except Exception as Ex:
         raise HTTPException(status=500, details=f' error {Ex} ')
         

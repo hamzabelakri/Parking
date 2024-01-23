@@ -11,6 +11,8 @@ from api.config.config_api import config_router
 from api.auth.auth_api import auth_router
 from api.operator.operator_api import operator_router
 from api.shift.shift_api import shift_router
+from api.admin.admin_api import admin_router
+from api.auth.admin_auth_api import admin_auth_router
 
 def initialize_backend_application() -> fastapi.FastAPI:
     app = fastapi.FastAPI()  # type: ignore
@@ -20,7 +22,9 @@ def initialize_backend_application() -> fastapi.FastAPI:
     app.include_router(transaction_router)
     app.include_router(config_router)
     app.include_router(auth_router)
+    app.include_router(admin_auth_router)
     app.include_router(operator_router)
+    app.include_router(admin_router)
     app.include_router(shift_router)
     app.add_middleware(CORSMiddleware,
                        allow_origins=ALLOWED_ORIGINS,
