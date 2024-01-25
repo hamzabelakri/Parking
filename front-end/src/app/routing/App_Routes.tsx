@@ -16,8 +16,8 @@ import {useSelector} from 'react-redux'
 const {PUBLIC_URL} = process.env
 
 const App_Routes: FC = () => {
-  const {connected_operator} = useSelector((state: any) => state.Auth_Reducer)
-  //console.log(connected_operator)
+  const {operator, connected_operator} = useSelector((state: any) => state.Auth_Reducer)
+  console.log("app",operator)
   return (
     <BrowserRouter basename={PUBLIC_URL}>
       <Routes>

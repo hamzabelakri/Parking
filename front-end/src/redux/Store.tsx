@@ -30,7 +30,7 @@ import root_Reducer from "./root_Reducer";
   
   const store = createStore(
     root_Reducer,
-    //persistedState,
+    persistedState,
     compose(
       applyMiddleware(thunk),
       window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() || compose

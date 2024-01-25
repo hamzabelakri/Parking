@@ -8,8 +8,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import {Link, useNavigate} from 'react-router-dom'
 import {useIntl} from 'react-intl'
 import toast, {Toaster} from 'react-hot-toast'
-import {useAuth} from '../../../modules/auth'
-import {getUserByToken, login} from '../../../modules/auth/core/_requests'
+import {useDispatch} from 'react-redux'
+import {admin_Login} from '../../../../redux/Auth/Auth_Action'
 
 type Props = {
   closeModal: (value: boolean) => void
@@ -17,31 +17,16 @@ type Props = {
 
 const Admin_Login: React.FC<Props> = ({closeModal}) => {
   const [loading, setLoading] = useState(false)
-  const [incorrectLogin, setIncorrectLogin] = useState(false)
+
   const navigate = useNavigate()
-  const {saveAuth, setCurrentUser} = useAuth()
+  const dispatch = useDispatch()
 
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
-    onSubmit: async (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
-      try {
-        const {data: auth} = await login(values.email, values.password)
-        saveAuth(auth)
-        const {data: user} = await getUserByToken(auth.api_token)
-        setCurrentUser(user)
-        closeModal(false)
-        navigate('/config')
-      } catch (error) {
-        console.error(error)
-        saveAuth(undefined)
-        setStatus('The login details are incorrect')
-        setSubmitting(false)
-        setLoading(false)
-        setIncorrectLogin(true)
-        toast.error('wrong email or password')
-      }
+    onSubmit: (values) => {
+      dispatch(admin_Login(formik.values, navigate))
+      closeModal(false)
     },
   })
   const intl = useIntl()
@@ -50,10 +35,13 @@ const Admin_Login: React.FC<Props> = ({closeModal}) => {
     <form className='' onSubmit={formik.handleSubmit} noValidate id='kt_login_signin_form'>
       <Toaster />
 
-      <div className='text-center'>
+      <div className='d-flex justify-content-between'>
         <h1 className='text-dark fw-bolder mb-3'>
           {intl.formatMessage({id: 'AUTH.ADMINLOGIN.TITLE'})}
         </h1>
+        <Link to='/'>
+          <i className='bi-arrow-right fs-2 cursor-pointer text-dark'></i>
+        </Link>
       </div>
 
       <div className='fv-row'>

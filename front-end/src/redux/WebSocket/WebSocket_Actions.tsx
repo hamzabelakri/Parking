@@ -7,7 +7,7 @@ export const open_Web_Socket: any = () => async (dispatch) => {
   let ws = new WebSocket(url)
 
   ws.onopen = () => {
-    console.log('WebSocket connection opened')
+    //console.log('WebSocket connection opened')
   }
 
   ws.onmessage = (event) => {
@@ -18,7 +18,7 @@ export const open_Web_Socket: any = () => async (dispatch) => {
   }
 
   ws.onclose = (event) => {
-    console.log('WebSocket connection closed:', event.reason)
+    //console.log('WebSocket connection closed:', event.reason)
     toast.promise(
       new Promise((resolve, reject) => {
         setTimeout(() => {

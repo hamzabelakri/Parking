@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {FC} from 'react'
 import {Link} from 'react-router-dom'
-import {Languages} from './Languages'
 import {toAbsoluteUrl} from '../../../helpers'
 import {useIntl} from 'react-intl'
 import { useSelector } from 'react-redux'

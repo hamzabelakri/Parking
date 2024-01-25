@@ -7,7 +7,7 @@ from bson import ObjectId
 
 shift_router = APIRouter(tags=["SHIFT_API"])
 
-@shift_router.get("/shift/", response_model=list[Shift_Body_Model])
+@shift_router.get("/shift", response_model=list[Shift_Body_Model])
 def get_all_shifts():
     try:
         documents = Shift_Mongo_Document.objects()

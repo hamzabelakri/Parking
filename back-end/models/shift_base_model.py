@@ -13,6 +13,8 @@ class Shift_Body_Model(BaseModel):
     zr_shift_id : int = None
     shift_sync_zr: bool = False
     shift_sync_back_office : bool = False
+    pause_resume_times: List[dict] = []
+
 
 class Payment_Model(BaseModel):
     article_id: str

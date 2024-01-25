@@ -33,7 +33,7 @@ const Operator_Login: React.FC<UserLoginFormProps> = ({closeModal, open_Admin_Au
         <h1 className='text-dark fw-bolder mb-3'>
           {intl.formatMessage({id: 'AUTH.LOGIN.BUTTON'})}
         </h1>
-        <i className='bi bi-gear fs-2x text-center cursor-pointer' onClick={open_Admin_Auth}></i>
+        <i className='bi bi-gear fs-2x cursor-pointer' onClick={open_Admin_Auth}></i>
       </div>
 
       <div className='fv-row'>

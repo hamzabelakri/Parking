@@ -13,7 +13,7 @@ const Payment_Buttons: React.FC = () => {
   const shift_id = shifts?.at(-1)?.id
   const {filtered_data} = useSelector((state: any) => state.Transaction_Reducers)
   const payload = {articles_data, filtered_data}
-  console.log('payload', payload)
+  //console.log('payload', payload)
 
   const shift_transaction = {
     action_time: '2022-01-20T12:00:00',
@@ -41,7 +41,7 @@ const Payment_Buttons: React.FC = () => {
 
   const handleButtonClick = (index: number) => {
     setSelectedButton(index)
-    dispatch(add_Transaction_To_Shift(shift_transaction, shift_id))
+    dispatch(add_Transaction_To_Shift(payload, shift_id))
   }
 
   return (

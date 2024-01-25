@@ -1,4 +1,4 @@
-from mongoengine import DynamicDocument, IntField, ListField, DateTimeField, FloatField, StringField,BooleanField
+from mongoengine import DynamicDocument, IntField, ListField, DateTimeField, DictField, StringField,BooleanField
 
 class Shift_Mongo_Document(DynamicDocument):
     operator_id = IntField()
@@ -9,3 +9,4 @@ class Shift_Mongo_Document(DynamicDocument):
     zr_shift_id=IntField()
     shift_sync_zr = BooleanField()
     shift_sync_back_office = BooleanField()
+    pause_resume_times = ListField(DictField())
