@@ -69,47 +69,46 @@ def sign_out_operator(sign_out_body: Operator_Logout_Model):
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
     
 
-@auth_router.put("/pause-shift", response_model=Operator_Logout_Model)
+@auth_router.put("/pause-shift", response_model=str)
 def pause_shift(pause_body: Operator_Logout_Model):
     try:
         email = pause_body.email
-        operator = Operator_Mongo_Document.objects(email=email).first()
-        if not operator:
-            raise HTTPException(status_code=404, detail='Operator not found')
-
         shift_document = Shift_Mongo_Document.objects(email=email, end_shift=None).first()
         if not shift_document:
-            raise HTTPException(status_code=400, detail='Shift not found or already paused')
+            raise HTTPException(status_code=400, detail='Shift not found')
 
-        # Check if there's an existing pause time
+        if shift_document.end_shift:
+            raise HTTPException(status_code=400, detail='Shift is already signed out')
+
         if not shift_document.pause_resume_times or "resume" in shift_document.pause_resume_times[-1]:
-            # Record the pause time only if there's no existing pause time or it's already resumed
+
             pause_time = datetime.now()
             shift_document.pause_resume_times.append({"pause": pause_time})
             shift_document.save()
-
-        return operator
+        else:
+            raise HTTPException(status_code=400, detail='Shift is already paused')
+        
+        return "Shift paused"
     except HTTPException as http_ex:
         raise http_ex
     except Exception as ex:
         raise HTTPException(status_code=500, detail=f'Error: {ex}')
 
 
-@auth_router.put("/resume-shift", response_model=Operator_Logout_Model)
+@auth_router.put("/resume-shift", response_model=str)
 def resume_shift(resume_body: Operator_Logout_Model):
     try:
         email = resume_body.email
-        operator = Operator_Mongo_Document.objects(email=email).first()
-        if not operator:
-            raise HTTPException(status_code=404, detail='Operator not found')
-
-        shift_document = Shift_Mongo_Document.objects(email=email).first()
+        shift_document = Shift_Mongo_Document.objects(email=email, end_shift=None).first()
         if not shift_document:
-            raise HTTPException(status_code=400, detail='Shift not found or not paused')
+            raise HTTPException(status_code=400, detail='Shift not found')
 
-        # Record the resume time related to the last pause time
+        if shift_document.end_shift:
+            raise HTTPException(status_code=400, detail='Shift is already signed out')
+
         if shift_document.pause_resume_times:
-            last_pause_time = shift_document.pause_resume_times[-1]["pause"]
+            if "resume" in shift_document.pause_resume_times[-1]:
+                raise HTTPException(status_code=400, detail='Shift is already resumed')
             shift_document.pause_resume_times[-1]["resume"] = datetime.now()
         else:
             raise HTTPException(status_code=400, detail='No pause time recorded')
@@ -117,7 +116,7 @@ def resume_shift(resume_body: Operator_Logout_Model):
         shift_document.end_shift = None
         shift_document.save()
 
-        return operator
+        return "shift resumed"
     except HTTPException as http_ex:
         raise http_ex
     except Exception as ex:
